@@ -43,14 +43,14 @@ export default {
       loginCustom(){
         console.log("lala");
         axios
-            .get('https://static.motivo.localhost/api-auth/',{
+            .post('https://static.motivo.localhost/api/token/',{
                   username: this.email,
                   password: this.password,
             })
             .then(resp=>{
-              this.token=resp.data.token
-              console.log(this.token)
-              localStorage.setItem('user-token', resp.data.token)
+              this.token=resp.data.access
+              console.log(resp.data)
+              localStorage.setItem('user-token', resp.data.access)
             })
             .catch(error => console.log(error))
             
