@@ -29,8 +29,12 @@
 import axios from 'axios'
 axios.defaults.headers.get['Content-Type'] = 'application/x-www-form-urlencoded'
 axios.defaults.headers.post['Content-Type'] = 'multipart/form-data'
+import { postRequest } from '@/utils/http';
+import forms from '@/mixins/forms';
+
 export default {
   name:"CustomLogIn",
+
   data(){
     return {
       loginInfo: {
@@ -40,7 +44,42 @@ export default {
         }
     }
   },
+
+  mixins: [ forms ],
+
+  // @todo please use one empty line to separate elements like data, mixins, methods, mounted...
   methods:{
+    // @todo my version
+    login() {
+      const data = { 
+        username: this.loginInfo.email, 
+        password: this.loginInfo.password 
+      };
+
+      return new Promise((resolve, reject) => {
+        postRequest('/login', data)
+          .then((response) => {
+            // @todo this code is from my another project, please use as reference only
+            this.$store.dispatch('app/login');
+            this.$store.dispatch('app/setUser', response.user);
+            const intended = window.sessionStorage.getItem('intended');
+            if (intended) {
+              this.$router.push(intended);
+              window.sessionStorage.removeItem('intended');
+            } else if (response.user.role === 'admin') {
+              this.$router.push({ name: 'admin.dashboard' });
+            } else {
+              this.$router.push({ name: 'user.dashboard' });
+            }
+
+            resolve(response);
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
+    },
+
       loginCustom(){
         const data = { username: this.email, password: this.password };
         axios

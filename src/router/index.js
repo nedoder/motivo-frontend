@@ -7,9 +7,12 @@ const TheContainer = () =>
 
 
 // Views
+// @todo please use webpackChunkName and group modules by group, for example group-auth, group-users, group-some-module
 const Dashboard = () =>
-    import ('@/views/Dashboard')
+    import (/* webpackChunkName: "group-dashboard" */ '@/views/Dashboard')
 
+
+// @todo please delete this routes, you can leave pages, maybe users
 const Colors = () =>
     import ('@/views/theme/Colors')
 const Typography = () =>
