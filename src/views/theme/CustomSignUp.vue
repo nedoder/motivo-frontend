@@ -28,7 +28,7 @@
     <a href="#">Forgot password</a>
   </div>
   <div class="form-group">
-    <button type="submit" class="btn btn-info btn-lg btn-block">Login</button>
+    <button type="submit" class="btn btn-info btn-lg btn-block">Sign up</button>
   </div>
   <div class="form-group">
     <button type="button" class="btn btn-secondary btn-lg btn-block">I don't have an account</button>
@@ -44,3 +44,23 @@ export default {
   components: { CustomSignUp }
 }
 </script>
+
+<style scoped>
+ form {
+   width: 50%;
+   margin: auto;
+ }
+ h4 {
+   text-align: center;
+ }
+ a {
+   color: #1CB0F6;
+   font-weight: bold;
+ }
+ body {
+   background-color: #e5e5e5;
+ }
+ input, button {
+   border-radius: 12px;
+ }
+</style>

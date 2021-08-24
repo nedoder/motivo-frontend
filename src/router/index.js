@@ -21,6 +21,9 @@ const CustomLogIn = () =>
 const CustomSignUp = () =>
     import ('@/views/theme/CustomSignUp')
 
+const Onboarding1 = () =>
+    import ('@/views/theme/Onboarding1')
+
 const Charts = () =>
     import ('@/views/charts/Charts')
 const Widgets = () =>
@@ -148,6 +151,11 @@ function configRoutes() {
                             path: 'customsignup',
                             name: 'CustomSignUp',
                             component: CustomSignUp
+                        },
+                        {
+                            path: 'onboarding1',
+                            name: 'Onboarding1',
+                            component: Onboarding1
                         }
                     ]
                 },

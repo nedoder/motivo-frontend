@@ -34,6 +34,12 @@ export default [{
         },
         {
             _name: 'CSidebarNavItem',
+            name: 'Onboarding1',
+            to: '/theme/Onboarding1',
+            icon: 'cil-drop'
+        },
+        {
+            _name: 'CSidebarNavItem',
             name: 'Typography',
             to: '/theme/typography',
             icon: 'cil-pencil'
