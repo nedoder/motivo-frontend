@@ -8,10 +8,12 @@
         "github": "https://github.com/coreui",
         "twitter": "https://twitter.com/core_ui"
     },
-    "contributors": [{
-        "name": "CoreUI Team",
-        "url": "https://github.com/orgs/coreui/people"
-    }],
+    "contributors": [
+        {
+            "name": "CoreUI Team",
+            "url": "https://github.com/orgs/coreui/people"
+        }
+    ],
     "repository": {
         "type": "git",
         "url": "git@github.com:coreui/coreui-free-vue-admin-template.git"
@@ -21,7 +23,8 @@
     "license": "MIT",
     "scripts": {
         "serve": "vue-cli-service serve",
-        "build": "vue-cli-service build",
+        "build": "shx rm -rf public && vue-cli-service build",
+        "watch": "shx rm -rf public && vue-cli-service build --watch --dest public --mode develop",
         "lint": "vue-cli-service lint",
         "test:unit": "vue-cli-service test:unit",
         "test:e2e": "vue-cli-service test:e2e",
@@ -36,6 +39,7 @@
         "@coreui/vue": "^3.2.9",
         "@coreui/vue-chartjs": "^1.0.6",
         "axios": "^0.21.1",
+        "shx": "^0.3.3",
         "vee-validate": "^3.4.11",
         "vue": "~2.6.12",
         "vue-router": "^3.5.1",
