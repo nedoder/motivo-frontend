@@ -1,6 +1,8 @@
-import FormAlerts from '@/components/FormAlerts.vue';
-import FormMessages from '@/components/FormMessages.vue';
-import { checkRequired } from '@/utils/validation';
+// @oliwia: I commented the imports that were not working
+
+//import FormAlerts from '@/components/FormAlerts.vue';
+//import FormMessages from '@/components/FormMessages.vue';
+//import { checkRequired } from '@/utils/validation';
 import forIn from 'lodash-es/forIn';
 import {
   ValidationProvider, ValidationObserver, setInteractionMode, localize,
@@ -27,14 +29,14 @@ export default {
   },
 
   components: {
-    FormAlerts,
-    FormMessages,
+    //FormAlerts,
+    //FormMessages,
     ValidationProvider,
     ValidationObserver,
   },
 
   methods: {
-    checkRequired: (rules) => checkRequired(rules),
+    //checkRequired: (rules) => checkRequired(rules),
 
     handleForm(formName) {
       this.loading = true;
