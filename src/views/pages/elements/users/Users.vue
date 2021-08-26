@@ -1,10 +1,7 @@
 <template>
   <CRow>
-    <CCol col="12" xl="8">
+    <CCol col="12" xl="12" sm="12">
       <CCard>
-        <CCardHeader>
-          Users
-        </CCardHeader>
         <CCardBody>
           <CDataTable
             hover

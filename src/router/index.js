@@ -121,9 +121,9 @@ const Modals = () =>
 
 // Users
 const Users = () =>
-    import('@/views/users/Users')
+    import('@/views/pages/elements/users/Users')
 const User = () =>
-    import('@/views/users/User')
+    import('@/views/pages/elements/users/User')
 
 Vue.use(Router)
 
