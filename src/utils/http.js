@@ -27,7 +27,7 @@ api.interceptors.response.use(
     }
     if (error.response) {
       if (error.response.status === 429) {
-        vm.$notifyError('Too Many Attempts.');
+        vm.$notifyError('Too Many Attempts.'); // wyskakujace powiadomienia z coreUI
       }
 
       if (error.response.status === 403) {
