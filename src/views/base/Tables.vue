@@ -1,7 +1,7 @@
 <template>
   <div>
     <CRow>
-      <CCol lg="6">
+      <CCol lg="12" >
         <CTableWrapper :items="getShuffledUsersData()">
           <template #header>
             <CIcon name="cil-grid"/> Simple Table
@@ -19,7 +19,7 @@
         </CTableWrapper>
       </CCol>
 
-      <CCol lg="6">
+      <CCol lg="12">
         <CTableWrapper
           :items="getShuffledUsersData()"
           striped
@@ -29,7 +29,7 @@
     </CRow>
 
     <CRow>
-      <CCol lg="6">
+      <CCol lg="12">
         <CTableWrapper
           :items="getShuffledUsersData()"
           small
@@ -37,7 +37,7 @@
         />
       </CCol>
 
-      <CCol lg="6">
+      <CCol lg="12">
         <CTableWrapper
           :items="getShuffledUsersData()"
           fixed

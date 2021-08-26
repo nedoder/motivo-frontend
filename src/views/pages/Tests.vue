@@ -1,25 +1,32 @@
 <template>
-  <CRow>
-    <CCol col="12" xl="12">
-      <CCard>
-        <CCardHeader>
-          Tests
-        </CCardHeader>
+    <CRow>
         <CCardBody>
-          Tests
+            <Title text="To do" :number="toDo" activeColor="blue" />
         </CCardBody>
-      </CCard>
-    </CCol>
-  </CRow>
+        <CCardBody>
+            <Title text="Failed" :number="failed" activeColor="red" />
+        </CCardBody>
+        <CCardBody>
+            <Title text="Passed" :number="passed" activeColor="green" />
+        </CCardBody>
+    </CRow>
 </template>
 
 <script>
-export default {
-  name: 'Tasks',
-  data () {
-    return {
-    }
-  },
+    import Title from './elements/Title.vue';
+
+    export default {
+        name: 'Tests',
+        components: {
+            Title
+        },
+        data() {
+            return {
+                toDo: 3,
+                failed: 5,
+                passed: 6
+            
+        }},
 //   watch: {
 //     $route: {
 //       immediate: true,
@@ -47,5 +54,5 @@ export default {
 //       this.$router.push({ query: { page: val }})
 //     }
 //   }
-}
+    }
 </script>

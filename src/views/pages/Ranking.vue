@@ -6,7 +6,7 @@
           Ranking
         </CCardHeader>
         <CCardBody>
-          Ranking
+
         </CCardBody>
       </CCard>
     </CCol>
