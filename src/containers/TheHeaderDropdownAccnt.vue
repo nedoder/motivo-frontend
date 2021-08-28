@@ -23,8 +23,8 @@
     <CDropdownItem>
       <CIcon name="cil-settings" /> Settings
     </CDropdownItem>
-    <CDropdownItem>
-      <CIcon name="cil-lock-locked" /> Logout
+    <CDropdownItem  v-on:click.prevent="logoutCustom" >
+      <CIcon name="cil-lock-locked"/> Logout
     </CDropdownItem>
   </CDropdown>
 </template>
@@ -36,7 +36,14 @@ export default {
     return { 
       itemsCount: 42
     }
-  }
+  },
+
+  methods:{
+    logoutCustom() {
+      localStorage.removeItem('user-token')
+      this.$router.push('/')
+    }
+  },
 }
 </script>
 
