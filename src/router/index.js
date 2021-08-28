@@ -19,7 +19,7 @@ const Dashboard = () =>
 //     import ('@/views/theme/Typography')
 
 const CustomLogIn = () =>
-    import('@/views/theme/CustomLogIn')
+    import('@/views/pages/CustomLogIn')
 
 //pages that we need @oliwia
 
@@ -31,6 +31,7 @@ const Tests = () =>
 
 const CustomSignUp = () =>
     import('@/views/theme/CustomSignUp')
+
 
 const Onboarding1 = () =>
     import('@/views/theme/Onboarding1')
