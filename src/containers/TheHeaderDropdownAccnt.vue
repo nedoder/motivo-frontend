@@ -15,12 +15,12 @@
         </div>
       </CHeaderNavLink>
     </template>
-    <CDropdownItem>
+    <CDropdownItem v-on:click.prevent="userProfile"> 
       <CHeaderNavLink to="/userinfo"> 
           <CIcon name="cil-user"/> Profile
         </CHeaderNavLink>
     </CDropdownItem>
-    <CDropdownItem>
+    <CDropdownItem v-on:click.prevent="editUser">
       <CIcon name="cil-settings" /> Settings
     </CDropdownItem>
     <CDropdownItem  v-on:click.prevent="logoutCustom" >
@@ -42,7 +42,15 @@ export default {
     logoutCustom() {
       localStorage.removeItem('user-token')
       this.$router.push('/')
-    }
+    },
+  
+  userProfile() {
+      this.$router.push('/profile')
+    },
+
+  editUser() {
+    this.$router.push('/edit')
+  },
   },
 }
 </script>

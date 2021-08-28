@@ -21,6 +21,12 @@ const Dashboard = () =>
 const CustomLogIn = () =>
     import ('@/views/pages/CustomLogIn')
 
+const Edit = () =>
+    import ('@/views/pages/Edit')
+
+const Profile = () =>
+    import ('@/views/pages/Profile')
+
 //pages that we need @oliwia
 
 const Coupons = () =>
@@ -141,8 +147,20 @@ function configRoutes() {
     return [{
             path: '/',
             //redirect: '/dashboard',
-            name: 'Login',
+            name: 'CustomLogin',
             component: CustomLogIn,
+        },
+        {
+            path: '/edit',
+            //redirect: '/dashboard',
+            name: 'Edit',
+            component: Edit,
+        },
+        {
+            path: '/profile',
+            //redirect: '/dashboard',
+            name: 'Profile',
+            component: Profile,
         },
         {
             path: '/dashboard',
