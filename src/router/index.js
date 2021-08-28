@@ -3,13 +3,13 @@ import Router from 'vue-router'
 
 // Containers
 const TheContainer = () =>
-    import('@/containers/TheContainer')
+    import ('@/containers/TheContainer')
 
 
 // Views
 // @todo please use webpackChunkName and group modules by group, for example group-auth, group-users, group-some-module
 const Dashboard = () =>
-    import( /* webpackChunkName: "group-dashboard" */ '@/views/Dashboard')
+    import ( /* webpackChunkName: "group-dashboard" */ '@/views/Dashboard')
 
 
 // @todo please delete this routes, you can leave pages, maybe users
@@ -19,40 +19,40 @@ const Dashboard = () =>
 //     import ('@/views/theme/Typography')
 
 const CustomLogIn = () =>
-    import('@/views/pages/CustomLogIn')
+    import ('@/views/pages/CustomLogIn')
 
 //pages that we need @oliwia
 
 const Coupons = () =>
-    import('@/views/pages/Coupons')
+    import ('@/views/pages/Coupons')
 
 const Tests = () =>
-    import('@/views/pages/Tests')
+    import ('@/views/pages/Tests')
 
 const CustomSignUp = () =>
-    import('@/views/theme/CustomSignUp')
+    import ('@/views/theme/CustomSignUp')
 
 
 const Onboarding1 = () =>
-    import('@/views/theme/Onboarding1')
+    import ('@/views/theme/Onboarding1')
 
 const Page404 = () =>
-    import('@/views/pages/Page404')
+    import ('@/views/pages/Page404')
 
 const Page500 = () =>
-    import('@/views/pages/Page500')
+    import ('@/views/pages/Page500')
 
 const Login = () =>
-    import('@/views/pages/Login')
+    import ('@/views/pages/Login')
 
 const Register = () =>
-    import('@/views/pages/Register')
+    import ('@/views/pages/Register')
 
 const Tasks = () =>
-    import('@/views/pages/Tasks')
+    import ('@/views/pages/Tasks')
 
 const UserInfo = () =>
-    import('@/views/pages/UserInfo')
+    import ('@/views/pages/UserInfo')
 
 // const Charts = () =>
 //     import ('@/views/charts/Charts')
@@ -95,36 +95,36 @@ const UserInfo = () =>
 
 // Views - Buttons
 const StandardButtons = () =>
-    import('@/views/buttons/StandardButtons')
+    import ('@/views/buttons/StandardButtons')
 const ButtonGroups = () =>
-    import('@/views/buttons/ButtonGroups')
+    import ('@/views/buttons/ButtonGroups')
 const Dropdowns = () =>
-    import('@/views/buttons/Dropdowns')
+    import ('@/views/buttons/Dropdowns')
 const BrandButtons = () =>
-    import('@/views/buttons/BrandButtons')
+    import ('@/views/buttons/BrandButtons')
 
 // Views - Icons
 const CoreUIIcons = () =>
-    import('@/views/icons/CoreUIIcons')
+    import ('@/views/icons/CoreUIIcons')
 const Brands = () =>
-    import('@/views/icons/Brands')
+    import ('@/views/icons/Brands')
 const Flags = () =>
-    import('@/views/icons/Flags')
+    import ('@/views/icons/Flags')
 
 // Views - Notifications
 const Alerts = () =>
-    import('@/views/notifications/Alerts')
+    import ('@/views/notifications/Alerts')
 const Badges = () =>
-    import('@/views/notifications/Badges')
+    import ('@/views/notifications/Badges')
 const Modals = () =>
-    import('@/views/notifications/Modals')
+    import ('@/views/notifications/Modals')
 
 
 // Users
 const Users = () =>
-    import('@/views/pages/elements/users/Users')
+    import ('@/views/pages/elements/users/Users')
 const User = () =>
-    import('@/views/pages/elements/users/User')
+    import ('@/views/pages/elements/users/User')
 
 Vue.use(Router)
 
@@ -140,7 +140,13 @@ export default new Router({
 function configRoutes() {
     return [{
             path: '/',
-            redirect: '/dashboard',
+            //redirect: '/dashboard',
+            name: 'Login',
+            component: CustomLogIn,
+        },
+        {
+            path: '/dashboard',
+            //redirect: '/dashboard',
             name: 'Home',
             component: TheContainer,
             children: [{
@@ -168,16 +174,16 @@ function configRoutes() {
                         //     name: 'Typography',
                         //     component: Typography
                         // },
-                        {
-                            path: 'customlogin',
-                            name: 'CustomLogIn',
-                            component: CustomLogIn
-                        },
-                        {
-                            path: 'customsignup',
-                            name: 'CustomSignUp',
-                            component: CustomSignUp
-                        },
+                        // {
+                        //     path: 'customlogin',
+                        //     name: 'CustomLogIn',
+                        //     component: CustomLogIn
+                        // },
+                        // {
+                        //     path: 'customsignup',
+                        //     name: 'CustomSignUp',
+                        //     component: CustomSignUp
+                        // },
                         {
                             path: 'onboarding1',
                             name: 'Onboarding1',
@@ -284,7 +290,7 @@ function configRoutes() {
                         }
                     ]
                 },
-                
+
                 // {
                 //     path: 'base',
                 //     redirect: '/base/cards',

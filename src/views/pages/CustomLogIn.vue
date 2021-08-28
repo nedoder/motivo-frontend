@@ -1,9 +1,9 @@
 <template>
 <div>
-    <div>
+   <form>
+     <div>
        <h4>Sign in</h4>
     </div>
-   <form>
   <div class="form-group">
     <label for="exampleFormControlInput1">Email</label>
     <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email" v-model="loginInfo.email">
@@ -56,38 +56,40 @@ export default {
         password: this.loginInfo.password 
       };
 
-      return new Promise((resolve, reject) => {
-        postRequest('/login', data)
-          .then((response) => {
-            // @todo this code is from my another project, please use as reference only
-            this.$store.dispatch('app/login');
-            this.$store.dispatch('app/setUser', response.user);
-            const intended = window.sessionStorage.getItem('intended');
-            if (intended) {
-              this.$router.push(intended);
-              window.sessionStorage.removeItem('intended');
-            } else if (response.user.role === 'admin') {
-              this.$router.push({ name: 'admin.dashboard' });
-            } else {
-              this.$router.push({ name: 'user.dashboard' });
-            }
+      // return new Promise((resolve, reject) => {
+      //   postRequest('/login', data)
+      //     .then((response) => {
+      //       // @todo this code is from my another project, please use as reference only
+      //       this.$store.dispatch('app/login');
+      //       this.$store.dispatch('app/setUser', response.user);
+      //       const intended = window.sessionStorage.getItem('intended');
+      //       if (intended) {
+      //         this.$router.push(intended);
+      //         window.sessionStorage.removeItem('intended');
+      //       } else if (response.user.role === 'admin') {
+      //         this.$router.push({ name: 'admin.dashboard' });
+      //       } else {
+      //         this.$router.push({ name: 'user.dashboard' });
+      //       }
 
-            resolve(response);
-          })
-          .catch((error) => {
-            reject(error);
-          });
-      });
+      //       resolve(response);
+      //     })
+      //     .catch((error) => {
+      //       reject(error);
+      //     });
+      //});
     },
 
       loginCustom(){
-        const data = { username: this.email, password: this.password };
+        const data = { username: this.loginInfo.email, password: this.loginInfo.password };
+        console.log(data)
         axios
             .post('https://static.motivo.localhost/api/token/', data)
             .then(resp=>{
               this.token=resp.data.access
               console.log(resp.data)
-              //localStorage.setItem('user-token', resp.data.access)
+              localStorage.setItem('user-token', resp.data.access)
+              this.$router.push('/dashboard')
             })
             .catch(error => console.log(error))
             
@@ -96,15 +98,19 @@ export default {
   },
 }
 
+
+ 
 </script>
 
 <style scoped>
  form {
    width: 50%;
    margin: auto;
+   margin-top: 25%;
  }
  h4 {
    text-align: center;
+   padding-bottom: 1rem;
  }
  a {
    color: #1CB0F6;
