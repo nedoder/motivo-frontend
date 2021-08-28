@@ -1,4 +1,6 @@
 <template>
+    <CWrapper>
+    <TheHeader/>
 <div class="formcontainer">
    <form>
      <div>
@@ -27,15 +29,17 @@
 
 </form>
 </div>
+    </CWrapper>
 </template>
 
 <script>
+import TheHeader from '../../containers/TheHeader.vue'
 import axios from 'axios'
 import forms from '@/mixins/forms';
 
 export default {
   name:"Edit",
-
+  components: {TheHeader,},
   data(){
     return {
        editInfo: {
