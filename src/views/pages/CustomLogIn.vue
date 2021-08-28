@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="formcontainer">
    <form>
      <div>
        <h4>Sign in</h4>
@@ -104,10 +104,14 @@ export default {
 
 <style scoped>
  form {
-   width: 50%;
-   margin: auto;
-   margin-top: 25%;
+   width: 100%;
  }
+
+ .formcontainer {
+   width: 40%;
+   margin: auto;
+   margin-top: 15%;
+  }
  h4 {
    text-align: center;
    padding-bottom: 1rem;
@@ -119,5 +123,6 @@ export default {
 
  input, button {
    border-radius: 12px;
+   padding: 10px;
  }
 </style>
