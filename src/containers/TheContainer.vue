@@ -29,25 +29,6 @@ export default {
     TheHeader,
     //TheFooter
   },
-  mounted() {
-    const token = JSON.parse(JSON.stringify(localStorage.getItem('user-token')))
-    const bearer = 'Bearer ' + token
-    console.log(bearer)
-     axios({
-       method:'get',
-       url: 'https://api.motivo.localhost/userdata/',
-      headers: { 'Authorization': bearer, }
-    })
-       .then(resp=>{
-          console.log(resp.data.results[0])
-          localStorage.setItem('user-id', resp.data.results[0].id)
-          localStorage.setItem('user-name', resp.data.results[0].first_name)
-          localStorage.setItem('user-surname', resp.data.results[0].last_name)
-          localStorage.setItem('user-email', resp.data.results[0].email)
-       })
-      .catch(error => console.log(error))
-  },
-  
 }
 </script>
 
