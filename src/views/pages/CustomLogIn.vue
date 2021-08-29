@@ -1,4 +1,6 @@
 <template>
+<div class="motivo">
+  <img src="./img/motivo.png"/>
 <div class="formcontainer">
    <form>
      <div>
@@ -22,6 +24,7 @@
     <button type="button" class="btn btn-secondary btn-lg btn-block">I don't have an account</button>
   </div>
 </form>
+</div>
 </div>
 </template>
 
@@ -92,7 +95,7 @@ export default {
               this.token=resp.data.access
               console.log(resp.data)
               localStorage.setItem('user-token', resp.data.access)
-              this.$router.push('/dashboard')
+              this.$router.push('/onboarding1')
             })
             .catch(error => console.log(error))
             
@@ -115,7 +118,12 @@ export default {
    margin: auto;
    margin-top: 15%;
   }
- h4 {
+
+  .motivo {
+    width: 80%;
+    margin: 20px auto;
+  }
+  h4 {
    text-align: center;
    padding-bottom: 1rem;
  }

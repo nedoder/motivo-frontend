@@ -1,4 +1,6 @@
 <template>
+<div class="motivo">
+  <img src="./img/motivo.png"/>
 <div>
     <div>
        <h4>Sign up</h4>
@@ -35,6 +37,7 @@
   </div>
 </form>
 </div>
+</div>
 </template>
 
 <script>
@@ -63,4 +66,8 @@ export default {
  input, button {
    border-radius: 12px;
  }
+ .motivo {
+    width: 80%;
+    margin: 20px auto;
+  }
 </style>

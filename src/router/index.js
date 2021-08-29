@@ -21,6 +21,21 @@ const Dashboard = () =>
 const CustomLogIn = () =>
     import ('@/views/pages/CustomLogIn')
 
+const Onboarding1 = () =>
+    import ('@/views/pages/Onboarding1')
+
+const Onboarding2 = () =>
+    import ('@/views/pages/Onboarding2')
+
+const Onboarding3 = () =>
+    import ('@/views/pages/Onboarding3')
+
+const Onboarding4 = () =>
+    import ('@/views/pages/Onboarding4')
+
+const Onboarding5 = () =>
+    import ('@/views/pages/Onboarding5')
+
 const Edit = () =>
     import ('@/views/pages/Edit')
 
@@ -36,11 +51,8 @@ const Tests = () =>
     import ('@/views/pages/Tests')
 
 const CustomSignUp = () =>
-    import ('@/views/theme/CustomSignUp')
+    import ('@/views/pages/CustomSignUp')
 
-
-const Onboarding1 = () =>
-    import ('@/views/theme/Onboarding1')
 
 const Page404 = () =>
     import ('@/views/pages/Page404')
@@ -155,6 +167,36 @@ function configRoutes() {
             //redirect: '/dashboard',
             name: 'Edit',
             component: Edit,
+        },
+        {
+            path: '/onboarding1',
+            //redirect: '/dashboard',
+            name: 'Onboarding',
+            component: Onboarding1,
+        },
+        {
+            path: '/onboarding2',
+            //redirect: '/dashboard',
+            name: 'Onboarding',
+            component: Onboarding2,
+        },
+        {
+            path: '/onboarding3',
+            //redirect: '/dashboard',
+            name: 'Onboarding',
+            component: Onboarding3,
+        },
+        {
+            path: '/onboarding4',
+            //redirect: '/dashboard',
+            name: 'Onboarding',
+            component: Onboarding4,
+        },
+        {
+            path: '/onboarding5',
+            //redirect: '/dashboard',
+            name: 'Onboarding',
+            component: Onboarding5,
         },
         {
             path: '/profile',
