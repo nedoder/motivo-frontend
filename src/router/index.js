@@ -232,6 +232,13 @@ function configRoutes() {
             name: 'Tests',
             component: Tests,
         },
+
+        // {
+        //     path: '/signup',
+        //     //redirect: '/dashboard',
+        //     name: 'CustomSignUp',
+        //     component: CustomSignUp,
+        // },
         {
             path: '/dashboard',
             //redirect: '/dashboard',
