@@ -3,10 +3,11 @@
     <CCol col="12" xl="12" sm="12">
       <CCard>
         <CCardBody>
+          
           <CDataTable
             hover
             striped
-            :items="items"
+            :items="computedItems"
             :fields="fields"
             :items-per-page="5"
             clickable-rows
@@ -15,6 +16,12 @@
             :pagination="{ doubleArrows: false, align: 'center'}"
             @page-change="pageChange"
           >
+           <!-- <template #userUsername="{item}"> -->
+        <td>
+          <!-- {{ item }} -->
+        </td>
+        
+           <!-- </template> -->
             <template #status="data">
               <td>
                 <CBadge :color="getBadge(data.item.status)">
@@ -37,13 +44,24 @@ export default {
     return {
       items: usersData,
       fields: [
-        { key: 'username', label: 'Name', _classes: 'font-weight-bold' },
-        { key: 'registered' },
-        { key: 'role' },
-        { key: 'status' }
+        { key: 'userUsername', label: '', _classes: 'font-weight-bold' },
+        { key: 'initial_budget' },
+        { key: 'annual_budget' },
+        { key: 'collected_coins' }
       ],
       activePage: 1
     }
+  },
+  computed: {
+    computedItems () {
+      return usersData.map(item => {
+        return { 
+          ...item,
+          userUsername: item.user.username, 
+          userId: item.user.id
+        }
+      })
+    },
   },
   watch: {
     $route: {
