@@ -84,7 +84,7 @@ export default {
         const data = { username: this.loginInfo.email, password: this.loginInfo.password };
         console.log(data)
         axios
-            .post('https://static.motivo.localhost/api/token/', data)
+            .post('/api/token/', data)
             .then(resp=>{
               this.token=resp.data.access
               console.log(resp.data)
