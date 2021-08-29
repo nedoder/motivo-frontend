@@ -42,6 +42,9 @@ const Edit = () =>
 const Profile = () =>
     import ('@/views/pages/Profile')
 
+const Ranking = () =>
+    import ('@/views/pages/Ranking')
+
 //pages that we need @oliwia
 
 const Coupons = () =>
@@ -171,31 +174,31 @@ function configRoutes() {
         {
             path: '/onboarding1',
             //redirect: '/dashboard',
-            name: 'Onboarding',
+            name: 'Onboarding1',
             component: Onboarding1,
         },
         {
             path: '/onboarding2',
             //redirect: '/dashboard',
-            name: 'Onboarding',
+            name: 'Onboarding2',
             component: Onboarding2,
         },
         {
             path: '/onboarding3',
             //redirect: '/dashboard',
-            name: 'Onboarding',
+            name: 'Onboarding3',
             component: Onboarding3,
         },
         {
             path: '/onboarding4',
             //redirect: '/dashboard',
-            name: 'Onboarding',
+            name: 'Onboarding4',
             component: Onboarding4,
         },
         {
             path: '/onboarding5',
             //redirect: '/dashboard',
-            name: 'Onboarding',
+            name: 'Onboarding5',
             component: Onboarding5,
         },
         {
@@ -203,6 +206,31 @@ function configRoutes() {
             //redirect: '/dashboard',
             name: 'Profile',
             component: Profile,
+        },
+
+        {
+            path: '/coupons',
+            //redirect: '/dashboard',
+            name: 'Coupons',
+            component: Coupons,
+        },
+        {
+            path: '/tasks',
+            //redirect: '/dashboard',
+            name: 'Tasks',
+            component: Tasks,
+        },
+        {
+            path: '/ranking',
+            //redirect: '/dashboard',
+            name: 'Ranking',
+            component: Ranking,
+        },
+        {
+            path: '/tests',
+            //redirect: '/dashboard',
+            name: 'Tests',
+            component: Tests,
         },
         {
             path: '/dashboard',

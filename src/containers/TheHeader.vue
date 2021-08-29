@@ -21,7 +21,7 @@
         </CHeaderNavLink>
       </CHeaderNavItem>
       <CHeaderNavItem class="px-3">
-        <CHeaderNavLink to="/users" exact>
+        <CHeaderNavLink to="/ranking" exact>
           Ranking
         </CHeaderNavLink>
       </CHeaderNavItem>
@@ -31,7 +31,7 @@
         </CHeaderNavLink>
       </CHeaderNavItem>
       <CHeaderNavItem class="px-3">
-        <CHeaderNavLink to="/coupons"> 
+        <CHeaderNavLink  to="/coupons"> 
           Coupons
         </CHeaderNavLink>
       </CHeaderNavItem>
