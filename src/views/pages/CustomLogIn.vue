@@ -83,8 +83,11 @@ export default {
       loginCustom(){
         const data = { username: this.loginInfo.email, password: this.loginInfo.password };
         console.log(data)
-        axios
-            .post('https://static.motivo.localhost/api/token/', data)
+        axios({
+          method:'post',
+          url: 'https://api.motivo.localhost/api/token/',
+          data: data,
+            })
             .then(resp=>{
               this.token=resp.data.access
               console.log(resp.data)
@@ -93,9 +96,9 @@ export default {
             })
             .catch(error => console.log(error))
             
-      }
-      
-  },
+      },
+  }
+
 }
 
 

@@ -37,17 +37,19 @@ import TheHeader from '../../containers/TheHeader.vue'
 import axios from 'axios'
 import forms from '@/mixins/forms';
 
+
 export default {
   name:"Edit",
   components: {TheHeader,},
   data(){
     return {
        editInfo: {
-          name: '',
-          surname: '',
-          email: '',
+          name: localStorage.getItem('user-name') || '',
+          surname: localStorage.getItem('user-surname') || '',
+          email: localStorage.getItem('user-email'),
           password: '',
           token: localStorage.getItem('user-token') || null,
+          id: localStorage.getItem('user-id')
         }
     }
   },
@@ -59,12 +61,20 @@ export default {
     // @todo my version
 
       editCustom(){
-        const data = { name: this.editInfo.name,surname: this.editInfo.surname, email: this.editInfo.email, password: this.editInfo.password  };
-        console.log(data)
-        axios
-            .put('https://static.motivo.localhost/user/', data)
+        const data = { first_name: this.editInfo.name, last_name: this.editInfo.surname, email: this.editInfo.email, password: this.editInfo.password  };
+        const token = JSON.parse(JSON.stringify(localStorage.getItem('token')))
+        const bearer = 'Bearer ' + token
+        console.log(bearer)
+        axios({
+            method:'put',
+            url: `https://api.motivo.localhost/user/${this.editInfo.id}/`,
+            data: data,
+            headers: { 'Authorization': bearer },
+        })
             .then(resp=>{
-              console.log(resp.data)
+              console.log(resp)
+              window.localStorage.clear();
+              this.$router.push('/')
             })
             .catch(error => console.log(error))
             
