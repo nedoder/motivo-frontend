@@ -1,6 +1,6 @@
 <template>
 <div class="wrapper-div">
-        <div class="container">
+        <div class="container logo">
           <img src="./img/motivo.png"/>
         </div>
         <div class="container">
@@ -10,8 +10,8 @@
           <img src="./img/blog(2).png" class="img-fluid" alt="Responsive image"/>
         </div>
         <div class="text">
-          <p>Real-life rewards</p>
-          <h4>You can exchange points for coupons that are a real life awards </h4>
+          <p>Take part at friendly competition</p>
+          <h4>Check the ranking list and follow the progress of other participants</h4>
         </div>
         <div class="container links">
           <img src="./img/Group 240(4).png"/>
@@ -38,15 +38,20 @@ export default {
     width: 60%;
   }
 
+  .logo {
+    width: 80%;
+    padding: 30px;
+  }
+
   .motivo {
     width: 80%;
-    margin: 20px auto;
+    margin: auto;
     display: flex;
   }
 
   .motivo img {
     width: 40%;
-    margin: 20px auto;
+    margin: auto;
   }
 
   .link {
@@ -61,7 +66,7 @@ export default {
 
   .links {
     padding: 0;
-    margin-top: 40px;
+    margin-top: 100px;
   }
 
   .text {

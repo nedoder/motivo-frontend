@@ -1,4 +1,5 @@
 <template>
+<div class="wrapper-in">
 <div class="motivo">
   <img src="./img/motivo.png"/>
 <div class="formcontainer">
@@ -21,9 +22,10 @@
     <button type="button" class="btn btn-info btn-lg btn-block" v-on:click.prevent="loginCustom">Login</button>
   </div>
   <div class="form-group">
-    <button type="button" class="btn btn-secondary btn-lg btn-block">I don't have an account</button>
+    <button type="button" class="btn btn-link btn-lg btn-block">I don't have an account</button>
   </div>
 </form>
+</div>
 </div>
 </div>
 </template>
@@ -109,6 +111,10 @@ export default {
 </script>
 
 <style scoped>
+.wrapper-in {
+  background: #ffffff;
+    height: 100vh;
+}
  form {
    width: 100%;
  }
@@ -120,20 +126,39 @@ export default {
   }
 
   .motivo {
-    width: 80%;
-    margin: 20px auto;
+    width: 100%;
+    margin: auto;
+    padding: 30px 50px;
   }
   h4 {
    text-align: center;
    padding-bottom: 1rem;
+   font-size: 24px;
+   color: #6D7885;
  }
- a {
+ a, .btn-link {
    color: #1CB0F6;
    font-weight: bold;
+   font-size: 18px;
  }
-
+ label {
+   color: #99A2AD;
+   font-size: 14px;
+ }
+ .btn-link {
+   box-shadow: 1px 1px 3px #99A2AD;
+   text-decoration: none;
+ }
+ .btn-info {
+   font-weight: bold;
+ }
  input, button {
    border-radius: 12px;
    padding: 10px;
+ }
+
+ input {
+   font-size: 18px;
+   background: #F7F8FA;
  }
 </style>

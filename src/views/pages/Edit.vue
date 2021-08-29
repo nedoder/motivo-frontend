@@ -1,4 +1,5 @@
 <template>
+<div class="wrapper-in">
     <CWrapper>
     <TheHeader/>
 <div class="formcontainer">
@@ -24,12 +25,13 @@
   </div>
   
    <div class="form-group">
-    <button type="button" class="btn btn-secondary btn-lg btn-block" v-on:click.prevent="editCustom">Change password</button>
+    <button type="button" class="btn btn-link btn-lg btn-block" v-on:click.prevent="editCustom">Change password</button>
   </div>
 
 </form>
 </div>
     </CWrapper>
+</div>
 </template>
 
 <script>
@@ -95,15 +97,18 @@ export default {
  .formcontainer {
    width: 40%;
    margin: auto;
-   margin-top: 15%;
+   margin-top: 10%;
   }
  h4 {
-   text-align: center;
+   font-size: 24px;
+   color: #6D7885;
+   text-align: left;
    padding-bottom: 1rem;
  }
- a {
+ a, .btn-link {
    color: #1CB0F6;
    font-weight: bold;
+   font-size: 18px;
  }
 
  input, button {
@@ -114,5 +119,29 @@ export default {
  button {
      color: #1CB0F6;
      font-weight: bold;
+ }
+ .wrapper-in {
+   height: 100vh;
+   background: #ffffff;
+ }
+ label {
+   color: #99A2AD;
+   font-size: 14px;
+ }
+ .btn-link {
+   box-shadow: 1px 1px 3px #99A2AD;
+   text-decoration: none;
+ }
+ .btn-info {
+   font-weight: bold;
+ }
+ 
+ input {
+   font-size: 18px;
+   background: #F7F8FA;
+ }
+
+ #exampleFormControlInput4 {
+   margin-bottom: 30px;
  }
 </style>
