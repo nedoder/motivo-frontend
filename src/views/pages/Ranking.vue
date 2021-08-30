@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import usersData from './UsersData'
+import usersData from './users/UsersData'
 export default {
   name: 'Ranking',
   data () {
