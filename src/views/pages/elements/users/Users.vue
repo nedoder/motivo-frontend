@@ -3,32 +3,32 @@
     <CCol col="12" xl="12" sm="12">
       <CCard>
         <CCardBody>
-          
+           <CRow>
+      <CCol lg="2" class="bg-danger py-3">
+         {{collectedFilteredItems[0].user.username}}
+      </CCol>
+      <CCol lg="2" class="bg-danger py-3">
+         1st Place
+      </CCol>
+      <CCol md="4" class="bg-danger py-3">
+         Initial budget: {{collectedFilteredItems[0].initial_budget}}
+      </CCol>
+      <CCol sm="4" class="bg-danger py-3">
+         Balance: {{collectedFilteredItems[0].collected_coins}}
+      </CCol>
+    </CRow>
           <CDataTable
             hover
             striped
-            :items="computedItems"
+            :items="collectedFilteredItems"
             :fields="fields"
-            :items-per-page="5"
+            :items-per-page="20"
             clickable-rows
             :active-page="activePage"
             @row-clicked="rowClicked"
             :pagination="{ doubleArrows: false, align: 'center'}"
             @page-change="pageChange"
           >
-           <!-- <template #userUsername="{item}"> -->
-        <td>
-          <!-- {{ item }} -->
-        </td>
-        
-           <!-- </template> -->
-            <template #status="data">
-              <td>
-                <CBadge :color="getBadge(data.item.status)">
-                  {{data.item.status}}
-                </CBadge>
-              </td>
-            </template>
           </CDataTable>
         </CCardBody>
       </CCard>
@@ -44,10 +44,9 @@ export default {
     return {
       items: usersData,
       fields: [
-        { key: 'userUsername', label: '', _classes: 'font-weight-bold' },
-        { key: 'initial_budget' },
-        { key: 'annual_budget' },
-        { key: 'collected_coins' }
+        { key: 'userUsername', label: 'User', _classes: 'font-weight-bold' },
+        { key: 'initial_budget', label: 'Initial budget' },
+        { key: 'collected_coins', label: 'Collected Coins' },
       ],
       activePage: 1
     }
@@ -62,6 +61,11 @@ export default {
         }
       })
     },
+    collectedFilteredItems() {
+      return this.computedItems.sort(function(a,b ) {
+        return b.collected_coins - a.collected_coins
+      })
+    }
   },
   watch: {
     $route: {
@@ -74,18 +78,17 @@ export default {
     }
   },
   methods: {
-    getBadge (status) {
-      switch (status) {
-        case 'Active': return 'success'
-        case 'Inactive': return 'secondary'
-        case 'Pending': return 'warning'
-        case 'Banned': return 'danger'
-        default: 'primary'
-      }
-    },
-    rowClicked (item, index) {
-      this.$router.push({path: `users/${index + 1}`})
-    },
+    // getBadge (status) {
+    //   switch (status) {
+    //     case 'Active': return 'success'
+    //     case 'Inactive': return 'secondary'
+    //     case 'Pending': return 'warning'
+    //     case 'Banned': return 'danger'
+    //     default: 'primary'
+    //   }
+    // rowClicked (item, index) {
+    //   this.$router.push({path: `users/${index + 1}`})
+    // },
     pageChange (val) {
       this.$router.push({ query: { page: val }})
     }

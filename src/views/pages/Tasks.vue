@@ -9,6 +9,7 @@
         <CCardBody>
             <Title text="Done" :number="passed" />
         </CCardBody>
+        ffdfdfdf
     </CRow>
 </template>
 
