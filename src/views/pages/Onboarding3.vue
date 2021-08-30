@@ -58,6 +58,7 @@ export default {
     float: right;
     color: #D3D9DE;
     font-weight: bold;
+    text-decoration: none;
   }
 
   .two {

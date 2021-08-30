@@ -15,7 +15,7 @@
         </div>
         <div class="container links">
           <img src="./img/Group 240(4).png"/>
-          <CLink to="/dashboard" class="link two">Next ></CLink>
+          <CLink to="/dashboard" class="link two">Finish ></CLink>
         </div>
 </div>
 </template>
@@ -58,6 +58,7 @@ export default {
     float: right;
     color: #D3D9DE;
     font-weight: bold;
+    text-decoration: none;
   }
 
   .two {

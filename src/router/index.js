@@ -249,43 +249,43 @@ function configRoutes() {
                     name: 'Dashboard',
                     component: Dashboard
                 },
-                {
-                    path: 'theme',
-                    redirect: '/theme/colors',
-                    name: 'Theme',
-                    component: {
-                        render(c) {
-                            return c('router-view')
-                        }
-                    },
-                    children: [
-                        // {
-                        //     path: 'colors',
-                        //     name: 'Colors',
-                        //     component: Colors
-                        // },
-                        // {
-                        //     path: 'typography',
-                        //     name: 'Typography',
-                        //     component: Typography
-                        // },
-                        // {
-                        //     path: 'customlogin',
-                        //     name: 'CustomLogIn',
-                        //     component: CustomLogIn
-                        // },
-                        // {
-                        //     path: 'customsignup',
-                        //     name: 'CustomSignUp',
-                        //     component: CustomSignUp
-                        // },
-                        {
-                            path: 'onboarding1',
-                            name: 'Onboarding1',
-                            component: Onboarding1
-                        }
-                    ]
-                },
+                // {
+                //     path: 'theme',
+                //     redirect: '/theme/colors',
+                //     name: 'Theme',
+                //     component: {
+                //         render(c) {
+                //             return c('router-view')
+                //         }
+                //     },
+                //     children: [
+                // {
+                //     path: 'colors',
+                //     name: 'Colors',
+                //     component: Colors
+                // },
+                // {
+                //     path: 'typography',
+                //     name: 'Typography',
+                //     component: Typography
+                // },
+                // {
+                //     path: 'customlogin',
+                //     name: 'CustomLogIn',
+                //     component: CustomLogIn
+                // },
+                // {
+                //     path: 'customsignup',
+                //     name: 'CustomSignUp',
+                //     component: CustomSignUp
+                // },
+                // {
+                //     path: 'onboarding1',
+                //     name: 'Onboarding1',
+                //     component: Onboarding1
+                // }
+                //     ]
+                // },
                 // {
                 //     path: 'charts',
                 //     name: 'Charts',
@@ -296,54 +296,54 @@ function configRoutes() {
                 //     name: 'Widgets',
                 //     component: Widgets
                 // },
-                {
-                    path: 'tasks',
-                    meta: {
-                        label: 'Tasks'
-                    },
-                    component: {
-                        render(c) {
-                            return c('router-view')
-                        }
-                    },
-                    children: [{
-                        path: '',
-                        name: 'Tasks',
-                        component: Tasks
-                    }, ]
-                },
-                {
-                    path: 'Coupons',
-                    meta: {
-                        label: 'Coupons'
-                    },
-                    component: {
-                        render(c) {
-                            return c('router-view')
-                        }
-                    },
-                    children: [{
-                        path: '',
-                        name: 'Coupons',
-                        component: Coupons
-                    }, ]
-                },
-                {
-                    path: 'Tests',
-                    meta: {
-                        label: 'Tests'
-                    },
-                    component: {
-                        render(c) {
-                            return c('router-view')
-                        }
-                    },
-                    children: [{
-                        path: '',
-                        name: 'Tests',
-                        component: Tests
-                    }, ]
-                },
+                // {
+                //     path: 'tasks',
+                //     meta: {
+                //         label: 'Tasks'
+                //     },
+                //     component: {
+                //         render(c) {
+                //             return c('router-view')
+                //         }
+                //     },
+                //     children: [{
+                //         path: '',
+                //         name: 'Tasks',
+                //         component: Tasks
+                //     }, ]
+                // },
+                // {
+                //     path: 'Coupons',
+                //     meta: {
+                //         label: 'Coupons'
+                //     },
+                //     component: {
+                //         render(c) {
+                //             return c('router-view')
+                //         }
+                //     },
+                //     children: [{
+                //         path: '',
+                //         name: 'Coupons',
+                //         component: Coupons
+                //     }, ]
+                // },
+                // {
+                //     path: 'Tests',
+                //     meta: {
+                //         label: 'Tests'
+                //     },
+                //     component: {
+                //         render(c) {
+                //             return c('router-view')
+                //         }
+                //     },
+                //     children: [{
+                //         path: '',
+                //         name: 'Tests',
+                //         component: Tests
+                //     }, ]
+                // },
                 {
                     path: 'UserInfo',
                     meta: {
