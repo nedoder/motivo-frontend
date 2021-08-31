@@ -90,7 +90,7 @@ export default {
         console.log(data)
         axios({
           method:'post',
-          url: 'https://api.motivo.localhost/api/token/',
+          url: '/api/token/',
           data: data,
             })
             .then(resp=>{

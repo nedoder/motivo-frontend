@@ -2,6 +2,11 @@
     <CRow>
         <CCardBody>
             <Title text="To do" :number="toDo" activeColor="blue" />
+            <CCard bodyWrapper text-color="blue" :style="{color: activeColor}" v-for="challenge in challenges">
+                    {{challenge.title}}
+                    {{challenge.coins_to_win}}
+                    {{challenge.description}}
+        </CCard>
         </CCardBody>
         <CCardBody>
             <Title text="Failed" :number="failed" activeColor="red" />
@@ -14,6 +19,7 @@
 
 <script>
     import Title from './elements/Title.vue';
+    import challenges from './dataTests';
 
     export default {
         name: 'Tests',
@@ -22,6 +28,7 @@
         },
         data() {
             return {
+                challenges: challenges,
                 toDo: 3,
                 failed: 5,
                 passed: 6
