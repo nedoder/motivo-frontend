@@ -37,12 +37,12 @@
 </template>
 
 <script>
-import usersData from './elements/users/UsersData'
+import axios from 'axios'
 export default {
   name: 'Ranking',
   data () {
     return {
-      items: usersData,
+      items: [],
       fields: [
         { key: 'userUsername', label: 'User', _classes: 'font-weight-bold' },
         { key: 'initial_budget', label: 'Initial budget' },
@@ -53,7 +53,8 @@ export default {
   },
   computed: {
     computedItems () {
-      return usersData.map(item => {
+      return this.items.map(item => {
+        console.log(item);
         return { 
           ...item,
           userUsername: item.user.username, 
@@ -92,6 +93,22 @@ export default {
     pageChange (val) {
       this.$router.push({ query: { page: val }})
     }
-  }
+  },
+  mounted() {
+    const token = JSON.parse(JSON.stringify(localStorage.getItem('user-token')))
+    const bearer = 'Bearer ' + token
+      axios({
+        method:'get',
+        url: '/api/ranking/',
+      headers: { 'Authorization': bearer, }
+    })
+       .then(resp=>{
+          this.items = resp.data.results
+          // this.title = resp.data.results[0].title
+          // this.price = resp.data.results[0].price
+          // this.image = resp.data.results[0].image
+       })
+      .catch(error => console.log(error))
+  },
 }
 </script>
