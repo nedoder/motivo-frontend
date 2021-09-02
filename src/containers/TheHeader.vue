@@ -1,67 +1,55 @@
 <template>
-  <CHeader fixed with-subheader light>
-    <!-- <CToggler
-      in-header
-      class="ml-3 d-lg-none"
-      @click="$store.commit('toggleSidebarMobile')"
-    />
-    <CToggler
-      in-header
-      class="ml-3 d-md-down-none"
-      @click="$store.commit('toggleSidebarDesktop')"
-    /> -->
-    
-    <CHeaderBrand class="mx-auto d-lg-none" to="/">
-      <CIcon name="logo" height="48" alt="Logo"/>
-    </CHeaderBrand>
-    <CHeaderNav class="d-md-down-none mr-auto">
-      <CHeaderNavItem class="px-3">
-        <CHeaderNavLink to="/tasks">
-          Tasks
-        </CHeaderNavLink>
-      </CHeaderNavItem>
-      <CHeaderNavItem class="px-3">
-        <CHeaderNavLink to="/ranking" exact>
-          Ranking
-        </CHeaderNavLink>
-      </CHeaderNavItem>
-      <CHeaderNavItem class="px-3">
-        <CHeaderNavLink to="/tests">
-          Tests
-        </CHeaderNavLink>
-      </CHeaderNavItem>
-      <CHeaderNavItem class="px-3">
-        <CHeaderNavLink  to="/coupons"> 
-          Coupons
-        </CHeaderNavLink>
-      </CHeaderNavItem>
-    </CHeaderNav>
-    <CHeaderNav class="mr-4">
-      <CHeaderNavItem class="d-md-down-none mx-2">
-        <CHeaderNavLink>
-          Score
-        </CHeaderNavLink>
-      </CHeaderNavItem>
-      <CHeaderNavItem class="d-md-down-none mx-2">
-        <CHeaderNavLink>
-          Ranking
-        </CHeaderNavLink>
-      </CHeaderNavItem>
-      <TheHeaderDropdownAccnt/>
-    </CHeaderNav>
-    <!-- <CSubheader class="px-3">
-      <CBreadcrumbRouter class="border-0 mb-0"/>
-    </CSubheader> -->
-  </CHeader>
+  <CNavbar expandable="md" type="light" color="light">
+    <CToggler in-navbar @click="collapsed = !collapsed" class='bg-secondary'/>
+    <CNavbarBrand class="text-info" href="#">MOTIVO</CNavbarBrand>
+    <CCollapse :show="collapsed" navbar>
+      <CNavbarNav >
+        <CHeaderNavItem class="px-3">
+          <CHeaderNavLink class="text-info" to="/dashboard/tasks">
+            Tasks
+          </CHeaderNavLink>
+        </CHeaderNavItem>
+        <CHeaderNavItem class="px-3">
+          <CHeaderNavLink class="text-info" to="/dashboard/ranking" exact>
+            Ranking
+          </CHeaderNavLink>
+        </CHeaderNavItem>
+        <CHeaderNavItem class="px-3">
+          <CHeaderNavLink class="text-info" to="/dashboard/coupons">
+            Coupons
+          </CHeaderNavLink>
+        </CHeaderNavItem>
+      </CNavbarNav>
+      <CNavbarNav class="ml-auto">
+        <CDropdown nav togglerText="User" placement="bottom-end">
+          <CDropdownItem v-on:click.prevent="editUser">
+            <CIcon name="cil-settings" /> Settings
+          </CDropdownItem>
+          <CDropdownItem v-on:click.prevent="logoutCustom">
+            <CIcon name="cil-lock-locked" /> Logout
+          </CDropdownItem>
+        </CDropdown>
+      </CNavbarNav>
+    </CCollapse>
+  </CNavbar>
 </template>
 
 <script>
-import TheHeaderDropdownAccnt from './TheHeaderDropdownAccnt'
+  export default {
+    data() {
+      return {
+        collapsed: false
+      }
+    },
+    methods: {
+      logoutCustom() {
+        localStorage.removeItem('user-token')
+        this.$router.push('/')
+      },
 
-export default {
-  name: 'TheHeader',
-  components: {
-    TheHeaderDropdownAccnt
+      editUser() {
+        this.$router.push('/edit')
+      },
+    },
   }
-}
 </script>

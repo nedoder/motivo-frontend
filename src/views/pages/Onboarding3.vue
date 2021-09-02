@@ -1,43 +1,36 @@
 <template>
-<div class="wrapper-div">
-        <div class="container logo">
-          <img src="./img/motivo.png"/>
-        </div>
+  <div class="c-app bg-white">
+    <CWrapper>
+      <div class="container logo">
+        <img src="./img/motivo.png" />
+      </div>
+      <CContainer class='bg-white'>
         <div class="container">
           <CLink to="/dashboard" class="link">Skip</CLink>
         </div>
         <div class="motivo">
-          <img src="./img/blog.png" class="img-fluid" alt="Responsive image"/>
+          <img src="./img/blog.png" class="img-fluid" alt="Responsive image" />
         </div>
         <div class="text">
           <p>Real-life rewards</p>
           <h4>You can exchange points for coupons that are a real life awards</h4>
         </div>
-        <div class="container links">
-          <img src="./img/Group 240(2).png"/>
-          <CLink to="/onboarding4" class="link two">Next ></CLink>
-        </div>
-</div>
+      </CContainer>
+      <div class="container links">
+        <img src="./img/Group 240(2).png" />
+        <CLink to="/onboarding4" class="link two">Next ></CLink>
+      </div>
+    </CWrapper>
+  </div>
 </template>
 
 <script>
-export default {
-  name: 'Onboarding3',
-
-}
+  export default {
+    name: 'Onboarding3',
+  }
 </script>
 
 <style scoped>
-  .wrapper-div {
-    height: 100vh;
-    background: #ffffff;
-  }
-  .container {
-    padding: 10px;
-    margin: auto;
-    width: 60%;
-  }
-
   .logo {
     width: 80%;
     padding: 30px;
@@ -66,8 +59,7 @@ export default {
   }
 
   .links {
-    padding: 0;
-    margin-top: 100px;
+    margin-bottom: 20px;
   }
 
   .text {
@@ -78,6 +70,7 @@ export default {
     color: #99A2AD;
     font-weight: bold;
   }
+
   h4 {
     font-size: 36px;
     color: #2C2D2E;

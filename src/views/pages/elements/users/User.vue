@@ -1,6 +1,6 @@
 <template>
   <CRow>
-    <CCol col="12" lg="12">
+    <CCol col="12" lg="6">
       <CCard>
         <CCardHeader>
           User id:  {{ $route.params.id }}
@@ -39,7 +39,7 @@ export default {
   computed: {
     fields () {
       return [
-        { key: 'key', label: this.user, _style: 'width:150px'},
+        { key: 'key', label: this.username, _style: 'width:150px'},
         { key: 'value', label: '', _style: 'width:150px;' }
       ]
     },
@@ -50,10 +50,10 @@ export default {
       return userDetails.map(([key, value]) => { return { key, value } })
     },
     visibleData () {
-      return this.userData.filter(param => param.key !== 'user')
+      return this.userData.filter(param => param.key !== 'username')
     },
     username () {
-      return this.userData.filter(param => param.key === 'user')[0].value
+      return this.userData.filter(param => param.key === 'username')[0].value
     }
   },
   methods: {
