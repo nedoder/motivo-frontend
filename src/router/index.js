@@ -72,6 +72,9 @@ const Register = () =>
 const Tasks = () =>
     import ('@/views/pages/Tasks')
 
+    const Task = () =>
+    import ('@/views/pages/Task')
+
 const UserInfo = () =>
     import ('@/views/pages/UserInfo')
 
@@ -214,12 +217,12 @@ function configRoutes() {
             name: 'Coupons',
             component: Coupons,
         },
-        {
-            path: '/tasks',
-            //redirect: '/dashboard',
-            name: 'Tasks',
-            component: Tasks,
-        },
+        // {
+        //     path: '/tasks',
+        //     //redirect: '/dashboard',
+        //     name: 'Tasks',
+        //     component: Tasks,
+        // },
         {
             path: '/ranking',
             //redirect: '/dashboard',
@@ -232,13 +235,6 @@ function configRoutes() {
             name: 'Tests',
             component: Tests,
         },
-
-        // {
-        //     path: '/signup',
-        //     //redirect: '/dashboard',
-        //     name: 'CustomSignUp',
-        //     component: CustomSignUp,
-        // },
         {
             path: '/dashboard',
             //redirect: '/dashboard',
@@ -249,101 +245,6 @@ function configRoutes() {
                     name: 'Dashboard',
                     component: Dashboard
                 },
-                // {
-                //     path: 'theme',
-                //     redirect: '/theme/colors',
-                //     name: 'Theme',
-                //     component: {
-                //         render(c) {
-                //             return c('router-view')
-                //         }
-                //     },
-                //     children: [
-                // {
-                //     path: 'colors',
-                //     name: 'Colors',
-                //     component: Colors
-                // },
-                // {
-                //     path: 'typography',
-                //     name: 'Typography',
-                //     component: Typography
-                // },
-                // {
-                //     path: 'customlogin',
-                //     name: 'CustomLogIn',
-                //     component: CustomLogIn
-                // },
-                // {
-                //     path: 'customsignup',
-                //     name: 'CustomSignUp',
-                //     component: CustomSignUp
-                // },
-                // {
-                //     path: 'onboarding1',
-                //     name: 'Onboarding1',
-                //     component: Onboarding1
-                // }
-                //     ]
-                // },
-                // {
-                //     path: 'charts',
-                //     name: 'Charts',
-                //     component: Charts
-                // },
-                // {
-                //     path: 'widgets',
-                //     name: 'Widgets',
-                //     component: Widgets
-                // },
-                // {
-                //     path: 'tasks',
-                //     meta: {
-                //         label: 'Tasks'
-                //     },
-                //     component: {
-                //         render(c) {
-                //             return c('router-view')
-                //         }
-                //     },
-                //     children: [{
-                //         path: '',
-                //         name: 'Tasks',
-                //         component: Tasks
-                //     }, ]
-                // },
-                // {
-                //     path: 'Coupons',
-                //     meta: {
-                //         label: 'Coupons'
-                //     },
-                //     component: {
-                //         render(c) {
-                //             return c('router-view')
-                //         }
-                //     },
-                //     children: [{
-                //         path: '',
-                //         name: 'Coupons',
-                //         component: Coupons
-                //     }, ]
-                // },
-                // {
-                //     path: 'Tests',
-                //     meta: {
-                //         label: 'Tests'
-                //     },
-                //     component: {
-                //         render(c) {
-                //             return c('router-view')
-                //         }
-                //     },
-                //     children: [{
-                //         path: '',
-                //         name: 'Tests',
-                //         component: Tests
-                //     }, ]
-                // },
                 {
                     path: 'UserInfo',
                     meta: {
@@ -358,6 +259,38 @@ function configRoutes() {
                         path: '',
                         name: 'UserInfo',
                         component: UserInfo
+                    }, ]
+                },
+                {
+                    path: 'Coupons',
+                    meta: {
+                        label: 'Coupons'
+                    },
+                    component: {
+                        render(c) {
+                            return c('router-view')
+                        }
+                    },
+                    children: [{
+                        path: '',
+                        name: 'Coupons',
+                        component: Coupons
+                    }, ]
+                },
+                {
+                    path: 'Ranking',
+                    meta: {
+                        label: 'Ranking'
+                    },
+                    component: {
+                        render(c) {
+                            return c('router-view')
+                        }
+                    },
+                    children: [{
+                        path: '',
+                        name: 'Ranking',
+                        component: Ranking
                     }, ]
                 },
                 {
@@ -385,96 +318,34 @@ function configRoutes() {
                         }
                     ]
                 },
+                {
+                    path: 'tasks',
+                    meta: {
+                        label: 'tasks'
+                    },
+                    component: {
+                        render(c) {
+                            return c('router-view')
+                        }
+                    },
+                    children: [{
+                            path: '',
+                            name: 'Tasks',
+                            component: Tasks
+                        },
+                        {
+                            path: ':id',
+                            meta: {
+                                label: 'Task'
+                            },
+                            name: 'Task',
+                            component: Task
+                        }
+                    ]
+                },
 
-                // {
-                //     path: 'base',
-                //     redirect: '/base/cards',
-                //     name: 'Base',
-                //     component: {
-                //         render(c) { return c('router-view') }
-                //     },
-                //     children: [{
-                //             path: 'cards',
-                //             name: 'Cards',
-                //             component: Cards
-                //         },
-                //         {
-                //             path: 'forms',
-                //             name: 'Forms',
-                //             component: Forms
-                //         },
-                //         {
-                //             path: 'switches',
-                //             name: 'Switches',
-                //             component: Switches
-                //         },
-                //         {
-                //             path: 'tables',
-                //             name: 'Tables',
-                //             component: Tables
-                //         },
-                //         {
-                //             path: 'tabs',
-                //             name: 'Tabs',
-                //             component: Tabs
-                //         },
-                //         {
-                //             path: 'breadcrumbs',
-                //             name: 'Breadcrumbs',
-                //             component: Breadcrumbs
-                //         },
-                //         {
-                //             path: 'carousels',
-                //             name: 'Carousels',
-                //             component: Carousels
-                //         },
-                //         {
-                //             path: 'collapses',
-                //             name: 'Collapses',
-                //             component: Collapses
-                //         },
-                //         {
-                //             path: 'jumbotrons',
-                //             name: 'Jumbotrons',
-                //             component: Jumbotrons
-                //         },
-                //         {
-                //             path: 'list-groups',
-                //             name: 'List Groups',
-                //             component: ListGroups
-                //         },
-                //         {
-                //             path: 'navs',
-                //             name: 'Navs',
-                //             component: Navs
-                //         },
-                //         {
-                //             path: 'navbars',
-                //             name: 'Navbars',
-                //             component: Navbars
-                //         },
-                //         {
-                //             path: 'paginations',
-                //             name: 'Paginations',
-                //             component: Paginations
-                //         },
-                //         {
-                //             path: 'popovers',
-                //             name: 'Popovers',
-                //             component: Popovers
-                //         },
-                //         {
-                //             path: 'progress-bars',
-                //             name: 'Progress Bars',
-                //             component: ProgressBars
-                //         },
-                //         {
-                //             path: 'tooltips',
-                //             name: 'Tooltips',
-                //             component: Tooltips
-                //         }
-                //     ]
-                // },
+
+               
                 {
                     path: 'buttons',
                     redirect: '/buttons/standard-buttons',

@@ -1,5 +1,5 @@
 <template>
-    <CCol sm="12">
+    
         <CCard bodyWrapper text-color="blue" :style="{color: activeColor}">
             <CRow>
                 <CCol sm="10">
@@ -10,7 +10,7 @@
                 </CCol>
             </CRow>
         </CCard>
-    </CCol>
+    
 </template>
 
 <script>
@@ -19,7 +19,7 @@
         props: {
             activeColor: String,
             text: String,
-            number: Object
+            number: Number
         }
     }
 </script>
