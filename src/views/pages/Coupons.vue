@@ -1,12 +1,22 @@
 <template>
-  <div class="card-columns">
-    <div class="card bg-dark text-white" v-for="datas in data">
-      <!-- <img class="card-img" alt="Card image"> -->
-      <div class="card-img-overlay">
-        <p class="card-text">{{datas.price_in_coins}}</p>
-        <h4 class="card-title">{{datas.title}}</h4>
-      </div>
-    </div>
+  <div>
+    <CRow fluid>
+      <CCol v-for="award in awards" sm="4">
+        <CCard class='bg-secondary'>
+          <CCardHeader class='bg-info'>
+            Coupon for: {{award.title}}
+          </CCardHeader>
+          <CCardBody>
+            Price: {{award.price_in_coins}} 
+          </CCardBody>
+          <CCardFooter class='bg-secondary'>
+            Description: {{award.price_in_coins}} 
+          </CCardFooter>
+        </CCard>
+      </CCol>
+      <CCol sm="6">
+      </CCol>
+    </CRow>
   </div>
 </template>
 
@@ -17,7 +27,7 @@
     name: 'Coupons',
     data() {
       return {
-        data: []
+        awards: []
       }
     },
     //   watch: {
@@ -60,8 +70,7 @@
           }
         })
         .then(resp => {
-          console.log(resp.data.results[0])
-          this.data = resp.data.results
+          this.awards = resp.data.results
           // this.title = resp.data.results[0].title
           // this.price = resp.data.results[0].price
           // this.image = resp.data.results[0].image
@@ -72,15 +81,15 @@
 </script>
 
 <style>
-  .card-columns {
+  /* .card-columns {
     width: 70%;
     margin: auto;
     margin-top: 130px;
     border-radius: 20px;
-  }
+  } */
 
-  .card-img {
+  /* .card-img {
     width: 100%;
     height: auto
-  }
+  } */
 </style>

@@ -12,22 +12,22 @@
             <CCol sm='4'>
                 <Title text="To do" :number="toDo" activeColor="blue" />
                 <CJumbotron v-for="challenge in challenges" @click="taskClicked(challenge)" class='bg-warning'>
-                    <h1 class="display-3">{{challenge.title}}</h1>
+                    <h3>{{challenge.title}}</h3>
                     <p class="lead">Coins to win: {{challenge.coins_to_win}}</p>
-                    <CButton color="primary" target="_blank">More Info</CButton>
+                    <CButton color="danger" size='lg' target="_blank">Click me</CButton>
                 </CJumbotron>
             </CCol>
             <CCol sm='4'>
                 <Title text="Attempt" :number="failed" activeColor="red" />
                 <CJumbotron v-for="attempt in attempts" class='bg-secondary'>
-                    <h1 class="display-3">{{attempt.challenge.title}}</h1>
-                    <p class="lead">Coins to win: {{attempt.challenge.id}}</p>
+                    <h1>{{attempt.challenge.title}}</h1>
+                    <p class="lead">Coins to win: {{attempt.user.username}}</p>
                 </CJumbotron>
             </CCol>
             <CCol sm='4'>
                 <Title text="Passed" :number="passed" activeColor="green" />
                 <CJumbotron v-for="complet in complets" class='bg-secondary'>
-                    <h1 class="display-3">{{complet.challenge.title}}</h1>
+                    <h1>{{complet.challenge.title}}</h1>
                     <p class="lead">Coins collected: {{complet.challenge.id}}</p>
                 </CJumbotron>
             </CCol>
