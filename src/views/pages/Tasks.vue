@@ -62,7 +62,7 @@
             const bearer = 'Bearer ' + token
             const challenges = axios({
                 method: 'get',
-                url: '/api/challenges/',
+                url: 'https://api.motivo.localhost/challenges/',
                 headers: {
                     'Authorization': bearer,
                 }
@@ -70,7 +70,7 @@
 
             const attempts = axios({
                 method: 'get',
-                url: '/api/attempt/',
+                url: 'https://api.motivo.localhost/attempt/',
                 headers: {
                     'Authorization': bearer,
                 }
@@ -78,7 +78,7 @@
 
             const complets = axios({
                 method: 'get',
-                url: '/api/completed/',
+                url: 'https://api.motivo.localhost/completed/',
                 headers: {
                     'Authorization': bearer,
                 }

@@ -7,7 +7,8 @@
             Coupon for: {{award.title}}
           </CCardHeader>
           <CCardBody>
-            Price: {{award.price_in_coins}} 
+            Price: {{award.price_in_coins}}
+            Image: {{award.image}} 
           </CCardBody>
           <CCardFooter class='bg-secondary'>
             Description: {{award.price_in_coins}} 
@@ -64,7 +65,7 @@
       console.log(bearer)
       axios({
           method: 'get',
-          url: '/api/awards/',
+          url: 'https://api.motivo.localhost/awards/',
           headers: {
             'Authorization': bearer,
           }

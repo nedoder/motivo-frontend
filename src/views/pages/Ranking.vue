@@ -112,7 +112,7 @@
       const bearer = 'Bearer ' + token
       axios({
           method: 'get',
-          url: '/api/ranking/',
+          url: 'https://api.motivo.localhost/ranking/',
           headers: {
             'Authorization': bearer,
           }

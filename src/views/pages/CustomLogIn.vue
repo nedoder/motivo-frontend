@@ -72,7 +72,7 @@
         };
         axios({
             method: 'post',
-            url: '/api/token/',
+            url: 'https://api.motivo.localhost/api/token/',
             data: data,
           })
           .then(resp => {

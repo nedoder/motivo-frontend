@@ -82,7 +82,7 @@
       const bearer = 'Bearer ' + token
       const tasks = axios({
         method: 'get',
-        url: '/api/challenges/',
+        url: 'https://api.motivo.localhost/challenges/',
         headers: {
           'Authorization': bearer,
         }
