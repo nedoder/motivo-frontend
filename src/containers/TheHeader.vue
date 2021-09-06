@@ -1,7 +1,7 @@
 <template>
   <CNavbar expandable="md" type="light" color="light">
     <CToggler in-navbar @click="collapsed = !collapsed" class='bg-secondary'/>
-    <CNavbarBrand class="text-info" href="#">MOTIVO</CNavbarBrand>
+    <img class="text-info" src="./motivo.png"/>
     <CCollapse :show="collapsed" navbar>
       <CNavbarNav >
         <CHeaderNavItem class="px-3">
@@ -19,6 +19,14 @@
             Coupons
           </CHeaderNavLink>
         </CHeaderNavItem>
+      </CNavbarNav>
+      <CNavbarNav
+      >
+      <CHeaderNavItem class="d-md-down-none mx-2">
+         <CHeaderNavLink class="text-info" to="/dashboard/">
+          Score : {{coins[0].collected_coins}}
+          </CHeaderNavLink>
+      </CHeaderNavItem>
       </CNavbarNav>
       <CNavbarNav class="ml-auto">
         <CDropdown nav togglerText="User" placement="bottom-end">
@@ -38,7 +46,8 @@
   export default {
     data() {
       return {
-        collapsed: false
+        collapsed: false,
+        coins: [],
       }
     },
     methods: {
@@ -50,6 +59,31 @@
       editUser() {
         this.$router.push('/edit')
       },
+    },
+
+    mounted() {
+      const token = localStorage.getItem('user-token')
+      const bearer = 'Bearer ' + token
+      const id = localStorage.getItem('user-id')
+      console.log(id)
+      console.log(bearer)
+      axios({
+          method: 'get',
+          url: 'https://api.motivo.localhost/profile/',
+          headers: {
+            'Authorization': bearer,
+          }
+        })
+        .then(resp => {
+          this.coins = resp.data.results
+          console.log(resp.data.results)
+          this.coins = this.coins.filter(coin => coin.user.id=id)
+          console.log(this.coins[0])
+          // this.title = resp.data.results[0].title
+          // this.price = resp.data.results[0].price
+          // this.image = resp.data.results[0].image
+        })
+        .catch(error => console.log(error))
     },
   }
 </script>
