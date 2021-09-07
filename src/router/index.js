@@ -75,6 +75,12 @@ const Tasks = () =>
     const Task = () =>
     import ('@/views/pages/Task')
 
+    const Completed = () =>
+    import ('@/views/pages/Completed')
+
+    const Attempt = () =>
+    import ('@/views/pages/Attempt')
+
 const UserInfo = () =>
     import ('@/views/pages/UserInfo')
 
@@ -340,6 +346,22 @@ function configRoutes() {
                             },
                             name: 'Task',
                             component: Task
+                        },
+                        {
+                            path: 'completed/:id',
+                            meta: {
+                                label: 'Completed'
+                            },
+                            name: 'Completed',
+                            component: Completed
+                        },
+                        {
+                            path: 'attempt/:id',
+                            meta: {
+                                label: 'Attempt'
+                            },
+                            name: 'Attemot',
+                            component: Attempt
                         }
                     ]
                 },

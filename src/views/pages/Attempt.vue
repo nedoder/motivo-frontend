@@ -1,7 +1,6 @@
 <template>
   <CRow class="d-flex justify-content-center">
     <CCol col="12" lg="6">
-       <form @submit.prevent="submitForm">
       <CCard>
         <CCardHeader class='bg-danger text-white'>
           <p>Mandatory</p>
@@ -9,14 +8,12 @@
         </CCardHeader>
         <CCardBody>
           <CRow>
-           <div class="field">
-            <div class="control">
-              <label class="checkbox">
-									<input type="checkbox" v-model="form.terms">
-									I finished my task. ;)
-								</label>
-            </div>
-          </div>
+            <CButton disabled color="secondary" variant="pill" size="lg">To do
+            </CButton>
+            <CButton disabled color="info" variant="pill" size="lg">In progress
+            </CButton>
+            <CButton disabled color="secondary" variant="pill" size="lg">Done
+            </CButton>
           </CRow>
           <CRow class='mt-3'>
             <p>Coins to win:<span>{{this.tasks.coins_to_win}}</span></p>
@@ -25,14 +22,13 @@
             <p>Description:<span>{{this.tasks.description}}</span></p>
           </CRow>
           <CRow>
-            <CInputFile label="File input" horizontal invalid-feedback="Please provide a required input." />
+              <p>Not yet approved by the admin<p/>
           </CRow>
         </CCardBody>
         <CCardFooter class="d-flex justify-content-center">
           <CButton class="col-3" color="danger" size='lg' @click="goBack">Back</CButton>
-<button type="submit">Submit</button>        </CCardFooter>
+        </CCardFooter>
       </CCard>
-      </form>
     </CCol>
   </CRow>
 </template>
@@ -41,7 +37,7 @@
   import axios from 'axios'
 
   export default {
-    name: 'Task',
+    name: 'Attempt',
     beforeRouteEnter(to, from, next) {
       next(vm => {
         vm.challengesOpened = from.fullPath.includes('tasks')
@@ -50,10 +46,7 @@
     data() {
       return {
         usersOpened: null,
-        tasks: null,
-        form: {
-          terms: false
-        }
+        tasks: null
       }
     },
     computed: {
@@ -83,9 +76,7 @@
       const bearer = 'Bearer ' + token
       const tasks = axios({
         method: 'get',
-
         url: `/api/challenges/${this.$route.params.id}`,
-
         headers: {
           'Authorization': bearer,
         }
@@ -97,8 +88,6 @@
         console.log(this.tasks)
 
       }).catch(error => console.log(error))
-
-
 //POST https://api.motivo.localhost/attempt/
       // {
 //       "user": {
@@ -115,43 +104,6 @@
 //       "confirmed_by_admin": false
 //     },
     },
-    submitForm() {
-    axios.post('/api/attempt/' ,{
-        user: 'blabla',
-        challenge: 'bbbb',
-        file: null,
-        confirmed_by_admin: false
-      }).then(response => {
-       console.log(response)
-      }).catch(error => {
-        console.log(error)
-      })
-    }
   }
 </script>
 
-<style scoped>
-
-
-button {
-  color: white;
-  border: none;
-  width: calc(100% - 30px);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  background: #ccc;
-  cursor: pointer;
-  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
-  transition: 0.25s all ease;
-
-}
-
-.active {
-  background: #5968d7;
-}
-
-pre-content {
-  width: 500px;
-}
-</style>

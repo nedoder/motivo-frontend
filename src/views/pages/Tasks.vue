@@ -19,16 +19,18 @@
             </CCol>
             <CCol sm='4'>
                 <Title text="Attempt" :number="failed" activeColor="red" />
-                <CJumbotron v-for="attempt in attempts" class='bg-secondary'>
+                <CJumbotron v-for="attempt in attempts" class='bg-secondary' @click="attemptClicked(attempt.challenge)">
                     <h1>{{attempt.challenge.title}}</h1>
-                    <p class="lead">Coins to win: {{attempt.user.username}}</p>
+                    <p class="lead">Coins to win: {{attempt.challenge.coins}}</p>
+                    <p class="lead">Description: {{attempt.challenge.description}}</p>
                 </CJumbotron>
             </CCol>
             <CCol sm='4'>
                 <Title text="Passed" :number="passed" activeColor="green" />
-                <CJumbotron v-for="complet in complets" class='bg-secondary'>
+                <CJumbotron v-for="complet in complets" class='bg-secondary' @click="completedClicked(complet.challenge)">
                     <h1>{{complet.challenge.title}}</h1>
-                    <p class="lead">Coins collected: {{complet.challenge.id}}</p>
+                    <p class="lead">Coins collected: {{complet.challenge.coins}}</p>
+                    <p class="lead">Description: {{complet.challenge.description}}</p>
                 </CJumbotron>
             </CCol>
         </CRow>
@@ -57,6 +59,17 @@
                 counter: null,
             }
         },
+         computed: {
+      computedItems() {
+        return this.complets.map(item => {
+          console.log(item)
+          return {
+            ...item,
+            challengeTitle: item.challenge.title,
+            //userId: item.user.id
+          }
+        })
+      }},
         mounted() {
             const token = JSON.parse(JSON.stringify(localStorage.getItem('user-token')))
             const bearer = 'Bearer ' + token
@@ -91,6 +104,7 @@
                 this.challenges = chal.data.results;
                 this.toDo = chal.data.results.length;
                 this.complets = com.data.results;
+                console.log(this.complets)
                 this.passed = com.data.results.length;
             }).catch(error => console.log(error))
         },
@@ -119,7 +133,18 @@
                     path: `tasks/${challenge.id}`
                 })
             },
-    
+            completedClicked(completed) {
+                console.log("clicked")
+                this.$router.push({
+                    path: `tasks/completed/${completed.id}`
+                })
+            },
+             attemptClicked(attempt) {
+                console.log("clicked")
+                this.$router.push({
+                    path: `tasks/attempt/${attempt.id}`
+                })
+            }
             //     pageChange (val) {
             //       this.$router.push({ query: { page: val }})
             //     }
