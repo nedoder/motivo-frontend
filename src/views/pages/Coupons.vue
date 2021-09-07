@@ -2,15 +2,15 @@
   <div>
     <CRow fluid>
       <CCol v-for="award in awards" sm="4">
-        <CCard class='bg-secondary'>
+        <CCard class='bg-secondary' v-bind:style="{backgroundImage: `url('${award.image}')`}">
           <CCardHeader class='bg-info'>
             Coupon for: {{award.title}}
           </CCardHeader>
           <CCardBody>
-            Price: {{award.price_in_coins}} 
+            Price: {{award.price_in_coins}}
           </CCardBody>
           <CCardFooter class='bg-secondary'>
-            Description: {{award.price_in_coins}} 
+            Description: {{award.description}} 
           </CCardFooter>
         </CCard>
       </CCol>
@@ -64,7 +64,7 @@
       console.log(bearer)
       axios({
           method: 'get',
-          url: '/api/awards/',
+          url: 'https://api.motivo.localhost/awards/',
           headers: {
             'Authorization': bearer,
           }

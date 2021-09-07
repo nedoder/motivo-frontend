@@ -83,7 +83,9 @@
       const bearer = 'Bearer ' + token
       const tasks = axios({
         method: 'get',
+
         url: `/api/challenges/${this.$route.params.id}`,
+
         headers: {
           'Authorization': bearer,
         }
