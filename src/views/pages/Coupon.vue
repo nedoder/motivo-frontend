@@ -1,7 +1,7 @@
 <template>
   <CRow class="d-flex justify-content-center">
     <CCol col="12" lg="6">
-       <form @submit.prevent="submitForm">
+       <!-- <form @submit.prevent="submitForm"> -->
       <CCard>
         <CCardHeader class='bg-danger text-white'>
           <h2>Award id: {{ $route.params.id }}</h2>
@@ -17,10 +17,9 @@
         </CCardBody>
         <CCardFooter class="d-flex justify-content-center">
           <CButton class="col-3" color="danger" size='lg' @click="goBack">Back</CButton>
-                <button type="submit">Collect the award</button>        </CCardFooter>
+                <button type="submit" @click="submitAward">Collect the award</button>        </CCardFooter>
       </CCard>
       <p>Message:<span>{{this.message}}</span></p>
-      </form>
     </CCol>
   </CRow>
 </template>
@@ -32,12 +31,12 @@
     name: 'Coupon',
     beforeRouteEnter(to, from, next) {
       next(vm => {
-        vm.challengesOpened = from.fullPath.includes('coupons')
+        vm.awardsOpened = from.fullPath.includes('coupons')
       })
     },
     data() {
       return {
-        usersOpened: null,
+        awardsOpened: null,
         awards: [],
         message: '',
         form: {
@@ -46,7 +45,7 @@
       }
     },
     computed: {
-      challengeData() {
+      awardsData() {
         const id = this.$route.params.id
         const award = this.awards.find((award, index) => index + 1 == id)
         const awardDetails = award ? Object.entries(award) : [
@@ -65,7 +64,32 @@
         this.$router.push({
           path: '/dashboard/coupons'
         })
-      }
+      },
+
+      submitAward() {
+          console.log("clicked")
+        const token = localStorage.getItem('user-token')
+        const bearer = 'Bearer ' + token
+        const data = {
+          user: localStorage.getItem('user-id'),
+          awards: 2,
+        };
+       axios({
+            method: 'post',
+            url: 'https://api.motivo.localhost/collectedawards/',
+            data: data,
+            headers: {
+            'Authorization': bearer,
+             }
+          })
+        .then(response => {
+             console.log(response)
+             this.message = response.data
+        }).catch(error => {
+            console.log(error.response.data.message)
+            this.message = error.response.data.message
+         })
+    },
     },
     mounted() {
       const token = localStorage.getItem('user-token')
@@ -80,9 +104,9 @@
         }
       });
 
-      Promise.all([awards]).then(([chal]) => {
-        console.log(chal);
-        this.awards = chal.data;
+      Promise.all([awards]).then(([resp]) => {
+        console.log(resp);
+        this.awards = resp.data;
         console.log(this.awards)
 
       }).catch(error => console.log(error))
@@ -104,28 +128,7 @@
 //       "confirmed_by_admin": false
 //     },
     },
-    submitForm() {
-        const token = localStorage.getItem('user-token')
-        const bearer = 'Bearer ' + token
-        const data = {
-          user: localStorage.getItem('user-id'),
-          awards:  $route.params.id
-        };
-       axios({
-            method: 'post',
-            url: 'https://api.motivo.localhost/collectedawards/',
-            data: data,
-            headers: {
-            'Authorization': bearer,
-             }
-          })
-        .then(response => {
-             console.log(response)
-             this.message = response.data
-        }).catch(error => {
-            console.log(error)
-         })
-    }
+    
   }
 </script>
 
