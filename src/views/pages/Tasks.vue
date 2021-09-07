@@ -130,19 +130,19 @@
             //     },
             taskClicked(challenge) {
                 this.$router.push({
-                    path: `/tasks/${challenge.id}`
+                    path: `/dashboard/tasks/${challenge.id}`
                 })
             },
             completedClicked(completed) {
                 console.log("clicked")
                 this.$router.push({
-                    path: `/tasks/completed/${completed.id}`
+                    path: `/dashboard/tasks/completed/${completed.id}`
                 })
             },
              attemptClicked(attempt) {
                 console.log("clicked")
                 this.$router.push({
-                    path: `/tasks/attempt/${attempt.id}`
+                    path: `/dashboard/tasks/attempt/${attempt.id}`
                 })
             }
             //     pageChange (val) {
