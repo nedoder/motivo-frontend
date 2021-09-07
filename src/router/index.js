@@ -51,6 +51,9 @@ const Ranking = () =>
 const Coupons = () =>
     import ('@/views/pages/Coupons')
 
+const Coupon = () =>
+    import ('@/views/pages/Coupon')
+
 const Tests = () =>
     import ('@/views/pages/Tests')
 
@@ -279,10 +282,19 @@ function configRoutes() {
                         }
                     },
                     children: [{
-                        path: '',
-                        name: 'Coupons',
-                        component: Coupons
-                    }, ]
+                            path: '',
+                            name: 'Coupons',
+                            component: Coupons
+                        },
+                        {
+                            path: ':id',
+                            meta: {
+                                label: 'Coupon'
+                            },
+                            name: 'Coupon',
+                            component: Coupon
+                        },
+                    ]
                 },
                 {
                     path: 'Ranking',

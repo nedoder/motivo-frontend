@@ -2,7 +2,7 @@
   <div>
     <CRow fluid>
       <CCol v-for="award in awards" sm="4">
-        <CCard class='bg-secondary' v-bind:style="{backgroundImage: `url('${award.image}')`}">
+        <CCard class='bg-secondary' v-bind:style="{backgroundImage: `url('${award.image}')`}" @click="couponClicked(award)">
           <CCardHeader class='bg-info'>
             Coupon for: {{award.title}}
           </CCardHeader>
@@ -77,6 +77,16 @@
         })
         .catch(error => console.log(error))
     },
+
+    methods: {
+
+      couponClicked(award) {
+                this.$router.push({
+                    path: `/dashboard/coupons/${award.id}`
+                   
+                })
+            },
+    }
   }
 </script>
 
