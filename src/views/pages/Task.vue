@@ -79,12 +79,12 @@
       }
     },
     mounted() {
-      const token = JSON.parse(JSON.stringify(localStorage.getItem('user-token')))
+      const token = localStorage.getItem('user-token')
       const bearer = 'Bearer ' + token
       const tasks = axios({
         method: 'get',
 
-        url: `/api/challenges/${this.$route.params.id}`,
+        url: `https://api.motivo.localhost/challenges/${this.$route.params.id}`,
 
         headers: {
           'Authorization': bearer,
@@ -116,7 +116,7 @@
 //     },
     },
     submitForm() {
-    axios.post('/api/attempt/' ,{
+    axios.post('https://api.motivo.localhost/attempt/' ,{
         user: 'blabla',
         challenge: 'bbbb',
         file: null,

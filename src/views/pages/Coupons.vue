@@ -59,7 +59,7 @@
     //   }
 
     mounted() {
-      const token = JSON.parse(JSON.stringify(localStorage.getItem('user-token')))
+      const token = localStorage.getItem('user-token')
       const bearer = 'Bearer ' + token
       console.log(bearer)
       axios({

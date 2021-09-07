@@ -71,7 +71,7 @@
         })
       }},
         mounted() {
-            const token = JSON.parse(JSON.stringify(localStorage.getItem('user-token')))
+            const token = localStorage.getItem('user-token')
             const bearer = 'Bearer ' + token
             const challenges = axios({
                 method: 'get',
@@ -130,19 +130,19 @@
             //     },
             taskClicked(challenge) {
                 this.$router.push({
-                    path: `tasks/${challenge.id}`
+                    path: `/tasks/${challenge.id}`
                 })
             },
             completedClicked(completed) {
                 console.log("clicked")
                 this.$router.push({
-                    path: `tasks/completed/${completed.id}`
+                    path: `/tasks/completed/${completed.id}`
                 })
             },
              attemptClicked(attempt) {
                 console.log("clicked")
                 this.$router.push({
-                    path: `tasks/attempt/${attempt.id}`
+                    path: `/tasks/attempt/${attempt.id}`
                 })
             }
             //     pageChange (val) {

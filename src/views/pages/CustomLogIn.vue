@@ -79,6 +79,7 @@
             this.token = resp.data.access
             console.log(resp.data)
             localStorage.setItem('user-token', resp.data.access)
+            localStorage.setItem('user-refresh', resp.data.refresh)
             this.$router.push('/onboarding1')
           })
           .catch(error => console.log(error))

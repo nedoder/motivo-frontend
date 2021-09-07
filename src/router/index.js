@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import axios from 'axios'
 
 // Containers
 const TheContainer = () =>
@@ -72,13 +73,13 @@ const Register = () =>
 const Tasks = () =>
     import ('@/views/pages/Tasks')
 
-    const Task = () =>
+const Task = () =>
     import ('@/views/pages/Task')
 
-    const Completed = () =>
+const Completed = () =>
     import ('@/views/pages/Completed')
 
-    const Attempt = () =>
+const Attempt = () =>
     import ('@/views/pages/Attempt')
 
 const UserInfo = () =>
@@ -367,7 +368,7 @@ function configRoutes() {
                 },
 
 
-               
+
                 {
                     path: 'buttons',
                     redirect: '/buttons/standard-buttons',
@@ -486,3 +487,23 @@ function configRoutes() {
         }
     ]
 }
+
+axios.interceptors.response.use(response => {
+    return response
+}, error => {
+    if (error.response.status === 401) {
+        axios({
+                method: 'post',
+                url: 'https://api.motivo.localhost/api/token/refresh/',
+                data: { refresh: localStorage.getItem('user-refresh') },
+            })
+            .then(
+                resp => {
+                    localStorage.setItem('user-token', resp.data.access)
+                }
+            )
+            .catch(error => console.log(error))
+    } else {
+        return Promise.reject(error)
+    }
+})
