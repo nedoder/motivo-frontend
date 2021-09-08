@@ -1,7 +1,7 @@
 <template>
   <CRow class="d-flex justify-content-center">
     <CCol col="12" lg="6">
-      <CCard>
+      <CCard  v-bind:style="{backgroundImage: `url('${this.tasks.image}')`}">
         <CCardHeader class='bg-info text-white'>
           <p>Mandatory</p>
           <h2>Challenge Id: {{ $route.params.id }}</h2>
