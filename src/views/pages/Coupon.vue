@@ -84,7 +84,7 @@
           })
         .then(response => {
              console.log(response)
-             this.message = response.data
+             this.message = response.data.message
         }).catch(error => {
             console.log(error.response.data.message)
             this.message = error.response.data.message
