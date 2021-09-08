@@ -4,7 +4,7 @@
       <CRow>
         <CCol col="12" sm="12">
           <CCardBody>
-            <CJumbotron class='bg-dark' text-color="warning" border-color="warning">
+            <CJumbotron class='bg-light' text-color="info" border-color="info">
               <h1 class="lead">
                 The winner is: {{collectedFilteredItems[0].user.username}}
               </h1>

@@ -4,17 +4,17 @@
             <CCardBody color="white" class="mb-4">
                 <CCol sm="12">
                     <h1 class="text-center font-weight-bold">Progress</h1>
-                    <CProgress :value="countRate" color="success" animated show-value style="height:40px;" />
+                    <CProgress :value="countRate" color="info" animated show-value style="height:40px;" />
                 </CCol>
             </CCardBody>
         </CRow>
         <CRow>
             <CCol sm='4'>
                 <Title text="To do" :number="toDo" activeColor="blue" />
-                <CJumbotron v-for="challenge in challenges" @click="taskClicked(challenge)" class='bg-warning'>
+                <CJumbotron v-for="challenge in challenges" @click="taskClicked(challenge)" class='bg-info'>
                     <h3>{{challenge.title}}</h3>
                     <p class="lead">Coins to win: {{challenge.coins_to_win}}</p>
-                    <CButton color="danger" size='lg' target="_blank">Click me</CButton>
+                    <CButton color="light" size='lg' target="_blank">Click me</CButton>
                 </CJumbotron>
             </CCol>
             <CCol sm='4'>

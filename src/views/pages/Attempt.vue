@@ -2,7 +2,7 @@
   <CRow class="d-flex justify-content-center">
     <CCol col="12" lg="6">
       <CCard>
-        <CCardHeader class='bg-danger text-white'>
+        <CCardHeader class='bg-info text-white'>
           <p>Mandatory</p>
           <h2>Challenge Id: {{ $route.params.id }}</h2>
         </CCardHeader>
@@ -26,7 +26,7 @@
           </CRow>
         </CCardBody>
         <CCardFooter class="d-flex justify-content-center">
-          <CButton class="col-3" color="danger" size='lg' @click="goBack">Back</CButton>
+          <CButton class="col-3" color="info" size='lg' @click="goBack">Back</CButton>
         </CCardFooter>
       </CCard>
     </CCol>
