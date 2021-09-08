@@ -2,7 +2,7 @@
   <CRow class="d-flex justify-content-center">
     <CCol col="12" lg="6">
        <!-- <form @submit.prevent="submitForm"> -->
-      <CCard>
+      <CCard  v-bind:style="{backgroundImage: `url('${this.awards.image}')`}">
         <CCardHeader class='bg-danger text-white'>
           <h2>Award id: {{ $route.params.id }}</h2>
           <p>Title:<span>{{this.awards.title}}</span></p>
