@@ -76,7 +76,29 @@
         this.$router.push({
           path: '/dashboard/tasks'
         })
-      }
+      },
+
+      submitForm() {
+        const token = localStorage.getItem('user-token')
+        const bearer = 'Bearer ' + token
+        const data = {
+          user: localStorage.getItem('user-id'),
+          challenge: this.$route.params.id,
+        };
+        axios({
+            method: 'post',
+            url: 'https://api.motivo.localhost/attempt/',
+            data: data,
+            headers: {
+            'Authorization': bearer,
+             }
+          }).then(response => {
+       console.log(response)
+      }).catch(error => {
+        console.log(error)
+      })
+    }
+
     },
     mounted() {
       const token = localStorage.getItem('user-token')
@@ -115,18 +137,7 @@
 //       "confirmed_by_admin": false
 //     },
     },
-    submitForm() {
-    axios.post('https://api.motivo.localhost/attempt/' ,{
-        user: 'blabla',
-        challenge: 'bbbb',
-        file: null,
-        confirmed_by_admin: false
-      }).then(response => {
-       console.log(response)
-      }).catch(error => {
-        console.log(error)
-      })
-    }
+    
   }
 </script>
 
