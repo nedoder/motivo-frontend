@@ -59,6 +59,29 @@
       editUser() {
         this.$router.push('/edit')
       },
+
+      update() {
+      const token = localStorage.getItem('user-token')
+      const bearer = 'Bearer ' + token
+      const id = localStorage.getItem('user-id')
+      console.log(id)
+      console.log(bearer)
+      axios({
+          method: 'get',
+          url: 'https://api.motivo.localhost/profile/',
+          headers: {
+            'Authorization': bearer,
+          }
+        })
+        .then(resp => {
+          this.coins = resp.data.results
+          let userid = parseInt(localStorage.getItem('user-id'))
+           this.coins = this.coins.filter(result => result.user.id === userid)
+        })
+        .catch(error => console.log(error))
+      },
+
+      
     },
 
     mounted() {
@@ -80,6 +103,12 @@
            this.coins = this.coins.filter(result => result.user.id === userid)
         })
         .catch(error => console.log(error))
+
+
+      window.addEventListener('click', (event) => { 
+        this.update();
+    })
+
     },
   }
 </script>

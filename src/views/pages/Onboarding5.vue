@@ -18,7 +18,7 @@
       </CContainer>
       <div class="container links">
         <img src="./img/Group 240(4).png" />
-        <CLink to="/dashboard" class="link two">Finish ></CLink>
+        <CLink to="/dashboard/tasks" class="link two">Finish ></CLink>
       </div>
     </CWrapper>
   </div>

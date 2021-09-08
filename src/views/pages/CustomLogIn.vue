@@ -21,7 +21,7 @@
             <a href="#">Forgot password</a>
           </div>
           <div class="form-group">
-            <button type="button" class="btn btn-info btn-lg btn-block" v-on:click.prevent="loginCustom">Login</button>
+            <button type="button" class="btn btn-info btn-lg btn-block"  v-on:click.prevent="loginCustom">Login</button>
           </div>
           <div class="form-group">
             <button type="button" class="btn btn-link btn-lg btn-block">I don't have an account</button>
@@ -84,7 +84,17 @@
           })
           .catch(error => console.log(error))
       },
-    }
+
+      
+    },
+
+    mounted() {
+      window.addEventListener('keyup', (event) => {
+      if (event.keyCode === 13) { 
+        this.loginCustom();
+      }
+    })
+    },
   }
 </script>
 
