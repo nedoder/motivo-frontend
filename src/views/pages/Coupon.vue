@@ -72,7 +72,7 @@
         const bearer = 'Bearer ' + token
         const data = {
           user: localStorage.getItem('user-id'),
-          awards: 2,
+          awards: this.$route.params.id,
         };
        axios({
             method: 'post',
