@@ -24,7 +24,7 @@
       >
       <CHeaderNavItem class="d-md-down-none mx-2">
          <CHeaderNavLink class="text-info" to="/dashboard/">
-          Score : {{coins[0].collected_coins}}
+          Score : {{this.coins[0].collected_coins}}
           </CHeaderNavLink>
       </CHeaderNavItem>
       </CNavbarNav>
@@ -76,12 +76,8 @@
         })
         .then(resp => {
           this.coins = resp.data.results
-          console.log(resp.data.results)
-          this.coins = this.coins.filter(coin => coin.user.id=id)
-          console.log(this.coins[0])
-          // this.title = resp.data.results[0].title
-          // this.price = resp.data.results[0].price
-          // this.image = resp.data.results[0].image
+          let userid = parseInt(localStorage.getItem('user-id'))
+           this.coins = this.coins.filter(result => result.user.id === userid)
         })
         .catch(error => console.log(error))
     },
