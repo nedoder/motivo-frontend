@@ -4,7 +4,8 @@
             <CCardBody color="white" class="mb-4">
                 <CCol sm="12">
                     <h1 class="text-center font-weight-bold">Progress</h1>
-                    <CProgress :value="countRate" color="info" animated show-value style="height:40px;" />
+                    <p>Percentage of challenges that you attempted:</p>
+                    <CProgress :value="countRate" color="info" showPercentage=True animated show-value style="height:40px;" />
                 </CCol>
             </CCardBody>
         </CRow>
