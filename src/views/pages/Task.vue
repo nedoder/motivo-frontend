@@ -2,7 +2,7 @@
   <CRow class="d-flex justify-content-center">
     <CCol col="12" lg="6">
        <form @submit.prevent="submitForm">
-      <CCard v-bind:style="{height: '500px'}">
+      <CCard v-bind:style="{height: '500px', backgroundImage: `url('${this.tasks.image}')`}">
         <CCardHeader class='bg-info text-white' >
           <p>Mandatory</p>
           <h2>Challenge Id: {{ $route.params.id }}</h2>
