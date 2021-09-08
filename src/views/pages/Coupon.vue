@@ -3,11 +3,11 @@
     <CCol col="12" lg="6">
        <!-- <form @submit.prevent="submitForm"> -->
       <CCard  v-bind:style="{backgroundImage: `url('${this.awards.image}')`}">
-        <CCardHeader class='bg-danger text-white'>
+        <CCardHeader class='bg-danger text-white'  v-bind:style="{backgroundColor: '#1CB0F6 !important'}">
           <h2>Award id: {{ $route.params.id }}</h2>
           <p>Title:<span>{{this.awards.title}}</span></p>
         </CCardHeader>
-        <CCardBody>
+        <CCardBody v-bind:style="{height: '500px'}">
           <CRow class='mt-3'>
             <p>Price in coins:<span>{{this.awards.price_in_coins}}</span></p>
           </CRow>
@@ -16,7 +16,7 @@
           </CRow>
         </CCardBody>
         <CCardFooter class="d-flex justify-content-center">
-          <CButton class="col-3" color="danger" size='lg' @click="goBack">Back</CButton>
+          <CButton class="col-3" color="danger" size='lg' @click="goBack" v-bind:style="{backgroundColor: '#1CB0F6 !important'}">Back</CButton>
                 <button type="submit" @click="submitAward">Collect the award</button>        </CCardFooter>
       </CCard>
       <p>Message:<span>{{this.message}}</span></p>

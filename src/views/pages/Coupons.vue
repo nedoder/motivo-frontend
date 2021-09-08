@@ -2,16 +2,18 @@
   <div>
     <CRow fluid>
       <CCol v-for="award in awards" sm="4">
-        <CCard class='bg-secondary' v-bind:style="{backgroundImage: `url('${award.image}')`}" @click="couponClicked(award)">
+        <CCard class='bg-secondary' v-bind:style="{backgroundImage: `url('${award.image}')`, height: '300px'}" @click="couponClicked(award)">
           <CCardHeader class='bg-info'>
             Coupon for: {{award.title}}
           </CCardHeader>
           <CCardBody>
             Price: {{award.price_in_coins}}
-          </CCardBody>
-          <CCardFooter class='bg-secondary'>
+            <br/>
             Description: {{award.description}} 
-          </CCardFooter>
+          </CCardBody>
+          <!-- <CCardFooter class='bg-secondary'>
+            Description: {{award.description}} 
+          </CCardFooter> -->
         </CCard>
       </CCol>
       <CCol sm="6">
