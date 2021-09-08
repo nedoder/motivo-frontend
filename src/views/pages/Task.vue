@@ -93,8 +93,12 @@
             'Authorization': bearer,
              }
           }).then(response => {
+        alert("You uploaded your solution successfully!")
+      this.$router.push('/dashboard/tasks')
        console.log(response)
       }).catch(error => {
+        alert("Something went wrong! Please try again.")
+        this.$router.push('/dashboard/tasks')
         console.log(error)
       })
     }
