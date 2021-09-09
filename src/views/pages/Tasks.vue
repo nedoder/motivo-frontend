@@ -1,6 +1,6 @@
 <template>
     <div>
-        <CRow>
+        <!-- <CRow>
             <CCardBody color="white" class="mb-4">
                 <CCol sm="12">
                     <h1 class="text-center font-weight-bold">Progress</h1>
@@ -8,27 +8,27 @@
                     <CProgress :value="countRate" color="info" showPercentage=True animated show-value style="height:40px;" />
                 </CCol>
             </CCardBody>
-        </CRow>
+        </CRow> -->
         <CRow>
             <CCol sm='4'>
-                <Title text="To do" :number="toDo" activeColor="blue" />
-                <CJumbotron v-for="challenge in challenges" @click="taskClicked(challenge)" class='bg-info'>
+                <Title text="To do" class="font-weight-bold" :number="toDo" activeColor="dark" v-bind:style="{borderRadius: '18px'}"/>
+                <CJumbotron v-for="challenge in challenges" @click="taskClicked(challenge)" class='bg-info' v-bind:style="{borderRadius: '18px'}">
                     <h3>{{challenge.title}}</h3>
                     <p class="lead">Coins to win: {{challenge.coins_to_win}}</p>
                     <CButton color="light" size='lg' target="_blank">Click me</CButton>
                 </CJumbotron>
             </CCol>
             <CCol sm='4'>
-                <Title text="Attempt" :number="failed" activeColor="red" />
-                <CJumbotron v-for="attempt in attempts" class='bg-secondary' @click="attemptClicked(attempt.challenge)">
+                <Title text="In progress" class="font-weight-bold" :number="failed" activeColor="dark"v-bind:style="{borderRadius: '18px'}" />
+                <CJumbotron v-for="attempt in attempts" class='bg-secondary' @click="attemptClicked(attempt.challenge)" v-bind:style="{borderRadius: '18px'}">
                     <h1>{{attempt.challenge.title}}</h1>
                     <p class="lead">Coins to win: {{attempt.challenge.coins}}</p>
                     <p class="lead">Description: {{attempt.challenge.description}}</p>
                 </CJumbotron>
             </CCol>
             <CCol sm='4'>
-                <Title text="Passed" :number="passed" activeColor="green" />
-                <CJumbotron v-for="complet in complets" class='bg-secondary' @click="completedClicked(complet.challenge)">
+                <Title text="Done" class="font-weight-bold" :number="passed" activeColor="dark" v-bind:style="{borderRadius: '18px'}" />
+                <CJumbotron v-for="complet in complets" class='bg-secondary' @click="completedClicked(complet.challenge)" v-bind:style="{borderRadius: '18px'}">
                     <h1>{{complet.challenge.title}}</h1>
                     <p class="lead">Coins collected: {{complet.challenge.coins}}</p>
                     <p class="lead">Description: {{complet.challenge.description}}</p>

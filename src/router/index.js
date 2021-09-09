@@ -506,7 +506,7 @@ axios.interceptors.response.use(response => {
     if (error.response.status === 401) {
         axios({
                 method: 'post',
-                url: '/api/api/token/refresh/',
+                url: '/api/token/refresh/',
                 data: { refresh: localStorage.getItem('user-refresh') },
             })
             .then(

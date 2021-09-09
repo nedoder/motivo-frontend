@@ -22,14 +22,14 @@
       </CNavbarNav>
       <CNavbarNav
       >
-      <CHeaderNavItem class="d-md-down-none mx-2">
-         <CHeaderNavLink class="text-info" to="/dashboard/">
-          Score : {{this.coins[0].collected_coins}}
-          </CHeaderNavLink>
-      </CHeaderNavItem>
+
       </CNavbarNav>
-      <CNavbarNav class="ml-auto">
-        <CDropdown nav togglerText="User" placement="bottom-end">
+      <CNavbarNav class="ml-auto" >
+         <CHeaderNavItem class='p-2' v-bind:style="{color: '#F2C94C'}">
+          <img class="text-info" src="./Coin.png"/> {{this.coins[0].collected_coins}}
+      </CHeaderNavItem>
+    
+      <CDropdown nav togglerText="User" placement="bottom-end">
           <CDropdownItem v-on:click.prevent="editUser">
             <CIcon name="cil-settings" /> Settings
           </CDropdownItem>
