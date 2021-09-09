@@ -41,10 +41,10 @@
   import axios from 'axios'
 
   export default {
-    name: 'Task',
+    name: 'Challenge',
     beforeRouteEnter(to, from, next) {
       next(vm => {
-        vm.challengesOpened = from.fullPath.includes('tasks')
+        vm.challengesOpened = from.fullPath.includes('challenges')
       })
     },
     data() {
@@ -74,7 +74,7 @@
     methods: {
       goBack() {
         this.$router.push({
-          path: '/dashboard/tasks'
+          path: '/dashboard/challenges'
         })
       },
 
