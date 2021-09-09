@@ -32,7 +32,7 @@
       const bearer = 'Bearer ' + token
       axios({
           method: 'get',
-          url: 'https://api.motivo.localhost/userdata/',
+          url: '/api/userdata/',
           headers: {
             'Authorization': bearer,
           }

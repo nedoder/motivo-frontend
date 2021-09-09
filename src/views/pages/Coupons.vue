@@ -68,7 +68,7 @@
       console.log(bearer)
       axios({
           method: 'get',
-          url: 'https://api.motivo.localhost/awards/',
+          url: '/api/awards/',
           headers: {
             'Authorization': bearer,
           }

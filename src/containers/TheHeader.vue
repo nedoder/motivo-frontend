@@ -68,7 +68,7 @@
       console.log(bearer)
       axios({
           method: 'get',
-          url: 'https://api.motivo.localhost/profile/',
+          url: '/api/profile/',
           headers: {
             'Authorization': bearer,
           }
@@ -92,7 +92,7 @@
       console.log(bearer)
       axios({
           method: 'get',
-          url: 'https://api.motivo.localhost/profile/',
+          url: '/api/profile/',
           headers: {
             'Authorization': bearer,
           }

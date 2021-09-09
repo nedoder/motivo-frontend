@@ -73,7 +73,7 @@
       const bearer = 'Bearer ' + token
       const tasks = axios({
         method: 'get',
-        url: `https://api.motivo.localhost/challenges/${this.$route.params.id}`,
+        url: `/api/challenges/${this.$route.params.id}`,
         headers: {
           'Authorization': bearer,
         }
@@ -85,7 +85,7 @@
         console.log(this.tasks)
 
       }).catch(error => console.log(error))
-//POST https://api.motivo.localhost/attempt/
+//POST /api/attempt/
       // {
 //       "user": {
 //         "username": "nedoder1",
