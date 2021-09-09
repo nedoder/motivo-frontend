@@ -1,26 +1,31 @@
 <template>
   <div>
-    <CRow fluid>
-      <CCol v-for="award in awards" sm="4">
-        <CCard class='bg-secondary' v-bind:style="{backgroundImage: `url('${award.image}')`, height: '300px', borderRadius: '10px'}" @click="couponClicked(award)">
+    <div class="wrapper">
+    <CRow fluid  v-bind:style="{border: '1px solid black', borderRadius: '18px !important'}">
+      
+      <CCol v-for="award in awards" sm="4" v-bind:style="{padding:'1px' , borderRadius: '18px'}">
+        <CCard class='bg-secondary' v-bind:style="{backgroundImage: `url('${award.image}')`, height: '300px',color: '#fff'}" @click="couponClicked(award)">
           <!-- <CCardHeader class='bg-info'>
            
           </CCardHeader> -->
-          <CCardBody>
-            Coupon for: {{award.title}}
+          <CCardBody  v-bind:style="{color: '#F2C94C'}">
             <br/>
-            Price: {{award.price_in_coins}}
+            {{award.price_in_coins}} <img src="./img/Coin.png" /> 
             <br/>
-            Description: {{award.description}} 
+            <div v-bind:style="{color: '#fff', fontWeight: 'bold'}">
+             {{award.title}}
+            </div>
           </CCardBody>
           <!-- <CCardFooter class='bg-secondary'>
             Description: {{award.description}} 
           </CCardFooter> -->
         </CCard>
       </CCol>
-      <CCol sm="6">
-      </CCol>
+      <!-- <CCol sm="6">
+      </CCol> -->
+     
     </CRow>
+     </div>
   </div>
 </template>
 
@@ -106,4 +111,8 @@
     width: 100%;
     height: auto
   } */
+
+  .wrapper {
+    border-radius: 18px;
+  }
 </style>
