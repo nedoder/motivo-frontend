@@ -81,7 +81,7 @@
         };
        axios({
             method: 'post',
-            url: 'https://api.motivo.localhost/collectedawards/',
+            url: '/api/collectedawards/',
             data: data,
             headers: {
             'Authorization': bearer,
@@ -102,7 +102,7 @@
       const awards = axios({
         method: 'get',
 
-        url: `https://api.motivo.localhost/awards/${this.$route.params.id}`,
+        url: `/api/awards/${this.$route.params.id}`,
 
         headers: {
           'Authorization': bearer,
@@ -117,7 +117,7 @@
       }).catch(error => console.log(error))
 
 
-//POST https://api.motivo.localhost/attempt/
+//POST /api/attempt/
       // {
 //       "user": {
 //         "username": "nedoder1",

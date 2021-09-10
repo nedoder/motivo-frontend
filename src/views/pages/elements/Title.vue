@@ -1,11 +1,11 @@
 <template>
     
-        <CCard bodyWrapper text-color="blue" :style="{color: activeColor}">
+        <CCard bodyWrapper :style="{color: activeColor}">
             <CRow>
-                <CCol sm="10">
+                <CCol sm="8">
                     {{text}}
                 </CCol>
-                <CCol sm="2">
+                <CCol sm="4">
                     {{number}}
                 </CCol>
             </CRow>

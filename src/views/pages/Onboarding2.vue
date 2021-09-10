@@ -6,7 +6,7 @@
       </div>
       <CContainer class='bg-white'>
         <div class="container">
-          <CLink to="/dashboard" class="link">Skip</CLink>
+          <CLink to="/dashboard/challenges" class="link">Skip</CLink>
         </div>
         <div class="motivo">
           <img src="./img/image(1).png" class="img-fluid" alt="Responsive image" />

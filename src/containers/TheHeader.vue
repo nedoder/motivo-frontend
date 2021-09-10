@@ -1,35 +1,35 @@
 <template>
-  <CNavbar expandable="md" type="light" color="light">
+  <CNavbar expandable="md" type="light" color="light" class="bg-white" v-bind:style="{borderBottom: '2px solid #EBEDF0'}"> 
     <CToggler in-navbar @click="collapsed = !collapsed" class='bg-secondary'/>
     <img class="text-info" src="./motivo.png"/>
     <CCollapse :show="collapsed" navbar>
       <CNavbarNav >
-        <CHeaderNavItem class="px-3">
-          <CHeaderNavLink class="text-info" to="/dashboard/tasks">
-            Tasks
+        <CHeaderNavItem class="px-5">
+          <CHeaderNavLink class="text-info" to="/dashboard/challenges" v-bind:style="{textDecoration: 'none'}">
+            Challenges
           </CHeaderNavLink>
         </CHeaderNavItem>
-        <CHeaderNavItem class="px-3">
-          <CHeaderNavLink class="text-info" to="/dashboard/ranking" exact>
+        <CHeaderNavItem class="px-5">
+          <CHeaderNavLink class="text-info" to="/dashboard/ranking" v-bind:style="{textDecoration: 'none'}">
             Ranking
           </CHeaderNavLink>
         </CHeaderNavItem>
-        <CHeaderNavItem class="px-3">
-          <CHeaderNavLink class="text-info" to="/dashboard/coupons">
+        <CHeaderNavItem class="px-5">
+          <CHeaderNavLink class="text-info" to="/dashboard/coupons" v-bind:style="{textDecoration: 'none'}">
             Coupons
           </CHeaderNavLink>
         </CHeaderNavItem>
       </CNavbarNav>
       <CNavbarNav
       >
-      <CHeaderNavItem class="d-md-down-none mx-2">
-         <CHeaderNavLink class="text-info" to="/dashboard/">
-          Score : {{this.coins[0].collected_coins}}
-          </CHeaderNavLink>
-      </CHeaderNavItem>
+
       </CNavbarNav>
-      <CNavbarNav class="ml-auto">
-        <CDropdown nav togglerText="User" placement="bottom-end">
+      <CNavbarNav class="ml-auto" >
+         <CHeaderNavItem class='p-2' v-bind:style="{color: '#F2C94C', fontWeight: 'bold'}">
+          <img class="text-info" src="./Coin.png"/> {{this.coins[0].collected_coins}}
+      </CHeaderNavItem>
+    
+      <CDropdown nav togglerText="User" placement="bottom-end">
           <CDropdownItem v-on:click.prevent="editUser">
             <CIcon name="cil-settings" /> Settings
           </CDropdownItem>
@@ -68,7 +68,7 @@
       console.log(bearer)
       axios({
           method: 'get',
-          url: 'https://api.motivo.localhost/profile/',
+          url: '/api/profile/',
           headers: {
             'Authorization': bearer,
           }
@@ -92,7 +92,7 @@
       console.log(bearer)
       axios({
           method: 'get',
-          url: 'https://api.motivo.localhost/profile/',
+          url: '/api/profile/',
           headers: {
             'Authorization': bearer,
           }

@@ -73,11 +73,11 @@ const Login = () =>
 const Register = () =>
     import ('@/views/pages/Register')
 
-const Tasks = () =>
-    import ('@/views/pages/Tasks')
+const Challenges = () =>
+    import ('@/views/pages/Challenges')
 
-const Task = () =>
-    import ('@/views/pages/Task')
+const Challenge = () =>
+    import ('@/views/pages/Challenge')
 
 const Completed = () =>
     import ('@/views/pages/Completed')
@@ -338,9 +338,9 @@ function configRoutes() {
                     ]
                 },
                 {
-                    path: 'tasks',
+                    path: 'challenges',
                     meta: {
-                        label: 'tasks'
+                        label: 'challenges'
                     },
                     component: {
                         render(c) {
@@ -349,16 +349,16 @@ function configRoutes() {
                     },
                     children: [{
                             path: '',
-                            name: 'Tasks',
-                            component: Tasks
+                            name: 'Challenges',
+                            component: Challenges
                         },
                         {
                             path: ':id',
                             meta: {
-                                label: 'Task'
+                                label: 'challenge'
                             },
-                            name: 'Task',
-                            component: Task
+                            name: 'Challenges',
+                            component: Challenge
                         },
                         {
                             path: 'completed/:id',
@@ -373,7 +373,7 @@ function configRoutes() {
                             meta: {
                                 label: 'Attempt'
                             },
-                            name: 'Attemot',
+                            name: 'Attempt',
                             component: Attempt
                         }
                     ]
@@ -506,7 +506,7 @@ axios.interceptors.response.use(response => {
     if (error.response.status === 401) {
         axios({
                 method: 'post',
-                url: 'https://api.motivo.localhost/api/token/refresh/',
+                url: '/api/token/refresh/',
                 data: { refresh: localStorage.getItem('user-refresh') },
             })
             .then(

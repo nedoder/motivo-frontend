@@ -1,6 +1,6 @@
 <template>
     <div>
-        <CRow>
+        <!-- <CRow>
             <CCardBody color="white" class="mb-4">
                 <CCol sm="12">
                     <h1 class="text-center font-weight-bold">Progress</h1>
@@ -8,31 +8,31 @@
                     <CProgress :value="countRate" color="info" showPercentage=True animated show-value style="height:40px;" />
                 </CCol>
             </CCardBody>
-        </CRow>
+        </CRow> -->
         <CRow>
             <CCol sm='4'>
-                <Title text="To do" :number="toDo" activeColor="blue" />
-                <CJumbotron v-for="challenge in challenges" @click="taskClicked(challenge)" class='bg-info'>
-                    <h3>{{challenge.title}}</h3>
-                    <p class="lead">Coins to win: {{challenge.coins_to_win}}</p>
-                    <CButton color="light" size='lg' target="_blank">Click me</CButton>
-                </CJumbotron>
+                <Title text="To do" class="font-weight-bold" :number="toDo" activeColor="dark" v-bind:style="{borderRadius: '18px', border: '2px solid #EBEDF0'}"/>
+                <div v-for="challenge in challenges" @click="taskClicked(challenge)" class="challenge_card">
+                    <h1>{{challenge.title}}</h1>
+                    <p>{{challenge.description}}</p>
+                    <p class='coin_text'> {{challenge.coins_to_win  }} &nbsp;   <img class="text-info" src="./img/Coin.png"/></p>
+                </div>
             </CCol>
             <CCol sm='4'>
-                <Title text="Attempt" :number="failed" activeColor="red" />
-                <CJumbotron v-for="attempt in attempts" class='bg-secondary' @click="attemptClicked(attempt.challenge)">
+                <Title text="In progress" class="font-weight-bold" :number="failed" activeColor="dark" v-bind:style="{borderRadius: '18px', border: '2px solid #EBEDF0'}" />
+                <div v-for="attempt in attempts" @click="attemptClicked(attempt.challenge)" class="challenge_card">
                     <h1>{{attempt.challenge.title}}</h1>
-                    <p class="lead">Coins to win: {{attempt.challenge.coins}}</p>
-                    <p class="lead">Description: {{attempt.challenge.description}}</p>
-                </CJumbotron>
+                    <p>{{attempt.challenge.description}} </p>
+                    <p class="coin_text">{{attempt.challenge.coins}} &nbsp;   <img class="text-info" src="./img/Coin.png"/></p>
+                </div>
             </CCol>
             <CCol sm='4'>
-                <Title text="Passed" :number="passed" activeColor="green" />
-                <CJumbotron v-for="complet in complets" class='bg-secondary' @click="completedClicked(complet.challenge)">
+                <Title text="Done" class="font-weight-bold" :number="passed" activeColor="dark" v-bind:style="{borderRadius: '18px', border: '2px solid #EBEDF0'}" />
+                <div v-for="complet in complets"  class="challenge_card" @click="completedClicked(complet.challenge)" v-bind:style="{borderRadius: '18px'}">
                     <h1>{{complet.challenge.title}}</h1>
-                    <p class="lead">Coins collected: {{complet.challenge.coins}}</p>
-                    <p class="lead">Description: {{complet.challenge.description}}</p>
-                </CJumbotron>
+                    <p>{{complet.challenge.description}}</p>
+                    <p class="coin_text">{{complet.challenge.coins}} &nbsp;   <img class="text-info" src="./img/Coin.png"/> </p>
+                </div>
             </CCol>
         </CRow>
     </div>
@@ -44,7 +44,7 @@
     import axios from 'axios'
 
     export default {
-        name: 'Tasks',
+        name: 'Challenges',
         components: {
             Title,
             TheHeader
@@ -76,7 +76,7 @@
             const bearer = 'Bearer ' + token
             const challenges = axios({
                 method: 'get',
-                url: 'https://api.motivo.localhost/challenges/',
+                url: '/api/challenges/',
                 headers: {
                     'Authorization': bearer,
                 }
@@ -84,7 +84,7 @@
 
             const attempts = axios({
                 method: 'get',
-                url: 'https://api.motivo.localhost/attempt/',
+                url: '/api/attempt/',
                 headers: {
                     'Authorization': bearer,
                 }
@@ -92,7 +92,7 @@
 
             const complets = axios({
                 method: 'get',
-                url: 'https://api.motivo.localhost/completed/',
+                url: '/api/completed/',
                 headers: {
                     'Authorization': bearer,
                 }
@@ -131,19 +131,19 @@
             //     },
             taskClicked(challenge) {
                 this.$router.push({
-                    path: `/dashboard/tasks/${challenge.id}`
+                    path: `/dashboard/challenges/${challenge.id}`
                 })
             },
             completedClicked(completed) {
                 console.log("clicked")
                 this.$router.push({
-                    path: `/dashboard/tasks/completed/${completed.id}`
+                    path: `/dashboard/challenges/completed/${completed.id}`
                 })
             },
              attemptClicked(attempt) {
                 console.log("clicked")
                 this.$router.push({
-                    path: `/dashboard/tasks/attempt/${attempt.id}`
+                    path: `/dashboard/challenges/attempt/${attempt.id}`
                 })
             }
             //     pageChange (val) {
@@ -156,3 +156,39 @@
         }
     }
 </script>
+
+<style scoped>
+
+h1 {
+font-size: 36px;
+color: #03001D;
+word-wrap: break-word;
+}
+
+.challenge_card {
+border: 2px solid #EBEDF0;
+box-shadow: 0px 2px 0px #CFD8DA;
+border-radius: 18px;
+padding: 5px 12px;
+margin-top: 20px;
+height: 200px;
+display: flex;
+flex-direction: column; 
+justify-content: space-around;
+}
+
+p:first-child {
+    color: #6D7885;
+    font-size: 16px;
+}
+
+.coin_text {
+color: #F2C94C;    
+font-weight: bold;
+font-size: 24px;
+display: flex;
+align-items: center;
+justify-content: left;
+}
+
+</style>

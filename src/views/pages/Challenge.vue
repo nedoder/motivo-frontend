@@ -3,26 +3,23 @@
     <CCol col="12" lg="6">
        <form @submit.prevent="submitForm">
       <CCard v-bind:style="{height: '500px', backgroundImage: `url('${this.tasks.image}')`}">
-        <CCardHeader class='bg-info text-white' >
-          <p>Mandatory</p>
-          <h2>Challenge Id: {{ $route.params.id }}</h2>
+        <CCardHeader class='bg-info text-white d-flex justify-content-between' >
+          <h2 >{{this.tasks.title}}</h2>
+          <p class='coin_text'> {{this.tasks.coins_to_win }} &nbsp;   <img class="text-info" src="./img/Coin.png"/></p>
         </CCardHeader>
         <CCardBody>
           <CRow>
+            <p>Challenge description:<span> {{this.tasks.description}}</span></p>
+          </CRow>
+          <CRow>
            <div class="field">
             <div class="control">
-              <label class="checkbox">
-									<input type="checkbox" v-model="form.terms">
-									I finished my task. ;)
+              <label >
+                Description:
+									<input v-model="description">
 								</label>
             </div>
           </div>
-          </CRow>
-          <CRow class='mt-3'>
-            <p>Coins to win:<span>{{this.tasks.coins_to_win}}</span></p>
-          </CRow>
-          <CRow>
-            <p>Description:<span>{{this.tasks.description}}</span></p>
           </CRow>
           <CRow>
             <CInputFile label="File input" horizontal invalid-feedback="Please provide a required input." />
@@ -41,19 +38,17 @@
   import axios from 'axios'
 
   export default {
-    name: 'Task',
+    name: 'Challenge',
     beforeRouteEnter(to, from, next) {
       next(vm => {
-        vm.challengesOpened = from.fullPath.includes('tasks')
+        vm.challengesOpened = from.fullPath.includes('challenges')
       })
     },
     data() {
       return {
         usersOpened: null,
         tasks: null,
-        form: {
-          terms: false
-        }
+        description: ''
       }
     },
     computed: {
@@ -74,7 +69,7 @@
     methods: {
       goBack() {
         this.$router.push({
-          path: '/dashboard/tasks'
+          path: '/dashboard/challenges'
         })
       },
 
@@ -84,21 +79,22 @@
         const data = {
           user: localStorage.getItem('user-id'),
           challenge: this.$route.params.id,
+          description: this.description
         };
         axios({
             method: 'post',
-            url: 'https://api.motivo.localhost/attempt/',
+            url: '/api/attempt/',
             data: data,
             headers: {
             'Authorization': bearer,
              }
           }).then(response => {
         alert("You uploaded your solution successfully!")
-      this.$router.push('/dashboard/tasks')
+      this.$router.push('/dashboard/challenges')
        console.log(response)
       }).catch(error => {
         alert("Something went wrong! Please try again.")
-        this.$router.push('/dashboard/tasks')
+        this.$router.push('/dashboard/challenges')
         console.log(error)
       })
     }
@@ -110,7 +106,7 @@
       const tasks = axios({
         method: 'get',
 
-        url: `https://api.motivo.localhost/challenges/${this.$route.params.id}`,
+        url: `/api/challenges/${this.$route.params.id}`,
 
         headers: {
           'Authorization': bearer,
@@ -125,7 +121,7 @@
       }).catch(error => console.log(error))
 
 
-//POST https://api.motivo.localhost/attempt/
+//POST /api/attempt/
       // {
 //       "user": {
 //         "username": "nedoder1",
@@ -164,6 +160,14 @@ button {
 
 .active {
   background: #5968d7;
+}
+.coin_text {
+color: #F2C94C;    
+font-weight: bold;
+font-size: 24px;
+display: flex;
+align-items: center;
+justify-content: left;
 }
 
 pre-content {

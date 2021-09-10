@@ -6,7 +6,7 @@
       </div>
       <CContainer class='bg-white'>
         <div class="container">
-          <CLink to="/dashboard/tasks" class="link">Skip</CLink>
+          <CLink to="/dashboard/challenges" class="link">Skip</CLink>
         </div>
         <div class="motivo">
           <img src="./img/image.png" class="img-fluid" alt="Responsive image" />
@@ -32,7 +32,7 @@
       const bearer = 'Bearer ' + token
       axios({
           method: 'get',
-          url: 'https://api.motivo.localhost/userdata/',
+          url: '/api/userdata/',
           headers: {
             'Authorization': bearer,
           }
