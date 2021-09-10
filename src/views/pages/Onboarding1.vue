@@ -32,13 +32,12 @@
       const bearer = 'Bearer ' + token
       axios({
           method: 'get',
-          url: '/api/userdata/',
+          url: 'https://api.motivo.localhost/userdata/',
           headers: {
             'Authorization': bearer,
           }
         })
         .then(resp => {
-          console.log(resp.data.results[0])
           localStorage.setItem('user-id', resp.data.results[0].id)
           localStorage.setItem('user-name', resp.data.results[0].first_name)
           localStorage.setItem('user-surname', resp.data.results[0].last_name)

@@ -72,12 +72,11 @@
         };
         axios({
             method: 'post',
-            url: '/api/token/',
+            url: 'https://api.motivo.localhost/api/token/',
             data: data,
           })
           .then(resp => {
             this.token = resp.data.access
-            console.log(resp.data)
             localStorage.setItem('user-token', resp.data.access)
             localStorage.setItem('user-refresh', resp.data.refresh)
             this.$router.push('/onboarding1')

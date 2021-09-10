@@ -5,18 +5,18 @@
     <CCollapse :show="collapsed" navbar>
       <CNavbarNav >
         <CHeaderNavItem class="px-5">
-          <CHeaderNavLink class="text-info" to="/dashboard/challenges" v-bind:style="{textDecoration: 'none'}">
-            Challenges
+          <CHeaderNavLink class="text-info" to="/dashboard/challenges" v-bind:style="{textDecoration: 'none', color: '#99A2AD !important'}">
+            <img src="./Tasks (1).png"/> Challenges
           </CHeaderNavLink>
         </CHeaderNavItem>
         <CHeaderNavItem class="px-5">
-          <CHeaderNavLink class="text-info" to="/dashboard/ranking" v-bind:style="{textDecoration: 'none'}">
-            Ranking
+          <CHeaderNavLink class="text-info" to="/dashboard/ranking" v-bind:style="{textDecoration: 'none', color: '#99A2AD  !important'}">
+            <img src="./Ranking.png"/> Ranking
           </CHeaderNavLink>
         </CHeaderNavItem>
         <CHeaderNavItem class="px-5">
-          <CHeaderNavLink class="text-info" to="/dashboard/coupons" v-bind:style="{textDecoration: 'none'}">
-            Coupons
+          <CHeaderNavLink class="text-info" to="/dashboard/awards" v-bind:style="{textDecoration: 'none', color: '#99A2AD  !important'}">
+            <img src="./Coupon.png"/> Awards
           </CHeaderNavLink>
         </CHeaderNavItem>
       </CNavbarNav>
@@ -27,9 +27,10 @@
       <CNavbarNav class="ml-auto" >
          <CHeaderNavItem class='p-2' v-bind:style="{color: '#F2C94C', fontWeight: 'bold'}">
           <img class="text-info" src="./Coin.png"/> {{this.coins[0].collected_coins}}
+          <img class="text-info" src="./Ellipse 23.png"/>
       </CHeaderNavItem>
     
-      <CDropdown nav togglerText="User" placement="bottom-end">
+      <CDropdown nav placement="bottom-end">
           <CDropdownItem v-on:click.prevent="editUser">
             <CIcon name="cil-settings" /> Settings
           </CDropdownItem>
@@ -43,6 +44,9 @@
 </template>
 
 <script>
+
+import axios from 'axios'
+
   export default {
     data() {
       return {
@@ -64,11 +68,9 @@
       const token = localStorage.getItem('user-token')
       const bearer = 'Bearer ' + token
       const id = localStorage.getItem('user-id')
-      console.log(id)
-      console.log(bearer)
       axios({
           method: 'get',
-          url: '/api/profile/',
+          url: 'https://api.motivo.localhost/profile/',
           headers: {
             'Authorization': bearer,
           }
@@ -88,11 +90,9 @@
       const token = localStorage.getItem('user-token')
       const bearer = 'Bearer ' + token
       const id = localStorage.getItem('user-id')
-      console.log(id)
-      console.log(bearer)
       axios({
           method: 'get',
-          url: '/api/profile/',
+          url: 'https://api.motivo.localhost/profile/',
           headers: {
             'Authorization': bearer,
           }

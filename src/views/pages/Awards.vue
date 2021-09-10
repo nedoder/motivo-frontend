@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="wrapper">
-    <CRow fluid  v-bind:style="{border: '1px solid black', borderRadius: '18px !important'}">
+    <CRow fluid>
       
       <CCol v-for="award in awards" sm="4" v-bind:style="{padding:'1px' , borderRadius: '18px'}">
         <CCard class='bg-secondary' v-bind:style="{backgroundImage: `url('${award.image}')`, height: '300px',color: '#fff'}" @click="couponClicked(award)">
@@ -33,7 +33,7 @@
   import axios from 'axios'
 
   export default {
-    name: 'Coupons',
+    name: 'Awards',
     data() {
       return {
         awards: []
@@ -70,10 +70,9 @@
     mounted() {
       const token = localStorage.getItem('user-token')
       const bearer = 'Bearer ' + token
-      console.log(bearer)
       axios({
           method: 'get',
-          url: '/api/awards/',
+          url: 'https://api.motivo.localhost/awards/',
           headers: {
             'Authorization': bearer,
           }
@@ -91,7 +90,7 @@
 
       couponClicked(award) {
                 this.$router.push({
-                    path: `/dashboard/coupons/${award.id}`
+                    path: `/dashboard/awards/${award.id}`
                    
                 })
             },

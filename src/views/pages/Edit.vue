@@ -70,7 +70,7 @@ export default {
         console.log(bearer)
         axios({
             method:'put',
-            url: `/api/user/${this.editInfo.id}/`,
+            url: `https://api.motivo.localhost/user/${this.editInfo.id}/`,
             data: data,
             headers: { 'Authorization': bearer },
         })

@@ -76,16 +76,14 @@
       const bearer = 'Bearer ' + token
       const tasks = axios({
         method: 'get',
-        url: `/api/challenges/${this.$route.params.id}`,
+        url: `https://api.motivo.localhost/api/token/challenges/${this.$route.params.id}`,
         headers: {
           'Authorization': bearer,
         }
       });
 
       Promise.all([tasks]).then(([chal]) => {
-        console.log(chal);
         this.tasks = chal.data;
-        console.log(this.tasks)
 
       }).catch(error => console.log(error))
 //POST /api/attempt/

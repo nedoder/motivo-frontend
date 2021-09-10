@@ -63,7 +63,6 @@
     computed: {
       computedItems() {
         return this.items.map(item => {
-          console.log(item)
           return {
             ...item,
             userUsername: item.user.username,
@@ -112,7 +111,7 @@
       const bearer = 'Bearer ' + token
       axios({
           method: 'get',
-          url: '/api/ranking/',
+          url: 'https://api.motivo.localhost/ranking/',
           headers: {
             'Authorization': bearer,
           }

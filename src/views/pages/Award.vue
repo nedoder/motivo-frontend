@@ -33,10 +33,10 @@
   import axios from 'axios'
 
   export default {
-    name: 'Coupon',
+    name: 'Award',
     beforeRouteEnter(to, from, next) {
       next(vm => {
-        vm.awardsOpened = from.fullPath.includes('coupons')
+        vm.awardsOpened = from.fullPath.includes('awards')
       })
     },
     data() {
@@ -67,7 +67,7 @@
     methods: {
       goBack() {
         this.$router.push({
-          path: '/dashboard/coupons'
+          path: '/dashboard/awards'
         })
       },
 
@@ -81,7 +81,7 @@
         };
        axios({
             method: 'post',
-            url: '/api/collectedawards/',
+            url: 'https://api.motivo.localhost/collectedawards/',
             data: data,
             headers: {
             'Authorization': bearer,
@@ -102,7 +102,7 @@
       const awards = axios({
         method: 'get',
 
-        url: `/api/awards/${this.$route.params.id}`,
+        url: `https://api.motivo.localhost/awards/${this.$route.params.id}`,
 
         headers: {
           'Authorization': bearer,
@@ -110,10 +110,7 @@
       });
 
       Promise.all([awards]).then(([resp]) => {
-        console.log(resp);
         this.awards = resp.data;
-        console.log(this.awards)
-
       }).catch(error => console.log(error))
 
 

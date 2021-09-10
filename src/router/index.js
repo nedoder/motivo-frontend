@@ -48,11 +48,11 @@ const Ranking = () =>
 
 //pages that we need @oliwia
 
-const Coupons = () =>
-    import ('@/views/pages/Coupons')
+const Awards = () =>
+    import ('@/views/pages/Awards')
 
-const Coupon = () =>
-    import ('@/views/pages/Coupon')
+const Award = () =>
+    import ('@/views/pages/Award')
 
 const Tests = () =>
     import ('@/views/pages/Tests')
@@ -222,10 +222,10 @@ function configRoutes() {
         },
 
         {
-            path: '/coupons',
+            path: '/awards',
             //redirect: '/dashboard',
-            name: 'Coupons',
-            component: Coupons,
+            name: 'awards',
+            component: Awards,
         },
         // {
         //     path: '/tasks',
@@ -272,9 +272,9 @@ function configRoutes() {
                     }, ]
                 },
                 {
-                    path: 'Coupons',
+                    path: 'awards',
                     meta: {
-                        label: 'Coupons'
+                        label: 'awards'
                     },
                     component: {
                         render(c) {
@@ -283,16 +283,16 @@ function configRoutes() {
                     },
                     children: [{
                             path: '',
-                            name: 'Coupons',
-                            component: Coupons
+                            name: 'awards',
+                            component: Awards
                         },
                         {
                             path: ':id',
                             meta: {
-                                label: 'Coupon'
+                                label: 'awards'
                             },
-                            name: 'Coupon',
-                            component: Coupon
+                            name: 'awards',
+                            component: Award
                         },
                     ]
                 },
@@ -506,7 +506,7 @@ axios.interceptors.response.use(response => {
     if (error.response.status === 401) {
         axios({
                 method: 'post',
-                url: '/api/token/refresh/',
+                url: 'https://api.motivo.localhost/api/token/refresh/',
                 data: { refresh: localStorage.getItem('user-refresh') },
             })
             .then(

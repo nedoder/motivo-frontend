@@ -63,7 +63,6 @@
          computed: {
       computedItems() {
         return this.complets.map(item => {
-          console.log(item)
           return {
             ...item,
             challengeTitle: item.challenge.title,
@@ -76,7 +75,7 @@
             const bearer = 'Bearer ' + token
             const challenges = axios({
                 method: 'get',
-                url: '/api/challenges/',
+                url: 'https://api.motivo.localhost/challenges/',
                 headers: {
                     'Authorization': bearer,
                 }
@@ -84,7 +83,7 @@
 
             const attempts = axios({
                 method: 'get',
-                url: '/api/attempt/',
+                url: 'https://api.motivo.localhost/attempt/',
                 headers: {
                     'Authorization': bearer,
                 }
@@ -92,20 +91,18 @@
 
             const complets = axios({
                 method: 'get',
-                url: '/api/completed/',
+                url: 'https://api.motivo.localhost/completed/',
                 headers: {
                     'Authorization': bearer,
                 }
             });
 
             Promise.all([challenges, attempts, complets]).then(([chal, att, com]) => {
-                console.log(chal, att);
                 this.attempts = att.data.results;
                 this.failed = att.data.results.length;
                 this.challenges = chal.data.results;
                 this.toDo = chal.data.results.length;
                 this.complets = com.data.results;
-                console.log(this.complets)
                 this.passed = com.data.results.length;
             }).catch(error => console.log(error))
         },
@@ -135,13 +132,11 @@
                 })
             },
             completedClicked(completed) {
-                console.log("clicked")
                 this.$router.push({
                     path: `/dashboard/challenges/completed/${completed.id}`
                 })
             },
              attemptClicked(attempt) {
-                console.log("clicked")
                 this.$router.push({
                     path: `/dashboard/challenges/attempt/${attempt.id}`
                 })
