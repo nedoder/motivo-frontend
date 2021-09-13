@@ -213,6 +213,7 @@ function configRoutes() {
             //redirect: '/dashboard',
             name: 'Onboarding5',
             component: Onboarding5,
+
         },
         {
             path: '/profile',

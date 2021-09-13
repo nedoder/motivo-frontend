@@ -3,12 +3,12 @@
     <div class="wrapper">
     <CRow fluid>
       
-      <CCol v-for="award in awards" sm="4" v-bind:style="{padding:'1px' , borderRadius: '18px'}">
-        <CCard class='bg-secondary' v-bind:style="{backgroundImage: `url('${award.image}')`, height: '300px',color: '#fff'}" @click="couponClicked(award)">
+      <CCol v-for="award in awards" sm="4" v-bind:style="{padding:'1px'}">
+        <CCard class='bg-secondary' v-bind:style="{backgroundImage: `url('${award.image}')`, height: '300px',color: '#fff', borderRadius: '18px'}" @click="couponClicked(award)">
           <!-- <CCardHeader class='bg-info'>
            
           </CCardHeader> -->
-          <CCardBody  v-bind:style="{color: '#F2C94C'}">
+          <CCardBody  v-bind:style="{color: '#F2C94C', padding:'200px 10px 10px 10px'}">
             <br/>
             {{award.price_in_coins}} <img src="./img/Coin.png" /> 
             <br/>
