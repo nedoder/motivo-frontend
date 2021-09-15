@@ -42,7 +42,6 @@
           localStorage.setItem('user-name', resp.data.results[0].first_name)
           localStorage.setItem('user-surname', resp.data.results[0].last_name)
           localStorage.setItem('user-email', resp.data.results[0].email)
-          localStorage.setItem('username', resp.data.results[0].username)
         })
         .catch(error => console.log(error))
     },

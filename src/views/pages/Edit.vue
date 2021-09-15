@@ -49,7 +49,6 @@ export default {
           name: localStorage.getItem('user-name') || '',
           surname: localStorage.getItem('user-surname') || '',
           email: localStorage.getItem('user-email'),
-          username: localStorage.getItem('username') || null,
           password: '',
           token: localStorage.getItem('user-token') || null,
           id: localStorage.getItem('user-id')
@@ -64,7 +63,7 @@ export default {
     // @todo my version
 
       editCustom(){
-        const data = {username: this.editInfo.username, first_name: this.editInfo.name, last_name: this.editInfo.surname, email: this.editInfo.email, password: this.editInfo.password  };
+        const data = {first_name: this.editInfo.name, last_name: this.editInfo.surname, email: this.editInfo.email, password: this.editInfo.password  };
         const token = localStorage.getItem('user-token')
         const bearer = 'Bearer ' + token
         console.log(bearer)

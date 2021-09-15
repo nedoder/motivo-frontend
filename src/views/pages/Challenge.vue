@@ -83,7 +83,7 @@
         };
         axios({
             method: 'post',
-            url: '/api/attempt/',
+            url: 'https://api.motivo.localhost/attempt/',
             data: data,
             headers: {
             'Authorization': bearer,
@@ -106,7 +106,7 @@
       const tasks = axios({
         method: 'get',
 
-        url: `/api/challenges/${this.$route.params.id}`,
+        url: `https://api.motivo.localhost/challenges/${this.$route.params.id}/`,
 
         headers: {
           'Authorization': bearer,

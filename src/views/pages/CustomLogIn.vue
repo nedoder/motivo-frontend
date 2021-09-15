@@ -67,7 +67,7 @@
 
       loginCustom() {
         const data = {
-          username: this.loginInfo.email,
+          email: this.loginInfo.email,
           password: this.loginInfo.password
         };
         axios({

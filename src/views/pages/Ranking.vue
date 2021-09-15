@@ -1,34 +1,48 @@
 <template>
   <CRow>
     <CCol col="12" xl="12" sm="12">
-      <CRow>
-        <CCol col="12" sm="12">
-          <CCardBody>
-            <CJumbotron class='bg-light' text-color="info" border-color="info">
-              <h1 class="lead">
-                The winner is: {{collectedFilteredItems[0].user.username}}
-              </h1>
-              <hr class="my-4">
-              <p class='fs-3'>
-                Initial budget: {{collectedFilteredItems[0].initial_budget}}
+      <CRow v-bind:style="{borderRadius: '18px', border: '2px solid #EBEDF0', padding: '10px', margin: '10px' }">
+        <!-- <CCol col="12" sm="12">
+          <CCardBody> -->
+            <!-- <CJumbotron class='bg-light' text-color="info" border-color="info"> -->
+              <CCol>
+              <img src="./img/Ellipse 23.png" v-bind:style="{margin: '10px'}"/>
+              </CCol>
+              <CCol>
+              <p v-bind:style="{color: '#B8C1CC !important'}">
+                Place:  
               </p>
-              <p>
-                Balance: {{collectedFilteredItems[0].collected_coins}}
+              <h5 v-bind:style="{color: '#03001D !important'}">
+                {{count}}
+              </h5>
+              </CCol>
+              <CCol>
+              <p class='fs-3' v-bind:style="{color: '#B8C1CC !important'}">
+                Title:
               </p>
-            </CJumbotron>
-          </CCardBody>
-        </CCol>
+              <h5 v-bind:style="{color: '#03001D !important'}">
+                 {{userItems[0].title}}
+              </h5>
+              </CCol>
+              <CCol>
+              <p v-bind:style="{color: '#B8C1CC !important'}">
+                Balance: 
+              </p>
+              <h5 v-bind:style="{color: '#F2C94C !important'}">{{userItems[0].collected_coins_gross}}  <img src="./img/Coin.png"/></h5>
+              </CCol>
+            <!-- </CJumbotron> -->
+          <!-- </CCardBody>
+        </CCol> -->
       </CRow>
-      <CDataTable 
-      hover striped 
+      <CDataTable
+      hover 
       :items="collectedFilteredItems" 
       :fields="fields" 
       :items-per-page="20" 
-      clickable-rows
+      :header=false
       :active-page="activePage" 
       :pagination="{ doubleArrows: false, align: 'center'}"
-      @page-change="pageChange"
-      border
+       @page-change="pageChange"
       >
       </CDataTable>
     </CCol>
@@ -43,38 +57,57 @@
     data() {
       return {
         items: [],
-        fields: [{
+        count: null,
+        fields: [
+          {
+            key: 'count',
+            label: 'Count',
+            _classes: 'font-weight-bold'
+          },
+          
+          {
             key: 'userUsername',
             label: 'User',
             _classes: 'font-weight-bold'
           },
           {
-            key: 'initial_budget',
-            label: 'Initial budget'
+            key: 'title',
+            label: 'Title'
           },
           {
-            key: 'collected_coins',
+            key: 'collected_coins_gross',
             label: 'Collected Coins'
           },
         ],
-        activePage: 1
+         activePage: 1
       }
     },
     computed: {
       computedItems() {
-        return this.items.map(item => {
+        let userid = parseInt(localStorage.getItem('user-id'))
+        return this.items.map((item,index) => {
+          if(item.id === userid) {
+            this.count = index + 1
+          }
           return {
             ...item,
-            userUsername: item.user.username,
-            userId: item.user.id
+            userUsername: item.email,
+            userId: item.id,
+            title: item.title,
+            count: index + 1
           }
         })
       },
       collectedFilteredItems() {
         return this.computedItems.sort(function (a, b) {
-          return b.collected_coins - a.collected_coins
+          return b.collected_coins_gross - a.collected_coins_gross
         })
-      }
+      },
+      userItems() {
+        let userid = parseInt(localStorage.getItem('user-id'))
+         return this.items.filter(item => item.id === userid) 
+         
+        },
     },
     watch: {
       $route: {
@@ -126,3 +159,10 @@
     },
   }
 </script>
+
+<style scoped>
+
+.table td {
+  border: none !important;
+}
+</style>
