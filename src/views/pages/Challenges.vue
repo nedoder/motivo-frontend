@@ -14,6 +14,7 @@
                 <Title text="To do" class="font-weight-bold" :number="toDo" activeColor="dark" v-bind:style="{borderRadius: '18px', border: '2px solid #EBEDF0'}"/>
                 <div v-for="challenge in challenges" @click="taskClicked(challenge)" class="challenge_card">
                     <h1>{{challenge.title}}</h1>
+                     <h6>Attempts left: {{challenge.attempts_left}}</h6>
                     <p>{{challenge.description}}</p>
                     <p class='coin_text'> {{challenge.coins_to_win  }} &nbsp;   <img class="text-info" src="./img/Coin.png"/></p>
                 </div>
@@ -101,9 +102,11 @@
                 this.attempts = att.data.results;
                 this.failed = att.data.results.length;
                 this.challenges = chal.data;
-                this.toDo = chal.data.results.length;
+                this.toDo = chal.data.length;
                 this.complets = com.data.results;
                 this.passed = com.data.results.length;
+                console.log(this.complets)
+                console.log(com.data)
             }).catch(error => console.log(error))
         },
         watch: {
