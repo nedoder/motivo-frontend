@@ -27,19 +27,15 @@
    <div class="form-group">
     <button type="button" class="btn btn-link btn-lg btn-block" v-on:click.prevent="editCustom">Change password</button>
   </div>
-
 </form>
 </div>
     </CWrapper>
 </div>
 </template>
-
 <script>
 import TheHeader from '../../containers/TheHeader.vue'
 import axios from 'axios'
 import forms from '@/mixins/forms';
-
-
 export default {
   name:"Edit",
   components: {TheHeader,},
@@ -49,28 +45,24 @@ export default {
           name: localStorage.getItem('user-name') || '',
           surname: localStorage.getItem('user-surname') || '',
           email: localStorage.getItem('user-email'),
-          username: localStorage.getItem('username') || null,
           password: '',
           token: localStorage.getItem('user-token') || null,
           id: localStorage.getItem('user-id')
         }
     }
   },
-
   mixins: [ forms ],
-
   // @todo please use one empty line to separate elements like data, mixins, methods, mounted...
   methods:{
     // @todo my version
-
       editCustom(){
-        const data = {username: this.editInfo.username, first_name: this.editInfo.name, last_name: this.editInfo.surname, email: this.editInfo.email, password: this.editInfo.password  };
+        const data = {first_name: this.editInfo.name, last_name: this.editInfo.surname, email: this.editInfo.email, password: this.editInfo.password  };
         const token = localStorage.getItem('user-token')
         const bearer = 'Bearer ' + token
         console.log(bearer)
         axios({
             method:'put',
-            url: `/api/user/${this.editInfo.id}/`,
+            url: `api/user/${this.editInfo.id}/`,
             data: data,
             headers: { 'Authorization': bearer },
         })
@@ -85,16 +77,13 @@ export default {
       
   },
 }
-
-
- 
+  
 </script>
 
 <style scoped>
  form {
    width: 100%;
  }
-
  .formcontainer {
    width: 40%;
    margin: auto;
@@ -111,12 +100,10 @@ export default {
    font-weight: bold;
    font-size: 18px;
  }
-
  input, button {
    border-radius: 12px;
    padding: 10px;
  }
-
  button {
      color: #1CB0F6;
      font-weight: bold;
@@ -141,7 +128,6 @@ export default {
    font-size: 18px;
    background: #F7F8FA;
  }
-
  #exampleFormControlInput4 {
    margin-bottom: 30px;
  }

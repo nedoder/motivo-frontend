@@ -4,8 +4,8 @@
     <CWrapper>
       <TheHeader/>
       <div class="c-body">
-        <main class="c-main">
-          <CContainer fluid>
+        <main class="c-main " >
+          <CContainer >
             <transition name="fade" mode="out-in">
               <router-view :key="$route.path"></router-view>
             </transition>
@@ -41,4 +41,6 @@ export default {
 .fade-leave-to {
   opacity: 0;
 }
+
+
 </style>

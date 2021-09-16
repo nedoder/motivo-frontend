@@ -177,6 +177,11 @@ flex-direction: column;
 justify-content: space-around;
 }
 
+.challenge_card:hover {
+    background-color: #99A2AD;
+    cursor: pointer;
+}
+
 p:first-child {
     color: #6D7885;
     font-size: 16px;
