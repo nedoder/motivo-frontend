@@ -91,7 +91,11 @@
           })
         .then(response => {
              console.log(response)
-             this.message = response.data.message
+             alert("You collected the award!")
+             this.$router.push({
+          path: '/dashboard/awards'
+        })
+
         }).catch(error => {
             console.log(error.response.data.message)
             this.message = error.response.data.message
