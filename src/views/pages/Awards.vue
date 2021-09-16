@@ -4,22 +4,27 @@
     <CRow fluid>
       
       <CCol v-for="award in awards" sm="4" v-bind:style="{padding:'1px'}">
-        <CCard class='bg-secondary' v-bind:style="{backgroundImage: `url('${award.image}')`, height: '300px',color: '#fff', borderRadius: '18px'}" @click="couponClicked(award)">
+        <div  class="award_card">
+        <CCard class='bg-secondary' v-bind:style="{backgroundImage: `url('http://api.motivo.localhost/${award.image}')`, height: '300px',color: '#fff', borderRadius: '18px', border:'none',  backgroundSize: 'cover'}" @click="couponClicked(award)">
           <!-- <CCardHeader class='bg-info'>
            
           </CCardHeader> -->
-          <CCardBody  v-bind:style="{color: '#F2C94C', padding:'200px 10px 10px 10px'}">
+          <CCardBody  v-bind:style="{color: '#F2C94C', padding:'170px 10px 10px 10px', margin: '0px', borderRadius: '18px', fontWeight: 'bold', backgroundColor: 'rgba(53, 57, 53, 0.5)'}">
             <br/>
             {{award.price_in_coins}} <img src="./img/Coin.png" /> 
             <br/>
-            <div v-bind:style="{color: '#fff', fontWeight: 'bold'}">
+            <div v-bind:style="{color: '#fff', fontWeight: 'bold', margin: '2px 0'}">
              {{award.title}}
+            </div>
+            <div v-bind:style="{color: '#fff', fontWeight: 'bold'}">
+            Awards left: {{award.awards_left}}
             </div>
           </CCardBody>
           <!-- <CCardFooter class='bg-secondary'>
             Description: {{award.description}} 
           </CCardFooter> -->
         </CCard>
+        </div>
       </CCol>
       <!-- <CCol sm="6">
       </CCol> -->
@@ -78,10 +83,11 @@
           }
         })
         .then(resp => {
-          this.awards = resp.data.results
+          this.awards = resp.data
           // this.title = resp.data.results[0].title
-          // this.price = resp.data.results[0].price
+          // this.price = resp.data.results[0.].price
           // this.image = resp.data.results[0].image
+          console.log(resp.data[0])
         })
         .catch(error => console.log(error))
     },
@@ -114,4 +120,9 @@
   .wrapper {
     border-radius: 18px;
   }
+
+  .award_card:hover {
+    border-radius: 18px;
+    cursor: pointer;
+}
 </style>

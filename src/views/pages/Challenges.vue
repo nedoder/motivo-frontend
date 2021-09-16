@@ -100,7 +100,7 @@
             Promise.all([challenges, attempts, complets]).then(([chal, att, com]) => {
                 this.attempts = att.data.results;
                 this.failed = att.data.results.length;
-                this.challenges = chal.data.results;
+                this.challenges = chal.data;
                 this.toDo = chal.data.results.length;
                 this.complets = com.data.results;
                 this.passed = com.data.results.length;
@@ -170,6 +170,11 @@ height: 200px;
 display: flex;
 flex-direction: column; 
 justify-content: space-around;
+}
+
+.challenge_card:hover {
+    background-color: #99A2AD;
+    cursor: pointer;
 }
 
 p:first-child {

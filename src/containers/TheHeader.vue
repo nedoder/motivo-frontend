@@ -1,5 +1,6 @@
 <template>
-  <CNavbar expandable="md" type="light" color="light" class="bg-white"  v-bind:style="{borderBottom: '2px solid #EBEDF0'}"> 
+<div class='d-flex justify-content-center' v-bind:style="{borderBottom: '2px solid #EBEDF0'}">
+  <CNavbar expandable="md" type="light" color="light" class="bg-white m-auto" > 
     <CToggler in-navbar @click="collapsed = !collapsed" class='bg-secondary'/>
      <CHeaderNavItem class='nav-item  mx-5' v-bind:style="{color: '#F2C94C', fontWeight: 'bold', listStyleType: 'none'}">
     <img class="text-info" src="./motivo.png"/>
@@ -48,6 +49,7 @@
       </CNavbarNav>
     </CCollapse>
   </CNavbar>
+  </div>
 </template>
 
 <script>
@@ -85,7 +87,7 @@ import axios from 'axios'
         .then(resp => {
           this.coins = resp.data.results
           let userid = parseInt(localStorage.getItem('user-id'))
-           this.coins = this.coins.filter(result => result.user.id === userid)
+           this.coins = this.coins.filter(result => result.id === userid)
         })
         .catch(error => console.log(error))
       },

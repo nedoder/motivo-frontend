@@ -2,29 +2,31 @@
   <CRow class="d-flex justify-content-center">
     <CCol col="12" lg="6">
        <!-- <form @submit.prevent="submitForm"> -->
-      <CCard  v-bind:style="{backgroundImage: `url('${this.awards.image}')`, borderRadius:'10px'}">
-        <!-- <CCardHeader class='bg-danger text-white'  v-bind:style="{backgroundColor: '#1CB0F6 !important'}">
+      <CCard   v-bind:style="{height: '350px', backgroundImage: `url('${this.awards.image}')`, borderRadius:'18px', backgroundSize: 'cover'}">
+        <!-- <CCardHeader v-bind:style="{backgroundColor: '#1CB0F6 !important'}">
          
-        </CCardHeader> -->
-        <CCardBody v-bind:style="{height: '500px'}">
-            <CRow class='mt-3'>
-             <h2>Award id: {{ $route.params.id }}</h2>
+        </CCardHeader>  -->
+        <CCardBody class="card-title" v-bind:style="{ color: '#fff', padding: '130px 10px 10px 10px' , margin: '0px', borderRadius: '18px', backgroundColor: 'rgba(53, 57, 53, 0.5)'}">
+            <CRow class='m-2'>
+             <h2>Title: <span>{{this.awards.title}}</span></h2>
             </CRow>
-            <CRow class='mt-3'>
-          <p>Title:<span>{{this.awards.title}}</span></p>
+            <CRow class='m-2'>
+          <h6>Description: <span>{{this.awards.description}}</span></h6>
             </CRow>
-          <CRow class='mt-3'>
-            <p>Price in coins:<span>{{this.awards.price_in_coins}}</span></p>
+          <CRow class='m-2' v-bind:style="{color: '#F2C94C', fontWeight: 'bold'}">
+             {{this.awards.price_in_coins}} <img src="./img/Coin.png"  class='mx-3' /> 
           </CRow>
-          <CRow>
-            <p>Description:<span>{{this.awards.description}}</span></p>
+          
+          <CButton class="col-3 m-2" color="info"  @click="goBack">Back</CButton>
+          <CButton class="col-3 m-2"  @click="submitAward">Collect</CButton> 
+          <CRow class='m-2'>  
+           <p>Message: <span>{{this.message}}</span></p>
           </CRow>
         </CCardBody>
-        <CCardFooter class="d-flex justify-content-center">
-          <CButton class="col-3" color="danger" size='lg' @click="goBack" v-bind:style="{backgroundColor: '#1CB0F6 !important'}">Back</CButton>
-                <button type="submit" @click="submitAward">Collect the award</button>        </CCardFooter>
+          
+                   
       </CCard>
-      <p>Message:<span>{{this.message}}</span></p>
+     
     </CCol>
   </CRow>
 </template>

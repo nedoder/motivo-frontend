@@ -1,33 +1,35 @@
 <template>
   <CRow class="d-flex justify-content-center">
     <CCol col="12" lg="6">
-       <form @submit.prevent="submitForm">
-      <CCard v-bind:style="{height: '500px', backgroundImage: `url('${this.tasks.image}')`}">
-        <CCardHeader class='bg-info text-white d-flex justify-content-between' >
-          <h2 >{{this.tasks.title}}</h2>
-          <p class='coin_text'> {{this.tasks.coins_to_win }} &nbsp;   <img class="text-info" src="./img/Coin.png"/></p>
-        </CCardHeader>
-        <CCardBody>
-          <CRow>
-            <p>Challenge description:<span> {{this.tasks.description}}</span></p>
-          </CRow>
-          <CRow>
-           <div class="field">
-            <div class="control">
-              <label >
-                Description:
-									<input v-model="description">
-								</label>
+      <form @submit.prevent="submitForm">
+        <CCard class='forImage' v-bind:style="{backgroundImage: `url('${this.tasks.image}')`}">
+          <CCardHeader class='headerCard' :style="{backgroundColor: '#99A2AD'}">
+            <h2>{{this.tasks.title}}</h2>
+            <p class='coin_text'> {{this.tasks.coins_to_win }} &nbsp; <img class="text-info" src="./img/Coin.png" /></p>
+          </CCardHeader>
+          <div class='bodyCard'>
+            <div class='textBox text'>
+              <p>Description:</p>
+              <p> {{this.tasks.description}}</p>
             </div>
-          </div>
-          </CRow>
-          <CRow>
-            <CInputFile label="File input" horizontal invalid-feedback="Please provide a required input." />
-          </CRow>
-        </CCardBody>
-        <CCardFooter class="d-flex justify-content-center">
-          <CButton class="col-3" color="info" size='lg' @click="goBack">Back</CButton>
-<button type="submit">Submit</button>        </CCardFooter>
+            <div class='textBox text'>
+              <p>
+                Your comment
+              </p>
+              <textarea v-model="description" required />
+              </div>
+      <div class='textBox text'> 
+  <p >
+                Attach file
+							</p>
+        <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
+</div>
+
+        </div>
+        <CCardFooter class="d-flex justify-content-center" :style="{backgroundColor: '#99A2AD'}">
+          <CButton color="info" @click="goBack">Back</CButton>
+          <CButton color="info" type="submit">Submit</CButton>        
+          </CCardFooter>
       </CCard>
       </form>
     </CCol>
@@ -36,7 +38,6 @@
 
 <script>
   import axios from 'axios'
-
   export default {
     name: 'Challenge',
     beforeRouteEnter(to, from, next) {
@@ -48,7 +49,8 @@
       return {
         usersOpened: null,
         tasks: null,
-        description: ''
+        description: '', 
+        file: '',
       }
     },
     computed: {
@@ -72,14 +74,19 @@
           path: '/dashboard/challenges'
         })
       },
-
+      handleFileUpload(){
+    this.file = this.$refs.file.files[0];
+  },
       submitForm() {
         const token = localStorage.getItem('user-token')
         const bearer = 'Bearer ' + token
+        // let formData = new FormData();
+        // formData.append('file', this.file);
         const data = {
           user: localStorage.getItem('user-id'),
           challenge: this.$route.params.id,
-          description: this.description
+          description: this.description,
+          //file: formData,
         };
         axios({
             method: 'post',
@@ -94,33 +101,25 @@
        console.log(response)
       }).catch(error => {
         alert("Something went wrong! Please try again.")
-        this.$router.push('/dashboard/challenges')
         console.log(error)
       })
     }
-
     },
     mounted() {
       const token = localStorage.getItem('user-token')
       const bearer = 'Bearer ' + token
       const tasks = axios({
         method: 'get',
-
-        url: `https://api.motivo.localhost/challenges/${this.$route.params.id}/`,
-
+        url: `https://api.motivo.localhost/challenges/${this.$route.params.id}`,
         headers: {
           'Authorization': bearer,
         }
       });
-
       Promise.all([tasks]).then(([chal]) => {
         console.log(chal);
         this.tasks = chal.data;
         console.log(this.tasks)
-
       }).catch(error => console.log(error))
-
-
 //POST /api/attempt/
       // {
 //       "user": {
@@ -142,8 +141,6 @@
 </script>
 
 <style scoped>
-
-
 button {
   color: white;
   border: none;
@@ -155,9 +152,7 @@ button {
   cursor: pointer;
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
   transition: 0.25s all ease;
-
 }
-
 .active {
   background: #5968d7;
 }
@@ -168,9 +163,68 @@ font-size: 24px;
 display: flex;
 align-items: center;
 justify-content: left;
+margin-top: 13px;
 }
-
 pre-content {
   width: 500px;
+}
+.forImage {
+     background-size: cover;
+  position: relative; 
+    height: 70vh;
+    width: 100%;
+}
+.bodyCard::before {
+   content: "";
+    background-color: white;
+      background-size: cover;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      opacity: 0.75;
+}
+.bodyCard {
+    position: relative; 
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    padding: 20px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+.text {
+  position: relative;
+  color: black;  
+  line-height: 0.9;
+  text-align: left;
+}
+.textBox {
+  margin-top: 30px;
+}
+.textBox p:first-child {
+  color: black;
+  font-weight: bold;
+}
+.headerCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 12%;
+}
+textarea {
+  width: auto;	
+	border: none;
+	border-radius: 20px;
+	outline: none;
+	padding: 10px;
+	font-size: 1em;
+	color: #676767;
+	box-sizing:border-box;
+  height: 100px;	
+	resize: none; 
+	overflow: auto;
 }
 </style>

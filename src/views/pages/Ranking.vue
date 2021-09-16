@@ -91,7 +91,7 @@
           }
           return {
             ...item,
-            userUsername: item.email,
+            userUsername: item.first_name + ' ' + item.last_name,
             userId: item.id,
             title: item.title,
             count: index + 1
