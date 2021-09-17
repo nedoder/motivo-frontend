@@ -2,7 +2,7 @@
   <CRow class="d-flex justify-content-center">
     <CCol col="12" lg="6">
       <form @submit.prevent="submitForm">
-        <CCard class='forImage' v-bind:style="{backgroundImage: `url('${this.tasks.image}')`}">
+        <CCard class='forImage'>
           <CCardHeader class='headerCard' :style="{backgroundColor: '#99A2AD'}">
             <h2>{{this.tasks.title}}</h2>
             <p class='coin_text'> {{this.tasks.coins_to_win }} &nbsp; <img class="text-info" src="./img/Coin.png" /></p>

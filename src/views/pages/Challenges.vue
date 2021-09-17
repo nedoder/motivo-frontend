@@ -12,7 +12,7 @@
         <CRow>
             <CCol sm='4'>
                 <Title text="To do" class="font-weight-bold" :number="toDo" activeColor="dark" v-bind:style="{borderRadius: '18px', border: '2px solid #EBEDF0'}"/>
-                <div v-for="challenge in challenges" @click="taskClicked(challenge)" class="challenge_card">
+                <div v-for="challenge in challenges" @click="taskClicked(challenge)" class="challenge_card challenge">
                     <h1>{{challenge.title}}</h1>
                      <h6>Attempts left: {{challenge.attempts_left}}</h6>
                     <p>{{challenge.description}}</p>
@@ -107,7 +107,8 @@
                 this.passed = com.data.results.length;
                 console.log(this.complets)
                 console.log(com.data)
-            }).catch(error => console.log(error))
+            }).catch(error => console.log(error));
+
         },
         watch: {
             $route: {
@@ -143,7 +144,9 @@
                 this.$router.push({
                     path: `/dashboard/challenges/attempt/${attempt.id}`
                 })
-            }
+            },
+
+
             //     pageChange (val) {
             //       this.$router.push({ query: { page: val }})
             //     }

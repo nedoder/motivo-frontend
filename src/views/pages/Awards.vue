@@ -31,6 +31,7 @@
      
     </CRow>
      </div>
+    
   </div>
 </template>
 
@@ -39,6 +40,7 @@
 
   export default {
     name: 'Awards',
+    
     data() {
       return {
         awards: []

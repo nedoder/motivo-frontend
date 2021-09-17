@@ -34,7 +34,7 @@
           <!-- </CCardBody>
         </CCol> -->
       </CRow>
-      <CDataTable
+      <CDataTable v-bind:style="{borderRadius: '18px', border: '2px solid #EBEDF0', padding: '10px', margin: '10px' }"
       hover 
       :items="collectedFilteredItems" 
       :fields="fields" 
@@ -42,6 +42,7 @@
       :header=false
       :active-page="activePage" 
       :pagination="{ doubleArrows: false, align: 'center'}"
+     
        @page-change="pageChange"
       >
       </CDataTable>
@@ -51,7 +52,6 @@
 
 <script>
   import axios from 'axios'
-  import usersData from './elements/users/UsersData'
   export default {
     name: 'Ranking',
     data() {

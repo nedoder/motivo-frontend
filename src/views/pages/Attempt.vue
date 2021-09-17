@@ -1,20 +1,19 @@
 <template>
   <CRow class="d-flex justify-content-center">
     <CCol col="12" lg="6">
-      <CCard  v-bind:style="{backgroundImage: `url('${this.tasks.image}')`}">
-        <CCardHeader class='bg-info text-white'>
-          <p>Mandatory</p>
-          <h2>Challenge Id: {{ $route.params.id }}</h2>
+      <CCard>
+        <CCardHeader class='headerCard' :style="{backgroundColor: '#99A2AD'}">
+          <h2>Challenge: {{ this.tasks.title }}</h2>
         </CCardHeader>
         <CCardBody>
-          <CRow>
+          <!-- <CRow>
             <CButton disabled color="secondary" variant="pill" size="lg">To do
             </CButton>
             <CButton disabled color="info" variant="pill" size="lg">In progress
             </CButton>
             <CButton disabled color="secondary" variant="pill" size="lg">Done
             </CButton>
-          </CRow>
+          </CRow> -->
           <CRow class='mt-3'>
             <p>Coins to win:<span>{{this.tasks.coins_to_win}}</span></p>
           </CRow>
@@ -25,7 +24,7 @@
               <p>Not yet approved by the admin<p/>
           </CRow>
         </CCardBody>
-        <CCardFooter class="d-flex justify-content-center">
+        <CCardFooter class="d-flex justify-content-center" :style="{backgroundColor: '#99A2AD'}">
           <CButton class="col-3" color="info" size='lg' @click="goBack">Back</CButton>
         </CCardFooter>
       </CCard>

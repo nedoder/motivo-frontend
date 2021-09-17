@@ -1,12 +1,15 @@
 <template>
   <CFooter :fixed="false">
     <div>
-      <a href="https://coreui.io" target="_blank">CoreUI</a>
-      <span class="ml-1">&copy; {{new Date().getFullYear()}} creativeLabs.</span>
+      <a href="https://vstorm.co/" target="_blank">
+      <span class="ml-1">&copy; {{new Date().getFullYear()}} VSTORM All right reserved.</span>
+      </a>
     </div>
     <div class="mfs-auto">
-      <span class="mr-1" target="_blank">Powered by</span>
-      <a href="https://coreui.io/vue">CoreUI for Vue</a>
+      <span class="mr-1" target="_blank"></span>
+      <CIcon name="cib-linkedin"/><a href="https://www.linkedin.com/company/vstormco/"></a>
+      <CIcon name="cib-facebook"/><a href="https://www.facebook.com/vstormco/"></a>
+      <CIcon name="cib-dribbble"/><a href="https://dribbble.com/vstorm"></a>
     </div>
   </CFooter>
 </template>

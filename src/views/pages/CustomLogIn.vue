@@ -79,7 +79,7 @@
             this.token = resp.data.access
             localStorage.setItem('user-token', resp.data.access)
             localStorage.setItem('user-refresh', resp.data.refresh)
-            this.$router.push('/onboarding1')
+            this.$router.push('/dashboard/challenges/')
           })
           .catch(error => console.log(error))
       },
