@@ -35,7 +35,7 @@ General information:
 ## Start up
 To run this project, install it locally using npm:
 
-`npm install`
+`npm install` <br/>
 `npm run serve`
 
 Give a ⭐️ if you like this project!
