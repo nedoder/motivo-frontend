@@ -6,7 +6,7 @@
         <!-- <CCardHeader v-bind:style="{backgroundColor: '#1CB0F6 !important'}">
          
         </CCardHeader>  -->
-        <CCardBody class="card-title" v-bind:style="{ color: '#fff', padding: '130px 10px 10px 10px' , margin: '0px', borderRadius: '18px', backgroundColor: 'rgba(53, 57, 53, 0.5)'}">
+        <CCardBody class="card-title" v-bind:style="{ color: '#fff', padding: '100px 10px 10px 10px' , margin: '0px', borderRadius: '18px', backgroundColor: 'rgba(53, 57, 53, 0.5)'}">
             <CRow class='m-2'>
              <h2>Title: <span>{{this.awards.title}}</span></h2>
             </CRow>
@@ -15,6 +15,10 @@
             </CRow>
           <CRow class='m-2' v-bind:style="{color: '#F2C94C', fontWeight: 'bold'}">
              {{this.awards.price_in_coins}} <img src="./img/Coin.png"  class='mx-3' /> 
+             
+          </CRow>
+          <CRow>
+            <CInput placeholder="User comment"  class='m-3'/>
           </CRow>
           
           <CButton class="col-3 m-2" color="info"  @click="goBack">Back</CButton>

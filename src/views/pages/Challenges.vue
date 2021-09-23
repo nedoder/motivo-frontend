@@ -11,28 +11,31 @@
         </CRow> -->
         <CRow>
             <CCol sm='4'>
-                <Title text="To do" class="font-weight-bold" :number="toDo" activeColor="dark" v-bind:style="{borderRadius: '18px', border: '2px solid #EBEDF0'}"/>
-                <div v-for="challenge in challenges" @click="taskClicked(challenge)" class="challenge_card challenge">
+                <!-- <Title text="To do" class="font-weight-bold" :number="toDo" activeColor="dark" v-bind:style="{borderRadius: '18px', border: '2px solid #EBEDF0'}"/> -->
+                <div v-for="challenge in challenges"  @click="challenge.attempts_left===0 ? null : taskClicked(challenge)" class="challenge_card challenge" :style= "[challenge.attempts_left===0 ? {background:'rgba(153,162,173, 0.2)'} : {background:'transparent'}]">
                     <h1>{{challenge.title}}</h1>
                      <h6>Attempts left: {{challenge.attempts_left}}</h6>
                     <p>{{challenge.description}}</p>
                     <p class='coin_text'> {{challenge.coins_to_win  }} &nbsp;   <img class="text-info" src="./img/Coin.png"/></p>
+                    <button class="btn btn-info"> To do</button>
                 </div>
             </CCol>
             <CCol sm='4'>
-                <Title text="In progress" class="font-weight-bold" :number="failed" activeColor="dark" v-bind:style="{borderRadius: '18px', border: '2px solid #EBEDF0'}" />
+                <!-- <Title text="In progress" class="font-weight-bold" :number="failed" activeColor="dark" v-bind:style="{borderRadius: '18px', border: '2px solid #EBEDF0'}" /> -->
                 <div v-for="attempt in attempts" @click="attemptClicked(attempt.challenge)" class="challenge_card">
                     <h1>{{attempt.challenge.title}}</h1>
                     <p>{{attempt.challenge.description}} </p>
                     <p class="coin_text">{{attempt.challenge.coins}} &nbsp;   <img class="text-info" src="./img/Coin.png"/></p>
+                     <button class="btn btn-danger"> In progress</button>
                 </div>
             </CCol>
             <CCol sm='4'>
-                <Title text="Done" class="font-weight-bold" :number="passed" activeColor="dark" v-bind:style="{borderRadius: '18px', border: '2px solid #EBEDF0'}" />
+                <!-- <Title text="Done" class="font-weight-bold" :number="passed" activeColor="dark" v-bind:style="{borderRadius: '18px', border: '2px solid #EBEDF0'}" /> -->
                 <div v-for="complet in complets"  class="challenge_card" @click="completedClicked(complet.challenge)" v-bind:style="{borderRadius: '18px'}">
                     <h1>{{complet.challenge.title}}</h1>
                     <p>{{complet.challenge.description}}</p>
                     <p class="coin_text">{{complet.challenge.coins}} &nbsp;   <img class="text-info" src="./img/Coin.png"/> </p>
+                     <button class="btn btn-success"> Done</button>
                 </div>
             </CCol>
         </CRow>
@@ -63,13 +66,16 @@
         },
          computed: {
       computedItems() {
+         
         return this.complets.map(item => {
           return {
             ...item,
             challengeTitle: item.challenge.title,
+          
             //userId: item.user.id
           }
         })
+        
       }},
         mounted() {
             const token = localStorage.getItem('user-token')
@@ -102,6 +108,9 @@
                 this.attempts = att.data.results;
                 this.failed = att.data.results.length;
                 this.challenges = chal.data;
+                 this.challenges.sort(function (a, b) {
+              return a.attempts_left - b.attempts_left
+        })
                 this.toDo = chal.data.length;
                 this.complets = com.data.results;
                 this.passed = com.data.results.length;
@@ -170,16 +179,16 @@ word-wrap: break-word;
 border: 2px solid #EBEDF0;
 box-shadow: 0px 2px 0px #CFD8DA;
 border-radius: 18px;
-padding: 5px 12px;
-margin-top: 20px;
-height: 200px;
+padding: 15px;
+margin-top: 25px;
+height: 250px;
 display: flex;
 flex-direction: column; 
 justify-content: space-around;
 }
 
 .challenge_card:hover {
-    background-color: #99A2AD;
+    background-color: rgba(153,162,173, 0.2) !important;
     cursor: pointer;
 }
 

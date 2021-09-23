@@ -2,7 +2,7 @@
   <CRow class="d-flex justify-content-center">
     <CCol col="12" lg="6">
       <CCard >
-        <CCardHeader class='headerCard' :style="{backgroundColor: '#99A2AD'}">
+        <CCardHeader class='headerCard' :style="{backgroundColor: 'transparent'}">
           <h2>Challenge: {{this.tasks.title}}</h2>
         </CCardHeader>
         <CCardBody>
@@ -21,8 +21,8 @@
             <p>Description:<span>{{this.tasks.description}}</span></p>
           </CRow>
         </CCardBody>
-        <CCardFooter class="d-flex justify-content-center" :style="{backgroundColor: '#99A2AD'}">
-          <CButton color="info" @click="goBack">Back</CButton>
+        <CCardFooter class="d-flex justify-content-center" :style="{backgroundColor: 'transparent'}">
+          <CButton color="info" size='lg' @click="goBack">Back</CButton>
         </CCardFooter>
       </CCard>
     </CCol>

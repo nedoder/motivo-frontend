@@ -3,11 +3,12 @@
     <CCol col="12" lg="6">
       <form @submit.prevent="submitForm">
         <CCard class='forImage'>
-          <CCardHeader class='headerCard' :style="{backgroundColor: '#99A2AD'}">
+          <div class='bodyCard'>
+          <!-- <CCardHeader class='headerCard' :style="{backgroundColor: 'rgba(153,162,173, 0.9)'}"> -->
             <h2>{{this.tasks.title}}</h2>
             <p class='coin_text'> {{this.tasks.coins_to_win }} &nbsp; <img class="text-info" src="./img/Coin.png" /></p>
-          </CCardHeader>
-          <div class='bodyCard'>
+          <!-- </CCardHeader> -->
+          
             <div class='textBox text'>
               <p>Description:</p>
               <p> {{this.tasks.description}}</p>
@@ -16,7 +17,7 @@
               <p>
                 Your comment
               </p>
-              <textarea v-model="description" required />
+              <textarea v-model="description"  required />
               </div>
       <div class='textBox text'> 
   <p >
@@ -26,7 +27,7 @@
 </div>
 
         </div>
-        <CCardFooter class="d-flex justify-content-center" :style="{backgroundColor: '#99A2AD'}">
+        <CCardFooter class="d-flex justify-content-center" :style="{backgroundColor: 'transparent'}">
           <CButton color="info" @click="goBack">Back</CButton>
           <CButton color="info" type="submit">Submit</CButton>        
           </CCardFooter>
@@ -171,7 +172,7 @@ pre-content {
 .forImage {
      background-size: cover;
   position: relative; 
-    height: 70vh;
+    height: 60vh;
     width: 100%;
 }
 .bodyCard::before {
@@ -183,7 +184,7 @@ pre-content {
       right: 0px;
       bottom: 0px;
       left: 0px;
-      opacity: 0.75;
+      opacity: 0;
 }
 .bodyCard {
     position: relative; 
@@ -219,12 +220,13 @@ textarea {
 	border: none;
 	border-radius: 20px;
 	outline: none;
-	padding: 10px;
+	padding: 10px 30px;
 	font-size: 1em;
 	color: #676767;
 	box-sizing:border-box;
   height: 100px;	
-	resize: none; 
 	overflow: auto;
+  border-radius: 18px;
+  border: 1px solid #99A2AD;
 }
 </style>

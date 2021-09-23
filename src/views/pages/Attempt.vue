@@ -2,7 +2,7 @@
   <CRow class="d-flex justify-content-center">
     <CCol col="12" lg="6">
       <CCard>
-        <CCardHeader class='headerCard' :style="{backgroundColor: '#99A2AD'}">
+        <CCardHeader class='headerCard' :style="{backgroundColor: 'transparent'}">
           <h2>Challenge: {{ this.tasks.title }}</h2>
         </CCardHeader>
         <CCardBody>
@@ -15,7 +15,7 @@
             </CButton>
           </CRow> -->
           <CRow class='mt-3'>
-            <p>Coins to win:<span>{{this.tasks.coins_to_win}}</span></p>
+            <p>Coins to win:<span>{{this.tasks.coins}}</span></p>
           </CRow>
           <CRow>
             <p>Description:<span>{{this.tasks.description}}</span></p>
@@ -24,7 +24,7 @@
               <p>Not yet approved by the admin<p/>
           </CRow>
         </CCardBody>
-        <CCardFooter class="d-flex justify-content-center" :style="{backgroundColor: '#99A2AD'}">
+        <CCardFooter class="d-flex justify-content-center" :style="{backgroundColor: 'transparent'}">
           <CButton class="col-3" color="info" size='lg' @click="goBack">Back</CButton>
         </CCardFooter>
       </CCard>

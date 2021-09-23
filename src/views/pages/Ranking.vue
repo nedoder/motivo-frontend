@@ -30,6 +30,12 @@
               </p>
               <h5 v-bind:style="{color: '#F2C94C !important'}">{{userItems[0].collected_coins_gross}}  <img src="./img/Coin.png"/></h5>
               </CCol>
+              <CCol>
+              <p v-bind:style="{color: '#B8C1CC !important'}">
+                Current balance: 
+              </p>
+              <h5 v-bind:style="{color: '#F2C94C !important'}">{{userItems[0].collected_coins}}  <img src="./img/Coin.png"/></h5>
+              </CCol>
             <!-- </CJumbotron> -->
           <!-- </CCardBody>
         </CCol> -->
@@ -76,6 +82,10 @@
           },
           {
             key: 'collected_coins_gross',
+            label: 'Collected Coins Gross'
+          },
+          {
+            key: 'collected_coins',
             label: 'Collected Coins'
           },
         ],
@@ -94,7 +104,8 @@
             userUsername: item.first_name + ' ' + item.last_name,
             userId: item.id,
             title: item.title,
-            count: index + 1
+            count: index + 1,
+            balance: item.collected_coins,
           }
         })
       },
@@ -160,9 +171,14 @@
   }
 </script>
 
-<style scoped>
+<style>
 
 .table td {
   border: none !important;
 }
+
+ td {
+  border: none !important;
+}
+
 </style>

@@ -22,6 +22,9 @@ const Dashboard = () =>
 const CustomLogIn = () =>
     import ('@/views/pages/CustomLogIn')
 
+const ChangePassword = () =>
+    import ('@/views/pages/ChangePassword')
+
 const Onboarding1 = () =>
     import ('@/views/pages/Onboarding1')
 
@@ -191,6 +194,12 @@ function configRoutes() {
             component: Onboarding1,
         },
         {
+            path: '/changepassword',
+            //redirect: '/dashboard',
+            name: 'ChangePassword',
+            component: ChangePassword,
+        },
+        {
             path: '/onboarding2',
             //redirect: '/dashboard',
             name: 'Onboarding2',
@@ -337,6 +346,22 @@ function configRoutes() {
                             component: User
                         }
                     ]
+                },
+                {
+                    path: 'changepassword',
+                    meta: {
+                        label: 'Password'
+                    },
+                    component: {
+                        render(c) {
+                            return c('router-view')
+                        }
+                    },
+                    children: [{
+                        path: '',
+                        name: 'ChangePassword',
+                        component: ChangePassword
+                    }, ]
                 },
                 {
                     path: 'challenges',

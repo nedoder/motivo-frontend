@@ -12,7 +12,7 @@
           </CContainer>
         </main>
       </div>
-      <!-- <TheFooter/> -->
+      <TheFooter/>
     </CWrapper>
   </div>
 </template>
@@ -20,14 +20,14 @@
 <script>
 //import TheSidebar from './TheSidebar'
 import TheHeader from './TheHeader'
-//import TheFooter from './TheFooter'
+import TheFooter from './TheFooter'
 
 export default {
   name: 'TheContainer',
   components: {
     //TheSidebar,
     TheHeader,
-    //TheFooter
+    TheFooter
   },
 }
 </script>

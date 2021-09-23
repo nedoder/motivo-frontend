@@ -5,17 +5,18 @@
       
       <CCol v-for="award in awards" sm="4" v-bind:style="{padding:'1px'}">
         <div  class="award_card">
-        <CCard class='bg-secondary' v-bind:style="{backgroundImage: `url('http://api.motivo.localhost/${award.image}')`, height: '300px',color: '#fff', borderRadius: '18px', border:'none',  backgroundSize: 'cover'}" @click="couponClicked(award)">
+        <CCard class='bg-secondary' v-bind:style="{backgroundImage: `url('http://api.motivo.localhost/${award.image}')`, height: '300px',color: '#fff', borderRadius: '18px', border:'none',  backgroundSize: 'cover'}"  @click="award.awards_left===0 ? null : couponClicked(award)" :style= "[award.awards_left===0 ? {background:'rgba(153,162,173, 0.2)', borderRadius: '18px'} : {backgroundImage: `url('http://api.motivo.localhost/${award.image}')`, borderRadius: '18px'}]">
           <!-- <CCardHeader class='bg-info'>
            
           </CCardHeader> -->
-          <CCardBody  v-bind:style="{color: '#F2C94C', padding:'170px 10px 10px 10px', margin: '0px', borderRadius: '18px', fontWeight: 'bold', backgroundColor: 'rgba(53, 57, 53, 0.5)'}">
+          <CCardBody  v-bind:style="{color: '#F2C94C', padding:'170px 10px 10px 10px', margin: '0px', borderRadius: '18px', fontWeight: 'bold', backgroundColor: 'rgba(153, 162, 173, 0.2)'}">
             <br/>
             {{award.price_in_coins}} <img src="./img/Coin.png" /> 
             <br/>
             <div v-bind:style="{color: '#fff', fontWeight: 'bold', margin: '2px 0'}">
              {{award.title}}
             </div>
+            
             <div v-bind:style="{color: '#fff', fontWeight: 'bold'}">
             Awards left: {{award.awards_left}}
             </div>
@@ -86,6 +87,9 @@
         })
         .then(resp => {
           this.awards = resp.data
+           this.awards.sort(function (a, b) {
+              return a.awards_left - b.awards_left
+        })
           // this.title = resp.data.results[0].title
           // this.price = resp.data.results[0.].price
           // this.image = resp.data.results[0].image
