@@ -17,7 +17,7 @@
                      <h6>Attempts left: {{challenge.attempts_left}}</h6>
                     <p>{{challenge.description}}</p>
                     <p class='coin_text'> {{challenge.coins_to_win  }} &nbsp;   <img class="text-info" src="./img/Coin.png"/></p>
-                    <button class="btn btn-info"> To do</button>
+                    <button class="btn btn-info disabled"> To do</button>
                 </div>
             </CCol>
             <CCol sm='4'>
@@ -26,7 +26,7 @@
                     <h1>{{attempt.challenge.title}}</h1>
                     <p>{{attempt.challenge.description}} </p>
                     <p class="coin_text">{{attempt.challenge.coins}} &nbsp;   <img class="text-info" src="./img/Coin.png"/></p>
-                     <button class="btn btn-danger"> In progress</button>
+                     <button class="btn btn-danger disabled"> In progress</button>
                 </div>
             </CCol>
             <CCol sm='4'>
@@ -35,7 +35,7 @@
                     <h1>{{complet.challenge.title}}</h1>
                     <p>{{complet.challenge.description}}</p>
                     <p class="coin_text">{{complet.challenge.coins}} &nbsp;   <img class="text-info" src="./img/Coin.png"/> </p>
-                     <button class="btn btn-success"> Done</button>
+                     <button class="btn btn-success disabled"> Done</button>
                 </div>
             </CCol>
         </CRow>
@@ -185,6 +185,10 @@ height: 250px;
 display: flex;
 flex-direction: column; 
 justify-content: space-around;
+}
+
+.disabled {
+    width: 50% !important;
 }
 
 .challenge_card:hover {
