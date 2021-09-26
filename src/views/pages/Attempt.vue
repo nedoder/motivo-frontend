@@ -1,11 +1,11 @@
 <template>
   <CRow class="d-flex justify-content-center">
     <CCol col="12" lg="6">
-      <CCard>
-        <CCardHeader class='headerCard' :style="{backgroundColor: 'transparent'}">
+      <CCard  v-bind:style="{height: '350px', borderRadius:'18px', backgroundSize: 'cover', top:'50%'}">
+        <!-- <CCardHeader class='headerCard' :style="{backgroundColor: 'transparent'}">
           <h2>Challenge: {{ this.tasks.title }}</h2>
-        </CCardHeader>
-        <CCardBody>
+        </CCardHeader> -->
+        <CCardBody class="card-title" v-bind:style="{ color: 'black', padding: '80px 10px 10px 10px' , margin: '0px', borderRadius: '18px', backgroundColor: '#fff'}">
           <!-- <CRow>
             <CButton disabled color="secondary" variant="pill" size="lg">To do
             </CButton>
@@ -14,19 +14,23 @@
             <CButton disabled color="secondary" variant="pill" size="lg">Done
             </CButton>
           </CRow> -->
-          <CRow class='mt-3'>
+           <CRow class='m-2'>
+             <h2>Challenge: {{ this.tasks.title }}</span></h2>
+            </CRow>
+          <CRow class='m-2'>
             <p>Coins to win:<span>{{this.tasks.coins}}</span></p>
           </CRow>
-          <CRow>
-            <p>Description:<span>{{this.tasks.description}}</span></p>
+          <CRow class='m-2'>
+            <p  v-linkified>Description:<span>{{this.tasks.description}}</span></p>
           </CRow>
-          <CRow>
+          <CRow class='m-2'>
               <p>Not yet approved by the admin<p/>
           </CRow>
+           <CButton class="col-3 m-2" color="info" @click="goBack">Back</CButton>
         </CCardBody>
-        <CCardFooter class="d-flex justify-content-center" :style="{backgroundColor: 'transparent'}">
-          <CButton class="col-3" color="info" size='lg' @click="goBack">Back</CButton>
-        </CCardFooter>
+        <!-- <CCardFooter class="d-flex justify-content-center" :style="{backgroundColor: 'transparent'}"> -->
+         
+        <!-- </CCardFooter> -->
       </CCard>
     </CCol>
   </CRow>

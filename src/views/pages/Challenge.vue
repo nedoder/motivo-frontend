@@ -1,36 +1,52 @@
 <template>
   <CRow class="d-flex justify-content-center">
     <CCol col="12" lg="6">
-      <form @submit.prevent="submitForm">
-        <CCard class='forImage'>
-          <div class='bodyCard'>
+      <form @submit.prevent="submitForm" >
+        <CCard class='forImage'  v-bind:style="{ color: 'black', padding: '10px' , margin: '0px', borderRadius: '18px', backgroundColor: '#fff', top: '100px'}">
+          <CCardBody class="card-title">
+          <!-- <div class='bodyCard'> -->
           <!-- <CCardHeader class='headerCard' :style="{backgroundColor: 'rgba(153,162,173, 0.9)'}"> -->
+            <CRow class='m-2'>
             <h2>{{this.tasks.title}}</h2>
+            </CRow>
+            <CRow class='m-2'>
             <p class='coin_text'> {{this.tasks.coins_to_win }} &nbsp; <img class="text-info" src="./img/Coin.png" /></p>
+            </CRow>
           <!-- </CCardHeader> -->
           
-            <div class='textBox text'>
+            <!-- <div class='textBox text'> -->
+              <CRow class='m-2'>
               <p>Description:</p>
-              <p> {{this.tasks.description}}</p>
-            </div>
-            <div class='textBox text'>
+              <p  v-linkified> {{this.tasks.description}}</p>
+              </CRow>
+            <!-- </div>
+            <div class='textBox text'> -->
+              <CRow class='m-2'>
               <p>
                 Your comment
               </p>
+              </CRow>
+              <CRow class='m-2'>
               <textarea v-model="description"  required />
-              </div>
-      <div class='textBox text'> 
+              </CRow>
+              <!-- </div>
+      <div class='textBox text'>  -->
+        <CRow class='m-2'>
   <p >
-                Attach file
+                Attach file 
 							</p>
+        </CRow>
+              <CRow class='m-2'>
         <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
-</div>
+        </CRow>
+ <!-- </div>
 
-        </div>
+        </div> -->
         <CCardFooter class="d-flex justify-content-center" :style="{backgroundColor: 'transparent'}">
           <CButton color="info" @click="goBack">Back</CButton>
           <CButton color="info" type="submit">Submit</CButton>        
           </CCardFooter>
+          </CCardBody>
       </CCard>
       </form>
     </CCol>
@@ -77,24 +93,23 @@
       },
       handleFileUpload(){
     this.file = this.$refs.file.files[0];
+    console.log(this.file)
   },
       submitForm() {
         const token = localStorage.getItem('user-token')
         const bearer = 'Bearer ' + token
-        // let formData = new FormData();
-        // formData.append('file', this.file);
-        const data = {
-          user: localStorage.getItem('user-id'),
-          challenge: this.$route.params.id,
-          description: this.description,
-          //file: formData,
-        };
+        let formData = new FormData();
+        formData.append('file', this.file);
+         formData.append('user',localStorage.getItem('user-id'));
+         formData.append('challenge', this.$route.params.id);
+          formData.append('description', this.description);
         axios({
             method: 'post',
             url: 'https://api.motivo.localhost/attempt/',
-            data: data,
+            data: formData,
             headers: {
             'Authorization': bearer,
+            'Content-Type': 'multipart/form-data',
              }
           }).then(response => {
         alert("You uploaded your solution successfully!")
@@ -117,7 +132,6 @@
         }
       });
       Promise.all([tasks]).then(([chal]) => {
-        console.log(chal);
         this.tasks = chal.data;
         console.log(this.tasks)
       }).catch(error => console.log(error))
@@ -170,9 +184,7 @@ pre-content {
   width: 500px;
 }
 .forImage {
-     background-size: cover;
-  position: relative; 
-    height: 60vh;
+    height: 500px;
     width: 100%;
 }
 .bodyCard::before {

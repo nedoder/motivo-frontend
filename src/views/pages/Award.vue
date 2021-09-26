@@ -2,11 +2,12 @@
   <CRow class="d-flex justify-content-center">
     <CCol col="12" lg="6">
        <!-- <form @submit.prevent="submitForm"> -->
-      <CCard   v-bind:style="{height: '350px', backgroundImage: `url('${this.awards.image}')`, borderRadius:'18px', backgroundSize: 'cover'}">
+      <CCard  v-bind:style="{height: '350px', borderRadius:'18px', backgroundSize: 'cover', top:'50%'}">
         <!-- <CCardHeader v-bind:style="{backgroundColor: '#1CB0F6 !important'}">
          
         </CCardHeader>  -->
-        <CCardBody class="card-title" v-bind:style="{ color: '#fff', padding: '100px 10px 10px 10px' , margin: '0px', borderRadius: '18px', backgroundColor: 'rgba(53, 57, 53, 0.5)'}">
+
+        <CCardBody class="card-title" v-bind:style="{ color: 'black', padding: '50px 10px 10px 10px' , margin: '0px', borderRadius: '18px', backgroundColor: '#fff'}">
             <CRow class='m-2'>
              <h2>Title: <span>{{this.awards.title}}</span></h2>
             </CRow>
@@ -18,7 +19,7 @@
              
           </CRow>
           <CRow>
-            <CInput placeholder="User comment"  class='m-3'/>
+            <CInput placeholder="User comment"  class='m-3' v-model="note"/>
           </CRow>
           
           <CButton class="col-3 m-2" color="info"  @click="goBack">Back</CButton>
@@ -27,10 +28,8 @@
            <p>Message: <span>{{this.message}}</span></p>
           </CRow>
         </CCardBody>
-          
                    
       </CCard>
-     
     </CCol>
   </CRow>
 </template>
@@ -50,6 +49,7 @@
         awardsOpened: null,
         awards: [],
         message: '',
+        note: '',
         form: {
           terms: false
         }
@@ -79,12 +79,15 @@
 
       submitAward() {
           console.log("clicked")
+          
         const token = localStorage.getItem('user-token')
         const bearer = 'Bearer ' + token
         const data = {
           user: localStorage.getItem('user-id'),
           awards: this.$route.params.id,
+          user_note: this.note
         };
+        console.log(data)
        axios({
             method: 'post',
             url: 'https://api.motivo.localhost/collectedawards/',
