@@ -1,11 +1,14 @@
 <template>
   <CRow class="d-flex justify-content-center">
     <CCol col="12" lg="6">
-      <CCard v-bind:style="{height: '350px', borderRadius:'18px', backgroundSize: 'cover', top:'50%'}">
+      <CCard v-bind:style="{height: '450px', borderRadius:'18px', backgroundSize: 'cover', top:'25%'}">
         <!-- <CCardHeader class='headerCard' :style="{backgroundColor: 'transparent'}">
           <h2>Challenge: {{this.tasks.title}}</h2>
         </CCardHeader> -->
-        <CCardBody class="card-title" v-bind:style="{ color: 'black', padding: '80px 10px 10px 10px' , margin: '0px', borderRadius: '18px', backgroundColor: '#fff'}">
+        <CCardBody class="card-title" v-bind:style="{ color: 'black', padding: '20px 10px 10px 10px' , margin: '0px', borderRadius: '18px', backgroundColor: '#fff'}">
+          <CRow class='m-3'  v-bind:style="{color: '#F2C94C', fontWeight: 'bold', fontSize: '18x'}">
+            {{this.tasks.coins_to_win}} <img src="./img/Coin.png"  class='mx-2' /> 
+          </CRow>
           <!-- <CRow>
             <CButton disabled color="secondary" variant="pill" size="lg">To do
             </CButton>
@@ -14,13 +17,14 @@
             <CButton disabled color="info" variant="pill" size="lg">Done
             </CButton>
           </CRow> -->
-          <CRow class='m-2'>
+          <CRow class='m-auto' v-bind:style="{ display: 'flex', position: 'relative' , width: '120px', height: '135px', clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}">
+              <img v-bind:src="this.tasks.image" alt="Award image" v-bind:style="{ width: '100%', height: 'auto' , display: 'block', objectFit: 'cover'}"/>
+            </CRow>
+          <CRow class='m-3'>
             <h2>Challenge: {{this.tasks.title}}</h2>
           </CRow>
-          <CRow class='m-2'>
-            <p>Coins to win:<span>{{this.tasks.coins_to_win}}</span></p>
-          </CRow>
-          <CRow class='m-2'>
+          
+          <CRow class='m-3'>
             <p  v-linkified>Description:<span>{{this.tasks.description}}</span></p>
           </CRow>
            <CButton color="info" class="col-3 m-2" @click="goBack">Back</CButton>

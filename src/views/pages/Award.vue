@@ -2,29 +2,32 @@
   <CRow class="d-flex justify-content-center">
     <CCol col="12" lg="6">
        <!-- <form @submit.prevent="submitForm"> -->
-      <CCard  v-bind:style="{height: '350px', borderRadius:'18px', backgroundSize: 'cover', top:'50%'}">
+      <CCard  v-bind:style="{height: '550px', borderRadius:'18px', backgroundSize: 'cover', top:'20%'}">
         <!-- <CCardHeader v-bind:style="{backgroundColor: '#1CB0F6 !important'}">
          
         </CCardHeader>  -->
 
-        <CCardBody class="card-title" v-bind:style="{ color: 'black', padding: '50px 10px 10px 10px' , margin: '0px', borderRadius: '18px', backgroundColor: '#fff'}">
-            <CRow class='m-2'>
-             <h2>Title: <span>{{this.awards.title}}</span></h2>
-            </CRow>
-            <CRow class='m-2'>
-          <h6>Description: <span>{{this.awards.description}}</span></h6>
-            </CRow>
-          <CRow class='m-2' v-bind:style="{color: '#F2C94C', fontWeight: 'bold'}">
-             {{this.awards.price_in_coins}} <img src="./img/Coin.png"  class='mx-3' /> 
+        <CCardBody class="card-title" v-bind:style="{ color: 'black', padding: '20px 10px' , margin: '0px', borderRadius: '18px', backgroundColor: '#fff'}">
+          <CRow class='m-3' v-bind:style="{color: '#F2C94C', fontWeight: 'bold', fontSize: '18x'}">
+             {{this.awards.price_in_coins}} <img src="./img/Coin.png"  class='mx-2' /> 
              
           </CRow>
-          <CRow>
-            <CInput placeholder="User comment"  class='m-3' v-model="note"/>
+          <CRow class='m-auto' v-bind:style="{ display: 'flex', position: 'relative' , width: '120px', height: '135px', clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}">
+              <img v-bind:src="this.awards.image" alt="Award image" v-bind:style="{ width: '100%', height: 'auto' , display: 'block', objectFit: 'cover'}"/>
+            </CRow>
+            <CRow class='m-3'>
+             <h2>Title: <span>{{this.awards.title}}</span></h2>
+            </CRow>
+            <CRow class='m-3'>
+          <h6>Description: <span>{{this.awards.description}}</span></h6>
+            </CRow>
+          <CRow class='m-3'>
+            <CInput placeholder="User comment"   v-model="note"/>
           </CRow>
           
-          <CButton class="col-3 m-2" color="info"  @click="goBack">Back</CButton>
-          <CButton class="col-3 m-2"  @click="submitAward">Collect</CButton> 
-          <CRow class='m-2'>  
+          <CButton class="col-3 m-3" color="info"  @click="goBack">Back</CButton>
+          <CButton class="col-3 m-3"  @click="submitAward">Collect</CButton> 
+          <CRow class='m-3'>  
            <p>Message: <span>{{this.message}}</span></p>
           </CRow>
         </CCardBody>

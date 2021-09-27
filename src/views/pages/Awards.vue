@@ -5,21 +5,25 @@
       
       <CCol v-for="award in awards" sm="4" v-bind:style="{padding:'1px'}">
         <div  class="award_card">
-        <CCard class='bg-secondary' v-bind:style="{backgroundImage: `url('http://api.motivo.localhost/${award.image}')`, height: '300px',color: '#fff', borderRadius: '18px', border:'none',  backgroundSize: 'cover'}"  @click="award.awards_left===0 ? null : couponClicked(award)" :style= "[award.awards_left===0 ? {background:'rgba(153,162,173, 0.2)', borderRadius: '18px'} : {backgroundImage: `url('http://api.motivo.localhost/${award.image}')`, borderRadius: '18px'}]">
+        <CCard class='bg-secondary' @click="award.awards_left===0 ? null : couponClicked(award)" :style= "[award.awards_left===0 ? {background:'rgba(153,162,173, 0.2)', borderRadius: '18px !important'} : {background: 'transparent', borderRadius: '18px !important'}]">
           <!-- <CCardHeader class='bg-info'>
            
-          </CCardHeader> -->
-          <CCardBody  v-bind:style="{color: '#F2C94C', padding:'170px 10px 10px 10px', margin: '0px', borderRadius: '18px', fontWeight: 'bold', backgroundColor: 'rgba(153, 162, 173, 0.2)'}">
-            <br/>
-            {{award.price_in_coins}} <img src="./img/Coin.png" /> 
-            <br/>
-            <div v-bind:style="{color: '#fff', fontWeight: 'bold', margin: '2px 0'}">
-             {{award.title}}
+          </CCardHeader> --> 
+          <CCardBody class='hover' v-bind:style="{color: '#F2C94C', padding:'50px 10px 10px 10px', fontWeight: 'bold', height: '250px', margin: '0px', borderRadius: '18px', fontSize: '24px', background: 'transparent'}">
+            <div v-bind:style="{color: '#03001D', margin: '2px 0'}">
+             <h2 v-bind:style="{fontSize: '1.5em'}">{{award.title}}</h2>
             </div>
-            
-            <div v-bind:style="{color: '#fff', fontWeight: 'bold'}">
+            <div v-bind:style="{color: '#03001D', fontSize: '16px', fontWeight: '500', marginTop: '20px'}">
+              <h6 v-bind:style="{color: '#6D7885'}">
             Awards left: {{award.awards_left}}
+              </h6>
             </div>
+            <div v-bind:style="{color: '#6D7885', fontSize: '14px', fontWeight: '400', marginTop: '20px'}">
+              <p>
+            Description: {{award.description}}
+              </p>
+            </div>
+            {{award.price_in_coins}} <img src="./img/Coin.png" /> 
           </CCardBody>
           <!-- <CCardFooter class='bg-secondary'>
             Description: {{award.description}} 
@@ -123,11 +127,28 @@
     height: auto
   } */
 
+  .bg-secondary {
+    background: transparent !important;
+    border-radius: 18px !important;
+    border: 2px solid #EBEDF0;
+box-shadow: 0px 2px 0px #CFD8DA;
+   }
+
+   .bg-secondary:hover {
+     border: 2px solid rgba(153,162,173, 0.1);
+   }
+
+  .hover:hover {
+    background-color: rgba(153,162,173, 0.1) !important;
+    border: none;
+  }
+  
   .wrapper {
     border-radius: 18px;
   }
 
   .award_card:hover {
+    background: rgba(153,162,173, 0.1) !important;
     border-radius: 18px;
     cursor: pointer;
 }

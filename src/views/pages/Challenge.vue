@@ -2,41 +2,46 @@
   <CRow class="d-flex justify-content-center">
     <CCol col="12" lg="6">
       <form @submit.prevent="submitForm" >
-        <CCard class='forImage'  v-bind:style="{ color: 'black', padding: '10px' , margin: '0px', borderRadius: '18px', backgroundColor: '#fff', top: '100px'}">
+        <CCard class='forImage'  v-bind:style="{ color: 'black', padding: '10px' , margin: '0px', borderRadius: '18px', backgroundColor: '#fff', top: '10px'}">
+          
           <CCardBody class="card-title">
           <!-- <div class='bodyCard'> -->
           <!-- <CCardHeader class='headerCard' :style="{backgroundColor: 'rgba(153,162,173, 0.9)'}"> -->
-            <CRow class='m-2'>
-            <h2>{{this.tasks.title}}</h2>
-            </CRow>
-            <CRow class='m-2'>
+             <CRow class='m-3'>
             <p class='coin_text'> {{this.tasks.coins_to_win }} &nbsp; <img class="text-info" src="./img/Coin.png" /></p>
             </CRow>
+            <CRow class='m-auto' v-bind:style="{ display: 'flex', position: 'relative' , width: '120px', height: '135px', clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}">
+              <img v-bind:src="this.tasks.image" alt="Award image" v-bind:style="{ width: '100%', height: 'auto' , display: 'block', objectFit: 'cover'}"/>
+            </CRow>
+            <CRow class='m-3'>
+            <h2>{{this.tasks.title}}</h2>
+            </CRow>
+           
           <!-- </CCardHeader> -->
           
             <!-- <div class='textBox text'> -->
-              <CRow class='m-2'>
+              <CRow class='m-3'>
               <p>Description:</p>
               <p  v-linkified> {{this.tasks.description}}</p>
               </CRow>
             <!-- </div>
             <div class='textBox text'> -->
-              <CRow class='m-2'>
+              <CRow class='m-3'>
               <p>
                 Your comment
               </p>
               </CRow>
-              <CRow class='m-2'>
+              <CRow class='m-3'>
               <textarea v-model="description"  required />
               </CRow>
               <!-- </div>
       <div class='textBox text'>  -->
-        <CRow class='m-2'>
+        <CRow class='m-3'>
   <p >
                 Attach file 
 							</p>
         </CRow>
-              <CRow class='m-2'>
+              <CRow class='m-3'>
         <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
         </CRow>
  <!-- </div>
@@ -184,7 +189,7 @@ pre-content {
   width: 500px;
 }
 .forImage {
-    height: 500px;
+    height: 750px;
     width: 100%;
 }
 .bodyCard::before {
