@@ -25,18 +25,13 @@
 </template>
 
 <script>
+  import {getRequest} from '@/utils/http';
+
   export default {
     name: 'Onboarding1',
+
     mounted() {
-      const token = localStorage.getItem('user-token')
-      const bearer = 'Bearer ' + token
-      axios({
-          method: 'get',
-          url: 'https://api.motivo.localhost/userdata/',
-          headers: {
-            'Authorization': bearer,
-          }
-        })
+      getRequest('/userdata')
         .then(resp => {
           localStorage.setItem('user-id', resp.data.results[0].id)
           localStorage.setItem('user-name', resp.data.results[0].first_name)

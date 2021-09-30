@@ -1,14 +1,18 @@
 /* eslint-disable no-undef */
 import axios from 'axios';
 
-const api = axios.create({
-  withCredentials: true,
-  baseURL: process.env.VUE_APP_API_URL,
-  timeout: 50000,
-  headers: {
+const headers = {
     'X-Requested-With': 'XMLHttpRequest',
     Accept: 'application/json',
-  },
+};
+const token = localStorage.getItem('user-token')
+headers.Authorization = 'Bearer ' + token;
+
+const api = axios.create({
+  withCredentials: false,
+  baseURL: process.env.VUE_APP_API_URL,
+  timeout: 50000,
+  headers,
 });
 
 api.interceptors.response.use(
@@ -26,8 +30,10 @@ api.interceptors.response.use(
       return;
     }
     if (error.response) {
-      if (error.response.status === 429) {
-        vm.$notifyError('Too Many Attempts.'); // wyskakujace powiadomienia z coreUI
+      if (error.response.status === 401) {
+        localStorage.removeItem('user-token');
+        document.location = '/';
+        return false;
       }
 
       if (error.response.status === 403) {
